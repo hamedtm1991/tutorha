@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Http\Response as status;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,38 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Response::macro('ok', function ($message) {
+            return response()->json([
+                'status' => true,
+                'message' => $message,
+            ], status::HTTP_OK);
+        });
+
+        Response::macro('forbidden', function ($message = null) {
+            return response()->json([
+                'message' => $message ?? 'You don not have permission',
+            ], status::HTTP_FORBIDDEN);
+        });
+
+        Response::macro('unauthorized', function ($message) {
+            return response()->json([
+                'status' => false,
+                'message' => $message,
+            ], status::HTTP_UNAUTHORIZED);
+        });
+
+        Response::macro('unprocessable', function ($message) {
+            return response()->json([
+                'status' => false,
+                'message' => $message,
+            ], status::HTTP_UNPROCESSABLE_ENTITY);
+        });
+
+        Response::macro('serverError', function ($message) {
+            return response()->json([
+                'status' => false,
+                'message' => $message,
+            ], status::HTTP_INTERNAL_SERVER_ERROR);
+        });
     }
 }

@@ -103,12 +103,6 @@
                 </ul>
 
                 <ul class="nav-menu nav-menu-social align-to-left">
-
-                    <li>
-                        <a href="#" data-toggle="modal" data-target="#login">
-                            <i class="fas fa-sign-in-alt ml-1 rotate-img"></i><span class="dn-lg">ورود</span>
-                        </a>
-                    </li>
                     <li class="add-listing theme-bg">
                         <a href="signup.html" class="text-white">ثبت نام</a>
                     </li>
