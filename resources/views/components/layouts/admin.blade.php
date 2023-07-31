@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Themezhub" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SkillUp - قالب HTML دوره آنلاین و آموزش</title>
+    <!-- Custom CSS -->
+    @vite(['resources/css/app.css'])
+    @stack('styles')
+
+</head>
+
+<body dir="rtl">
+    <x-header/>
+
+    <div id="main-wrapper">
+
+        <section class="gray pt-4">
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-3">
+                        <div class="dashboard-navbar">
+
+                            <div class="d-user-avater">
+                                <img src="assets/img/user-3.jpg" class="img-fluid avater" alt="">
+                                <h4>مهرداد محمدی</h4>
+                                <span>برنامه نویس ارشد</span>
+                                <div class="elso_syu89">
+                                    <ul>
+                                        <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                        <li><a href="#"><i class="ti-twitter"></i></a></li>
+                                        <li><a href="#"><i class="ti-instagram"></i></a></li>
+                                        <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="elso_syu77">
+                                    <div class="one_third"><div class="one_45ic text-warning bg-light-warning"><i class="fas fa-star"></i></div><span>امتیازات</span></div>
+                                    <div class="one_third"><div class="one_45ic text-success bg-light-success"><i class="fas fa-file-invoice"></i></div><span>دوره ها</span></div>
+                                    <div class="one_third"><div class="one_45ic text-purple bg-light-purple"><i class="fas fa-user"></i></div><span>هنرجویان</span></div>
+                                </div>
+                            </div>
+
+                            <div class="d-navigation">
+                                <ul id="side-menu">
+                                    <li class="active"><a href="{{ route('admin.dashboard') }}"><i class="fas fa-th"></i>{{ __('general.dashboard') }}</a></li>
+                                    <li class="dropdown">
+                                        <a href="javascript:void(0);"><i class="fas fa-user"></i>{{ __('general.users') }}<span class="ti-angle-left"></span></a>
+                                        <ul class="nav nav-second-level">
+                                            <li><a href="{{ route('admin.users') }}">{{ __('general.users') }}</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-9 col-md-9 col-sm-12">
+                        {{ $slot }}
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <x-footer/>
+
+    @stack('scripts')
+
+    @vite(['resources/js/app.js'])
+    @vite(['resources/js/bootstrap.js'])
+    @vite(['resources/js/metisMenu.js'])
+    @vite(['resources/js/custom.js'])
+</body>
+
+</html>
+
+
+<script>
+    var x = '';
+
+    Livewire.on('verificationTimer', () => {
+
+        let seconds = 120;
+
+        window.clearInterval(this.x);
+
+
+        this.x = setInterval(function() {
+            seconds -= 1;
+            document.getElementById("demo").innerHTML = seconds ;
+
+            if (seconds < 60) {
+                document.getElementById("demo").style.color = "#e6b107";
+            }
+
+            if(seconds < 30) {
+                document.getElementById("demo").style.color = "red";
+            }
+
+            if (seconds < 0) {
+                document.getElementById("demo").style.display = "none";
+                document.getElementById("resend-verification").style.display = "block";
+                clearInterval(x);
+            }
+        }, 1000);
+    })
+</script>

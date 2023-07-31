@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Response as status;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\ServiceProvider;
@@ -53,6 +54,10 @@ class AppServiceProvider extends ServiceProvider
                 'status' => false,
                 'message' => $message,
             ], status::HTTP_INTERNAL_SERVER_ERROR);
+        });
+
+        Builder::macro('search', function(string $attribute, string $searchTerm) {
+            return $this->orWhere($attribute, 'LIKE', "%{$searchTerm}%");
         });
     }
 }

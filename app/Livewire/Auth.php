@@ -73,7 +73,7 @@ class Auth extends Component
             $this->addError('code', $response->getData()->message);
         }
 
-        dd('login');
+        $this->redirect('/admin/dashboard');
     }
 
     /**
