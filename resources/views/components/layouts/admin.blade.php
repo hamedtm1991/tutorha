@@ -81,35 +81,3 @@
 </body>
 
 </html>
-
-
-<script>
-    var x = '';
-
-    Livewire.on('verificationTimer', () => {
-
-        let seconds = 120;
-
-        window.clearInterval(this.x);
-
-
-        this.x = setInterval(function() {
-            seconds -= 1;
-            document.getElementById("demo").innerHTML = seconds ;
-
-            if (seconds < 60) {
-                document.getElementById("demo").style.color = "#e6b107";
-            }
-
-            if(seconds < 30) {
-                document.getElementById("demo").style.color = "red";
-            }
-
-            if (seconds < 0) {
-                document.getElementById("demo").style.display = "none";
-                document.getElementById("resend-verification").style.display = "block";
-                clearInterval(x);
-            }
-        }, 1000);
-    })
-</script>

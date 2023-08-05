@@ -84,9 +84,11 @@
                                                     <i class="fas fa-ellipsis-h"></i>
                                                 </a>
                                                 <div class="drp-select dropdown-menu">
-                                                    <a class="dropdown-item" href="JavaScript:Void(0);">مشاهده</a>
-                                                    <a class="dropdown-item" href="JavaScript:Void(0);">ویرایش</a>
-                                                    <a class="dropdown-item" href="JavaScript:Void(0);">حذف</a>
+{{--                                                    <a class="dropdown-item" href="JavaScript:Void(0);">مشاهده</a>--}}
+{{--                                                    <a class="dropdown-item" href="JavaScript:Void(0);">ویرایش</a>--}}
+                                                    @if(\Illuminate\Support\Facades\Auth::user()->can('user.delete'))
+                                                        <a onclick="getConfirm('admin.users', 'delete', {{ $model->id }}, '{{ __('crud.sure') }}', '{{ __('crud.noRevert') }}')" class="dropdown-item">حذف</a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </td>

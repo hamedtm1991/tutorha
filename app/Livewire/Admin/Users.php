@@ -3,12 +3,16 @@
 namespace App\Livewire\Admin;
 
 use App\Models\User;
+use Illuminate\Auth\Access\AuthorizationException;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class Users extends Component
 {
     use WithPagination;
+
+    protected $listeners = ['delete'];
+
 
     public string $search;
 
@@ -18,6 +22,22 @@ class Users extends Component
     public function updatingSearch(): void
     {
         $this->resetPage();
+    }
+
+    /**
+     * @param User $user
+     * @return void
+     * @throws AuthorizationException
+     */
+    public function delete(User $user): void
+    {
+        $this->authorize('delete', User::class);
+
+        if ($user->delete()) {
+            $this->dispatch('toast', type: 'success', message: 'حذف با موفقیت انجام شد');
+        } else {
+            $this->dispatch('toast', type: 'error', message: 'حذف با مشکل مواجه شد');
+        }
     }
 
     /**
