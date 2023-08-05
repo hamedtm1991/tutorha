@@ -6729,7 +6729,10 @@ ul.woo_info li {
 .breadcrumb-item.active {
     color:#03b97c;
 }
-
+.breadcrumb-item+.breadcrumb-item:before {
+    float: right;
+    margin-left: 7px;
+}
 .dashboard-navbar, .dashboard-wraper {
     position: relative;
     width: 100%;

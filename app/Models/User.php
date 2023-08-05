@@ -67,4 +67,26 @@ class User extends Authenticatable
             'message' => 'User Logged In Successfully'
         ]);
     }
+
+    /**
+     * @param User|null $user
+     * @return string
+     */
+    public static function nameOrMobile(User $user = null): string
+    {
+        if ($user) {
+            return empty($user->name) ? optional($user)->mobile : optional($user)->name;
+        } else {
+            $user = Auth::user();
+            return empty($user->name) ? $user->mobile : $user->name;
+        }
+    }
+
+    /**
+     * @return string
+     */
+    public function staredNameOrMobile(): string
+    {
+        return empty($this->name) ? substr_replace($this->mobile, '****', 5, 4) : $this->name;
+    }
 }

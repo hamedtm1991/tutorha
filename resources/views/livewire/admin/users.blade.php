@@ -5,10 +5,10 @@
             <div class="dashboard_wrap d-flex align-items-center justify-content-between">
                 <div class="arion">
                     <nav class="transparent">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">خانه</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">لیست دوره ها</li>
-                        </ol>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('general.dashboard') }}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('general.users') }}</li>
+                        </ul>
                     </nav>
                 </div>
             </div>

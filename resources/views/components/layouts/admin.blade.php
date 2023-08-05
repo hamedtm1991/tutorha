@@ -27,30 +27,21 @@
 
                             <div class="d-user-avater">
                                 <img src="assets/img/user-3.jpg" class="img-fluid avater" alt="">
-                                <h4>مهرداد محمدی</h4>
-                                <span>برنامه نویس ارشد</span>
-                                <div class="elso_syu89">
-                                    <ul>
-                                        <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                        <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                        <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                        <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
+                                <h4>{{ \App\Models\User::nameOrMobile() }}</h4>
                                 <div class="elso_syu77">
                                     <div class="one_third"><div class="one_45ic text-warning bg-light-warning"><i class="fas fa-star"></i></div><span>امتیازات</span></div>
                                     <div class="one_third"><div class="one_45ic text-success bg-light-success"><i class="fas fa-file-invoice"></i></div><span>دوره ها</span></div>
-                                    <div class="one_third"><div class="one_45ic text-purple bg-light-purple"><i class="fas fa-user"></i></div><span>هنرجویان</span></div>
+                                    <a href="{{ route('admin.users') }}" class="one_third"><div class="one_45ic text-purple bg-light-purple"><i class="fas fa-user"></i></div><span>{{ __('general.users') }}</span></a>
                                 </div>
                             </div>
 
                             <div class="d-navigation">
                                 <ul id="side-menu">
-                                    <li class="active"><a href="{{ route('admin.dashboard') }}"><i class="fas fa-th"></i>{{ __('general.dashboard') }}</a></li>
+                                    <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : ''  }}"><a href="{{ route('admin.dashboard') }}"><i class="fas fa-th"></i>{{ __('general.dashboard') }}</a></li>
                                     <li class="dropdown">
                                         <a href="javascript:void(0);"><i class="fas fa-user"></i>{{ __('general.users') }}<span class="ti-angle-left"></span></a>
-                                        <ul class="nav nav-second-level">
-                                            <li><a href="{{ route('admin.users') }}">{{ __('general.users') }}</a></li>
+                                        <ul class="nav nav-second-level {{ request()->routeIs('admin.users') ? 'collapse show' : ''  }}">
+                                            <li class="{{ request()->routeIs('admin.users') ? 'active' : ''  }}"><a href="{{ route('admin.users') }}">{{ __('general.users') }}</a></li>
                                         </ul>
                                     </li>
                                 </ul>
