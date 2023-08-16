@@ -1,5 +1,4 @@
 <div>
-    <!-- Row -->
     <div class="row justify-content-between">
         <div class="col-lg-12 col-md-12 col-sm-12 pb-4">
             <div class="dashboard_wrap d-flex align-items-center justify-content-between">
@@ -14,7 +13,6 @@
             </div>
         </div>
     </div>
-    <!-- /Row -->
 
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12">
@@ -25,29 +23,6 @@
                         <h6 class="m-0">{{ __('general.users') }}</h6>
                     </div>
                 </div>
-
-{{--                <div class="row align-items-end mb-5">--}}
-{{--                    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">--}}
-{{--                        <div class="form-group">--}}
-{{--                            <label>دسته بندی</label>--}}
-{{--                            <div class="smalls">--}}
-{{--                                <select id="cates" class="form-control">--}}
-{{--                                    <option value="">&nbsp;</option>--}}
-{{--                                    <option value="1">فناوری اطلاعات</option>--}}
-{{--                                    <option value="2">حسابداری</option>--}}
-{{--                                    <option value="3">برنامه نویسی</option>--}}
-{{--                                    <option value="4">مدیریت</option>--}}
-{{--                                    <option value="5">طراحی و گرافیک</option>--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="col-xl-2 col-lg-4 col-md-6 col-sm-6">--}}
-{{--                        <div class="form-group">--}}
-{{--                            <button type="button" class="btn text-white full-width theme-bg">فیلتر</button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
 
                 <div class="row justify-content-between">
                     <div class="col-xl-4 col-lg-5 col-md-6">
@@ -84,10 +59,8 @@
                                                     <i class="fas fa-ellipsis-h"></i>
                                                 </a>
                                                 <div class="drp-select dropdown-menu">
-{{--                                                    <a class="dropdown-item" href="JavaScript:Void(0);">مشاهده</a>--}}
-{{--                                                    <a class="dropdown-item" href="JavaScript:Void(0);">ویرایش</a>--}}
                                                     @if(\Illuminate\Support\Facades\Auth::user()->can('user.delete'))
-                                                        <a onclick="getConfirm('admin.users', 'delete', {{ $model->id }}, '{{ __('crud.sure') }}', '{{ __('crud.noRevert') }}')" class="dropdown-item">حذف</a>
+                                                        <a onclick="getConfirm('admin.users', 'delete', {{ $model->id }}, '{{ __('general.sure') }}', '{{ __('general.noRevert') }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')" class="dropdown-item">{{ __('buttons.delete') }}</a>
                                                     @endif
                                                 </div>
                                             </div>
@@ -101,6 +74,7 @@
                 </div>
 
                 {{ $data->links('pagination') }}
+
             </div>
         </div>
     </div>

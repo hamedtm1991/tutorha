@@ -34,9 +34,9 @@ class Users extends Component
         $this->authorize('delete', User::class);
 
         if ($user->delete()) {
-            $this->dispatch('toast', type: 'success', message: 'حذف با موفقیت انجام شد');
+            $this->dispatch('toast', type: 'success', message: __('general.deletedSuccessfully', ['id' => $user->id]));
         } else {
-            $this->dispatch('toast', type: 'error', message: 'حذف با مشکل مواجه شد');
+            $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
         }
     }
 

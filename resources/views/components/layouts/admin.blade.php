@@ -40,8 +40,9 @@
                                     <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : ''  }}"><a href="{{ route('admin.dashboard') }}"><i class="fas fa-th"></i>{{ __('general.dashboard') }}</a></li>
                                     <li class="dropdown">
                                         <a href="javascript:void(0);"><i class="fas fa-user"></i>{{ __('general.users') }}<span class="ti-angle-left"></span></a>
-                                        <ul class="nav nav-second-level {{ request()->routeIs('admin.users') ? 'collapse show' : ''  }}">
+                                        <ul class="nav nav-second-level {{ request()->routeIs('admin.users', 'admin.acl') ? 'collapse show' : ''  }}">
                                             <li class="{{ request()->routeIs('admin.users') ? 'active' : ''  }}"><a href="{{ route('admin.users') }}">{{ __('general.users') }}</a></li>
+                                            <li class="{{ request()->routeIs('admin.acl') ? 'active' : ''  }}"><a href="{{ route('admin.acl') }}">{{ __('general.acl') }}</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -63,12 +64,13 @@
 
     <x-footer/>
 
-    @stack('scripts')
-
     @vite(['resources/js/app.js'])
     @vite(['resources/js/bootstrap.js'])
+    @vite(['resources/js/app2.js'])
     @vite(['resources/js/metisMenu.js'])
     @vite(['resources/js/custom.js'])
+
+    @stack('scripts')
 </body>
 
 </html>

@@ -13,11 +13,17 @@ return [
     'discountNotAble' => 'You are not able to use this discount code',
     'reusableDiscountError' => 'This discount is not reusable and you used before',
     'discountRemoved' => 'Discount has been removed successfully',
+    'sure' => 'Are You Sure?',
+    'noRevert' => 'You wont be able to revert this!',
 
 
     'users' => 'Users',
     'dashboard' => 'Dashboard',
+    'acl' => 'Acl',
+    'role' => 'Role',
+    'roles' => 'Roles',
 
     'name' => 'Name',
     'mobile' => 'Mobile',
+    'permissions' => 'Permissions',
 ];
