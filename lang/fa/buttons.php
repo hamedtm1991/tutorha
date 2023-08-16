@@ -10,4 +10,5 @@ return [
     'edit' => 'ویرایش',
     'delete' => 'حذف',
     'add' => 'افزودن',
+    'managingRoles' => 'مدیریت نقش ها',
 ];

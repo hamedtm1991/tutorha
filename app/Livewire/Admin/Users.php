@@ -11,10 +11,24 @@ class Users extends Component
 {
     use WithPagination;
 
-    protected $listeners = ['delete'];
+    protected $listeners = ['delete', 'roles', 'updateSelectWidgetItems'];
 
 
     public string $search;
+    public array $roles;
+    public bool $showForm = false;
+    public array $items;
+    public User $selectedUser;
+    public array $searchItems = ['id', 'name'];
+
+    /**
+     * @param array $items
+     * @return void
+     */
+    public function updateSelectWidgetItems(array $items): void
+    {
+        $this->roles = $this->items = $items;
+    }
 
     /**
      * @return void
@@ -38,6 +52,41 @@ class Users extends Component
         } else {
             $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
         }
+    }
+
+    /**
+     * @param User $user
+     * @return void
+     */
+    public function roles(User $user): void
+    {
+        $this->showForm = true;
+        $this->selectedUser = $user;
+        $this->items = $user->roles->pluck('name', 'id')->toArray();
+    }
+
+    /**
+     * @return array[]
+     */
+    public function rules(): array
+    {
+        return [
+            'roles.*' => 'string|exists:roles,name'
+        ];
+    }
+
+    /**
+     * @return void
+     * @throws AuthorizationException
+     */
+    public function save(): void
+    {
+        $this->authorize('update', User::class);
+
+        $this->validate();
+
+        $this->selectedUser->syncRoles(array_keys($this->roles));
+        $this->showForm = false;
     }
 
     /**

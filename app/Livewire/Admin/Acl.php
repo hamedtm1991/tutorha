@@ -21,6 +21,7 @@ class Acl extends Component
     public Role|null $role = null;
     public array $permissions;
     public array $items;
+    public array $searchItems = ['id', 'name'];
     public bool $showForm = false;
 
     /**
@@ -150,8 +151,6 @@ class Acl extends Component
 
         $data = $data->orderByDesc('id')->paginate(10);
 
-        $searchItems = ['id', 'name'];
-
-        return view('livewire.admin.acl', compact('data', 'searchItems'))->layout('components.layouts.admin');
+        return view('livewire.admin.acl', compact('data'))->layout('components.layouts.admin');
     }
 }

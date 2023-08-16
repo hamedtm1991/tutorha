@@ -59,6 +59,22 @@ class UserTest extends TestCase
     /**
      * @return void
      */
+    public function test_syncing_roles_to_users(): void
+    {
+        $user = User::factory()->create();
+        $roles = Role::all()->pluck('name', 'id')->toArray();
+
+        Livewire::test(Users::class)
+            ->set('selectedUser', $user)
+            ->set('roles', $roles)
+            ->call('save')
+            ->assertHasNoErrors()
+            ->assertStatus(200);
+    }
+
+    /**
+     * @return void
+     */
     public function test_search(): void
     {
         Livewire::test(Users::class)

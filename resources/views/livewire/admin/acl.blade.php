@@ -96,9 +96,8 @@
                             </div>
                         </div>
                     </div>
+                    {{ $data->links('pagination') }}
                 @endif
-
-                {{ $data->links('pagination') }}
             </div>
         </div>
     </div>
