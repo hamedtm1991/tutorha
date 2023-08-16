@@ -66,6 +66,14 @@ class Users extends Component
     }
 
     /**
+     * @return void
+     */
+    public function cancel(): void
+    {
+        $this->showForm = false;
+    }
+
+    /**
      * @return array[]
      */
     public function rules(): array
