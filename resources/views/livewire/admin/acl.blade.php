@@ -81,10 +81,10 @@
                                                     </a>
                                                     <div class="drp-select dropdown-menu">
                                                         @if(Auth::user()->can('permission.update'))
-                                                            <a onclick="dispatch('admin.acl.acl', 'update', {{ $model->id }})" href="#" class="dropdown-item">{{ __('buttons.edit') }}</a>
+                                                            <a onclick="dispatch('admin.acl', 'update', {{ $model->id }})" href="#" class="dropdown-item">{{ __('buttons.edit') }}</a>
                                                         @endif
                                                         @if(Auth::user()->can('permission.delete'))
-                                                            <a onclick="getConfirm('admin.acl.acl', 'delete', {{ $model->id }}, '{{ __('general.sure') }}', '{{ __('general.noRevert') }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')" class="dropdown-item">{{ __('buttons.delete') }}</a>
+                                                            <a onclick="getConfirm('admin.acl', 'delete', {{ $model->id }}, '{{ __('general.sure') }}', '{{ __('general.noRevert') }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')" class="dropdown-item">{{ __('buttons.delete') }}</a>
                                                         @endif
                                                     </div>
                                                 </div>

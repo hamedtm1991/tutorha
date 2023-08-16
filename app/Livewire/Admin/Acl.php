@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Livewire\Admin\Acl;
+namespace App\Livewire\Admin;
 
+use App\Models\Permission;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -95,14 +96,16 @@ class Acl extends Component
      */
     public function save(): void
     {
-        $this->authorize('create', \App\Models\Permission::class);
-        $validated = $this->validate();
-
         if (empty($this->role)) {
+            $this->authorize('create', Permission::class);
             $role = new Role();
         } else {
+            $this->authorize('update', Permission::class);
             $role = $this->role;
         }
+
+        $validated = $this->validate();
+
 
         $role->name = $validated['name'];
         if ($role->save()) {
@@ -149,6 +152,6 @@ class Acl extends Component
 
         $searchItems = ['id', 'name'];
 
-        return view('livewire.admin.acl.acl', compact('data', 'searchItems'))->layout('components.layouts.admin');
+        return view('livewire.admin.acl', compact('data', 'searchItems'))->layout('components.layouts.admin');
     }
 }

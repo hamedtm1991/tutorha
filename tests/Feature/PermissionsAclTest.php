@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Livewire\Admin\Acl\Acl;
+use App\Livewire\Admin\Acl;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;

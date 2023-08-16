@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\Admin\Acl\Acl;
+use App\Livewire\Admin\Acl;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Users;
 use Illuminate\Support\Facades\Route;
