@@ -17,11 +17,7 @@
                             <div class="card card-custom gutter-b card-stretch">
                                 <!--begin::Body-->
                                 <div class="card-body text-center pt-4">
-                                    <span class="label label-inline label-lg label-light-warning font-weight-bold">{{ $item->id }}</span>
-
-                                    <!--begin::برچسب-->
-                                    <span class="label label-inline label-lg label-light-success font-weight-bold">{{ $item->mobile }}</span>
-                                    <!--end::برچسب-->
+                                    <span class="label label-inline label-lg label-light-warning font-weight-bold">id: {{ $item->id }} / </span>
 
                                     <!--begin::نام-->
                                     <span class="font-weight-bold">{{ $item->name }}</span>

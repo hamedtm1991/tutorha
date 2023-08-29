@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('login', \App\Livewire\Auth::class)->name('login');
+Route::get('/images/get/{name}/{rand}', [ImageController::class, 'getImage'])->name('getImage');

@@ -11,7 +11,7 @@ class Users extends Component
 {
     use WithPagination;
 
-    protected $listeners = ['delete', 'roles', 'updateSelectWidgetItems'];
+    protected $listeners = ['delete', 'roles'];
 
 
     public string $search;
@@ -20,15 +20,6 @@ class Users extends Component
     public array $items;
     public User $selectedUser;
     public array $searchItems = ['id', 'name'];
-
-    /**
-     * @param array $items
-     * @return void
-     */
-    public function updateSelectWidgetItems(array $items): void
-    {
-        $this->roles = $this->items = $items;
-    }
 
     /**
      * @return void

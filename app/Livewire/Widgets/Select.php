@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Widgets;
 
+use Livewire\Attributes\Modelable;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -9,7 +10,8 @@ class Select extends Component
 {
     use WithPagination;
 
-    public array $items = [];
+    #[Modelable]
+    public array|null $items = [];
     public array $searchItems = [];
     public string $selectSearch;
     public string $instance;
@@ -33,7 +35,6 @@ class Select extends Component
     public function add(string $id, string $option = null): void
     {
         $this->items[$id] = $option;
-        $this->dispatch('updateSelectWidgetItems', $this->items);
     }
 
     /**
@@ -43,7 +44,6 @@ class Select extends Component
     public function delete(string $id): void
     {
         unset($this->items[$id]);
-        $this->dispatch('updateSelectWidgetItems', $this->items);
     }
 
     public function render()

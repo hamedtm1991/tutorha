@@ -74,3 +74,4 @@
 </body>
 
 </html>
+@vite(['resources/js/ckeditor.js'])

@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/bootstrap.js',
                 'resources/js/app2.js',
+                'resources/js/ckeditor.js',
                 'resources/js/custom.js',
                 'resources/js/metisMenu.js'
             ],

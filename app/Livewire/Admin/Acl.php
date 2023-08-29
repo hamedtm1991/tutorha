@@ -13,7 +13,7 @@ class Acl extends Component
 {
     use WithPagination;
 
-    protected $listeners = ['delete', 'update', 'updateSelectWidgetItems'];
+    protected $listeners = ['delete', 'update'];
 
 
     public string $search;
@@ -24,14 +24,6 @@ class Acl extends Component
     public array $searchItems = ['id', 'name'];
     public bool $showForm = false;
 
-    /**
-     * @param array $items
-     * @return void
-     */
-    public function updateSelectWidgetItems(array $items): void
-    {
-        $this->permissions = $this->items = $items;
-    }
 
     /**
      * @return void
@@ -132,7 +124,6 @@ class Acl extends Component
 
         if ($role->delete()) {
             $this->dispatch('toast', type: 'success', message: __('general.deletedSuccessfully', ['id' => $role->id]));
-            $this->dispatch('refresh');
         } else {
             $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
         }

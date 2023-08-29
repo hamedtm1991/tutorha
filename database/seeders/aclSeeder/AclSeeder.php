@@ -19,7 +19,8 @@ class AclSeeder extends Seeder
         $this->call([
             SuperAdminSeeder::class,
             UserSeeder::class,
-            PermissionSeeder::class
+            PermissionSeeder::class,
+            ProductSeeder::class,
         ]);
     }
 }
