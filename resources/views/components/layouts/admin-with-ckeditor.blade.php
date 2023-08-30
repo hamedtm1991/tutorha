@@ -45,6 +45,7 @@
                                         </ul>
                                     </li>
                                     <li class="{{ request()->routeIs('admin.courses') ? 'active' : ''  }}"><a href="{{ route('admin.courses') }}"><i class="fas fa-chalkboard-teacher"></i>{{ __('general.courses') }}</a></li>
+                                    <li class="{{ request()->routeIs('admin.tags') ? 'active' : ''  }}"><a href="{{ route('admin.tags') }}"><i class="fas fa-tags"></i>{{ __('general.tags') }}</a></li>
                                 </ul>
                             </div>
 
