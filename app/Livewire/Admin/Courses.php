@@ -3,7 +3,6 @@
 namespace App\Livewire\Admin;
 
 use App\Livewire\Admin\Forms\CourseForm;
-use App\Models\Permission;
 use App\Models\Product;
 use App\Services\V1\Image\Image;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -63,7 +62,7 @@ class Courses extends Component
         $this->form->setProduct($product);
         $this->dispatch('setData');
         $this->dispatch('setDataOnCkeditor', $this->form->ckeditor1, $this->form->ckeditor2);
-        $this->imageList = Image::imageList($this->product, Image::DRIVER_LOCAL)->getData()->paths;
+        $this->imageList = Image::imageList($this->product, Image::DRIVER_PUBLIC)->getData()->paths;
     }
 
     /**
@@ -96,7 +95,7 @@ class Courses extends Component
                 $product->tags()->sync(array_flip($this->form->tags));
             }
             if ($this->form->photo) {
-                Image::modelImages($product, [$this->form->photo], Image::DRIVER_LOCAL);
+                Image::modelImages($product, [$this->form->photo], Image::DRIVER_PUBLIC);
             }
             $this->showForm = false;
             $this->form->reset();
@@ -129,9 +128,9 @@ class Courses extends Component
     public function deleteImage(string $name): void
     {
         if ($name) {
-            $response = Image::deleteSingleImage($name, Image::TYPE_MODEL, Image::DRIVER_LOCAL)->getData()->status;
+            $response = Image::deleteSingleImage($name, Image::TYPE_MODEL, Image::DRIVER_PUBLIC)->getData()->status;
             if ($response) {
-                $this->imageList = Image::imageList($this->product, Image::DRIVER_LOCAL)->getData()->paths;
+                $this->imageList = Image::imageList($this->product, Image::DRIVER_PUBLIC)->getData()->paths;
             }
         }
     }

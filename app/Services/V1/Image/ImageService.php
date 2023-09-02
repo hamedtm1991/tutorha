@@ -34,9 +34,9 @@ class ImageService
         $directory = $this->directory($model);
         foreach($images as $image)
         {
-            $mainFile = $main ? '-main' : '';
+            $name = $main ? 'main' : mt_rand(1, 100000);
 
-            $respond = Storage::disk($driver)->putFileAs($directory, $image, $modelName . '-' . $model->id . $mainFile . '-' . mt_rand(1, 100000));
+            $respond = Storage::disk($driver)->putFileAs($directory, $image, $modelName . '-' . $model->id . '-' . $name);
 
             if (!$respond) {
                 return false;
