@@ -21,6 +21,7 @@ class AclSeeder extends Seeder
             UserSeeder::class,
             PermissionSeeder::class,
             ProductSeeder::class,
+            TutorSeeder::class,
         ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\Tutor;
 use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Livewire\Component;
@@ -11,7 +12,7 @@ class Users extends Component
 {
     use WithPagination;
 
-    protected $listeners = ['delete', 'roles'];
+    protected $listeners = ['delete', 'roles', 'makeTutor'];
 
 
     public string $search;
@@ -27,6 +28,27 @@ class Users extends Component
     public function updatingSearch(): void
     {
         $this->resetPage();
+    }
+
+    /**
+     * @param User $user
+     * @return void
+     */
+    public function makeTutor(User $user): void
+    {
+        $user->is_tutor = !$user->is_tutor;
+
+        if ($user->is_tutor && !$user->tutor) {
+            $tutor = new Tutor();
+            $tutor->user_id = $user->id;
+            $tutor->save();
+        }
+
+        if ($user->save()) {
+            $this->dispatch('toast', type: 'success', message: __('general.savedSuccessfully'));
+        } else {
+            $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
+        }
     }
 
     /**

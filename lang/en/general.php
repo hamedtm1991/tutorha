@@ -50,4 +50,6 @@ return [
     'updatedAt' => 'Updated at',
     'image' => 'Image',
     'cover' => 'Cover',
+    'tutors' => 'Tutors',
+    'nameError' => 'First name is required',
 ];

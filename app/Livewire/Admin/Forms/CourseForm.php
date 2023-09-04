@@ -40,6 +40,9 @@ class CourseForm extends Form
 
     public array $tags = [];
 
+    #[Rule('required|array')]
+    public array $tutors = [];
+
     #[Rule('image|max:1024')] // 1MB Max
     public $photo = '';
 
@@ -60,6 +63,7 @@ class CourseForm extends Form
         $this->features = $product->options['features'] ?? [];
         $this->episodes = $product->options['episodes'] ?? [];
         $this->tags = $product->tags->pluck('name', 'id')->toArray();
+        $this->tutors = $product->tutors->pluck('name', 'id')->toArray();
     }
 
     /**

@@ -105,7 +105,14 @@
                         <div class="mt-2">
                             @error('form.episodes.*') <span class="error text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <livewire:widgets.select instance="Tag" title="tags" :searchItems="$searchItems" wire:model="form.tags" />
+
+                        <livewire:widgets.select instance="Tag" title="tags" :searchItems="$searchItems" wire:model="form.tags" key="1" />
+
+                        <livewire:widgets.select instance="Tutor" title="tutors" :searchItems="$searchItemTutors" wire:model="form.tutors" key="2" />
+                        <div class="mt-2">
+                            @error('form.tutors') <span class="error text-danger">{{ $message }}</span> @enderror
+                        </div>
+
                         <div class="form-group smalls mt-4">
                             <button type="submit" class="btn theme-bg text-white">{{ __('buttons.submit') }}</button>
                             <button wire:click="cancel" type="button" class="btn btn-secondary text-white">{{ __('buttons.cancel') }}</button>

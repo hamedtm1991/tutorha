@@ -16,9 +16,10 @@
                 <li class="{{ request()->routeIs('admin.dashboard') ? 'active' : ''  }}"><a href="{{ route('admin.dashboard') }}"><i class="fas fa-th"></i>{{ __('general.dashboard') }}</a></li>
                 <li class="dropdown">
                     <a href="javascript:void(0);"><i class="fas fa-user"></i>{{ __('general.users') }}<span class="ti-angle-left"></span></a>
-                    <ul class="nav nav-second-level {{ request()->routeIs('admin.users', 'admin.acl') ? 'collapse show' : ''  }}">
+                    <ul class="nav nav-second-level {{ request()->routeIs('admin.users', 'admin.acl', 'admin.tutors') ? 'collapse show' : ''  }}">
                         <li class="{{ request()->routeIs('admin.users') ? 'active' : ''  }}"><a href="{{ route('admin.users') }}">{{ __('general.users') }}</a></li>
                         <li class="{{ request()->routeIs('admin.acl') ? 'active' : ''  }}"><a href="{{ route('admin.acl') }}">{{ __('general.acl') }}</a></li>
+                        <li class="{{ request()->routeIs('admin.tutors') ? 'active' : ''  }}"><a href="{{ route('admin.tutors') }}">{{ __('general.tutors') }}</a></li>
                     </ul>
                 </li>
                 <li class="{{ request()->routeIs('admin.courses') ? 'active' : ''  }}"><a href="{{ route('admin.courses') }}"><i class="fas fa-chalkboard-teacher"></i>{{ __('general.courses') }}</a></li>

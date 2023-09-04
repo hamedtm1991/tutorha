@@ -85,7 +85,7 @@ class Tags extends Component
             $this->reset();
             $this->dispatch('toast', type: 'success', message: __('general.savedSuccessfully'));
         } else {
-            $this->dispatch('toast', type: 'success', message: __('general.somethingWrong'));
+            $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
         }
     }
 

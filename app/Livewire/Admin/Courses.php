@@ -17,6 +17,7 @@ class Courses extends Component
 
     protected $listeners = ['delete', 'update', 'deleteImage'];
     public array $searchItems = ['id', 'name'];
+    public array $searchItemTutors = ['name'];
     public bool $showForm = false;
     public string $search;
     public CourseForm $form;
@@ -94,14 +95,18 @@ class Courses extends Component
             if ($this->form->tags) {
                 $product->tags()->sync(array_flip($this->form->tags));
             }
+
+            $product->tutors()->sync(array_flip($this->form->tutors));
+
             if ($this->form->photo) {
                 Image::modelImages($product, [$this->form->photo], Image::DRIVER_PUBLIC);
             }
             $this->showForm = false;
             $this->form->reset();
+            $this->dispatch('refresh');
             $this->dispatch('toast', type: 'success', message: __('general.savedSuccessfully'));
         } else {
-            $this->dispatch('toast', type: 'success', message: __('general.somethingWrong'));
+            $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
         }
     }
 

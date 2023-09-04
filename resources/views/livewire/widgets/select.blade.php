@@ -18,12 +18,9 @@
                                 <!--begin::Body-->
                                 <div class="card-body text-center pt-4">
                                     <span class="label label-inline label-lg label-light-warning font-weight-bold">id: {{ $item->id }} / </span>
-
-                                    <!--begin::نام-->
-                                    <span class="font-weight-bold">{{ $item->name }}</span>
-                                    <!--end::نام-->
+                                    <span class="font-weight-bold">{{ $item->$field }}</span>
                                 </div>
-                                <div onclick="dispatch('widgets.select', 'add', '{{ $item->id }}', '{{ $item->name }}')" class="btn btn-sm btn-warning mt-3">{{ __('buttons.add') }}</div>
+                                <div wire:click="add('{{ $item->id }}', '{{ $item->$field }}')" class="btn btn-sm btn-warning mt-3">{{ __('buttons.add') }}</div>
                                 <!--end::Body-->
                             </div>
                             <!--end::Card-->
@@ -46,7 +43,7 @@
         <div class="row mt-2">
             @foreach($items as $index => $item)
                 <div class="col-md-3">
-                    <span class="fa fa-trash-alt text-danger" onclick="dispatch('widgets.select', 'delete', {{ $index }})"></span>
+                    <span class="fa fa-trash-alt text-danger" wire:click="delete({{ $index }})"></span>
                     <span>{{ $item }}/{{ $index }}</span>
                 </div>
             @endforeach

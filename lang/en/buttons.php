@@ -11,4 +11,6 @@ return [
     'delete' => 'Delete',
     'add' => 'Add',
     'managingRoles' => 'Role Managing',
+    'makeTutor' => 'Make tutor',
+    'revertTutor' => 'Revert Tutor',
 ];

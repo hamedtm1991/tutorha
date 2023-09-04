@@ -16,8 +16,18 @@ class Select extends Component
     public string $selectSearch;
     public string $instance;
     public string $title;
+    public string $field = 'name';
+    public array|null $where = null;
 
-    protected $listeners = ['add', 'delete'];
+    protected $listeners = ['refresh'];
+
+    /**
+     * @return void
+     */
+    public function refresh(): void
+    {
+        $this->selectSearch = '';
+    }
 
     /**
      * @return void
@@ -58,6 +68,12 @@ class Select extends Component
                     $query->search($searchItem, $this->selectSearch);
                 }
             });
+
+            if ($this->where) {
+                foreach ($this->where as $index => $value) {
+                    $items->where($index, $value);
+                }
+            }
 
             $selectData = $items->orderBy('created_at', 'DESC')->paginate(4);
         }

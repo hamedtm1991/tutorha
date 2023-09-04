@@ -6,7 +6,7 @@
                     <nav class="transparent">
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('general.dashboard') }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ __('general.users') }}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('general.tutors') }}</li>
                         </ul>
                     </nav>
                 </div>
@@ -17,21 +17,50 @@
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12">
             <div class="dashboard_wrap">
-                @if($showForm)
-                    <form wire:submit.prevent="save" autocomplete="off">
-                        <livewire:widgets.select instance="Role" title="role" :items="$items" :searchItems="$searchItems" />
-                        <div class="mt-2">
-                            @error('roles.*') <span class="error text-danger">{{ $message }}</span> @enderror
+                <div class="{{ $showForm ? '' : 'd-none' }}">
+                    <form wire:submit="save" autocomplete="off">
+                        <div class="form-group smalls">
+                            <label class="mb-2">{{ __('general.name') }}</label>
+                            <input wire:model="form.name" type="text" class="form-control">
+                            <div class="mt-2">
+                                @error('form.name') <span class="error text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                        <div class="form-group smalls">
+                            <label class="mb-2">{{ __('general.description') }}</label>
+                            <textarea wire:model="form.description" type="text" class="form-control"></textarea>
+                            <div class="mt-2">
+                                @error('form.description') <span class="error text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                        <div class="form-group smalls">
+                            <label class="mb-2">{{ __('general.image') }}</label>
+                            <input type="file" wire:model="form.photo" class="form-control">
+                            <div class="mt-2">
+                                @error('form.photo') <span class="error">{{ $message }}</span> @enderror
+                            </div>
+                            @if ($form->photo)
+                                <div class="mb-2">
+                                    <img src="{{ $form->photo->temporaryUrl() }}" style="max-width: 250px">
+                                </div>
+                            @endif
+                            @foreach($imageList as $image)
+                                <div class="mb-2">
+                                    <img src="{{ url(route('getPublicImage', [$image, rand()])) }}" style="max-width: 250px">
+                                    <a onclick="getConfirm('admin.tutors', 'deleteImage', '{{ $image }}', '{{ __('general.sure') }}', '{{ __('general.noRevert') }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')" class="fa fa-trash-alt text-danger" style="font-size: 40px"></a>
+                                </div>
+                            @endforeach
                         </div>
                         <div class="form-group smalls mt-4">
                             <button type="submit" class="btn theme-bg text-white">{{ __('buttons.submit') }}</button>
                             <button wire:click="cancel" type="button" class="btn btn-secondary text-white">{{ __('buttons.cancel') }}</button>
                         </div>
                     </form>
-                @else
+                </div>
+                <div class="{{ $showForm ? 'd-none' : '' }}">
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 mb-4">
-                            <h6 class="m-0">{{ __('general.users') }}</h6>
+                            <h6 class="m-0">{{ __('general.tutors') }}</h6>
                         </div>
                     </div>
 
@@ -54,28 +83,22 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">{{ __('general.name') }}</th>
-                                        <th scope="col">{{ __('general.mobile') }}</th>
-                                        <th scope="col">عملیات</th>
+                                        <th scope="col">{{ __('general.options') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($data as $model)
                                         <tr>
                                             <th scope="row">{{ $model->id }}</th>
-                                            <td>{{ $model->name }}</td>
-                                            <td>{{ $model->mobile }}</td>
+                                            <td>{{ $model->name ?? $model->user->id . ' / ' .$model->user->name }}</td>
                                             <td>
                                                 <div class="dropdown show">
                                                     <a class="btn btn-action" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <i class="fas fa-ellipsis-h"></i>
                                                     </a>
                                                     <div class="drp-select dropdown-menu">
-                                                        @if(Auth::user()->can('user.delete'))
-                                                            <a onclick="getConfirm('admin.users', 'delete', {{ $model->id }}, '{{ __('general.sure') }}', '{{ __('general.noRevert') }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')" class="dropdown-item">{{ __('buttons.delete') }}</a>
-                                                        @endif
-                                                        @if(Auth::user()->can('user.update'))
-                                                            <a onclick="dispatch('admin.users', 'roles', {{ $model->id }})"  class="dropdown-item">{{ __('buttons.managingRoles') }}</a>
-                                                            <a onclick="dispatch('admin.users', 'makeTutor', {{ $model->id }})"  class="dropdown-item">{{ $model->is_tutor ? __('buttons.revertTutor') : __('buttons.makeTutor') }}</a>
+                                                        @if(Auth::user()->can('tutor.update'))
+                                                            <a onclick="dispatch('admin.tutors', 'update', {{ $model->id }})" class="dropdown-item">{{ __('buttons.edit') }}</a>
                                                         @endif
                                                     </div>
                                                 </div>
@@ -87,10 +110,10 @@
                             </div>
                         </div>
                     </div>
-
                     {{ $data->links('pagination') }}
-                @endif
+                </div>
             </div>
         </div>
     </div>
 </div>
+

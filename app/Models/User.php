@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\JsonResponse;
@@ -54,6 +55,14 @@ class User extends Authenticatable
     public function verification() : HasMany
     {
         return $this->hasMany(Verification::class);
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function tutor() : HasOne
+    {
+        return $this->hasOne(Tutor::class);
     }
 
     /**

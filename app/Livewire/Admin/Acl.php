@@ -109,7 +109,7 @@ class Acl extends Component
             $this->reset('name');
             $this->dispatch('toast', type: 'success', message: __('general.savedSuccessfully'));
         } else {
-            $this->dispatch('toast', type: 'success', message: __('general.somethingWrong'));
+            $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
         }
     }
 

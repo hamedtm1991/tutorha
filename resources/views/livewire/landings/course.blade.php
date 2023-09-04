@@ -121,16 +121,19 @@
                         </div>
                     </div>
 
-                    <!-- instructor -->
-                    <div class="single_instructor">
-                        <div class="single_instructor_thumb">
-                            <a href="#"><img src="assets/img/team-5.jpg" class="img-fluid" alt=""></a>
+                    <!-- instructors -->
+                    @foreach($product->tutors as $tutor)
+                        <div class="single_instructor">
+                            <div class="single_instructor_thumb">
+                                <a href="#"><img src="{{ url(route('getPublicImage', ['tutor-' . $tutor->id . '-main', rand()])) }}" class="img-fluid" alt=""></a>
+                            </div>
+                            <div class="single_instructor_caption">
+                                <h4><a href="#">{{ $tutor->name }}</a></h4>
+                                <p>{{ $tutor->description }}</p>
+                            </div>
                         </div>
-                        <div class="single_instructor_caption">
-                            <h4><a href="#">مصطفی اسلامی</a></h4>
-                            <p>تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
 
                 <!-- Sidebar -->
