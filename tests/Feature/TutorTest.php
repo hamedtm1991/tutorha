@@ -31,6 +31,7 @@ class TutorTest extends TestCase
         $this->user = User::factory()->create();
         $role = Role::create(['name' => 'role', 'guard_name' => 'web']);
         $role->givePermissionTo('tutor.*');
+        $role->givePermissionTo('user.*');
 
         Auth::login($this->user);
 

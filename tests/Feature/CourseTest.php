@@ -3,7 +3,9 @@
 namespace Tests\Feature;
 
 use App\Livewire\Admin\Courses;
+use App\Livewire\Admin\Users;
 use App\Models\Product;
+use App\Models\Tutor;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
@@ -17,6 +19,7 @@ class CourseTest extends TestCase
     use RefreshDatabase;
 
     private User $user;
+    private Tutor $tutor;
 
     /**
      * @return void
@@ -30,12 +33,20 @@ class CourseTest extends TestCase
         $this->user = User::factory()->create();
         $role = Role::create(['name' => 'role', 'guard_name' => 'web']);
         $role->givePermissionTo('product.*');
+        $role->givePermissionTo('user.*');
 
         Auth::login($this->user);
 
         $this->user->assignRole($role);
 
         Product::factory(2)->create();
+
+        Livewire::test(Users::class)
+            ->call('makeTutor', $this->user)
+            ->assertHasNoErrors()
+            ->assertStatus(200);
+
+        $this->tutor = Tutor::first();
     }
 
     /**
@@ -63,6 +74,7 @@ class CourseTest extends TestCase
             ->set('form.price', '1000')
             ->set('form.time', '1')
             ->set('form.numberOfEpisodes', '5')
+            ->set('form.tutors', [$this->tutor->id => ''])
             ->set('form.level', Product::LEVEL_ADVANCED)
             ->set('form.photo', $image)
             ->call('save')
@@ -84,6 +96,7 @@ class CourseTest extends TestCase
             ->set('form.ckeditor2', 'test')
             ->set('form.time', '1')
             ->set('form.numberOfEpisodes', '5')
+            ->set('form.tutors', [$this->tutor->id => ''])
             ->set('form.level', Product::LEVEL_ADVANCED)
             ->call('save')
             ->assertHasNoErrors()

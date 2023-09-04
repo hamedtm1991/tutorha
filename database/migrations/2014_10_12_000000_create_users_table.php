@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->string('national_code')->unique()->nullable();
             $table->string('presenter_code', 7)->unique();
-            $table->boolean('is_tutor')->default(0);
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

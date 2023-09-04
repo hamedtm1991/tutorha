@@ -51,5 +51,6 @@ return [
     'image' => 'Image',
     'cover' => 'Cover',
     'tutors' => 'Tutors',
-    'nameError' => 'First name is required',
+    'tutorError' => 'Name and description are required',
+    'status' => 'Status',
 ];

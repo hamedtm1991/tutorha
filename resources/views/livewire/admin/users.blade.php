@@ -75,7 +75,9 @@
                                                         @endif
                                                         @if(Auth::user()->can('user.update'))
                                                             <a onclick="dispatch('admin.users', 'roles', {{ $model->id }})"  class="dropdown-item">{{ __('buttons.managingRoles') }}</a>
-                                                            <a onclick="dispatch('admin.users', 'makeTutor', {{ $model->id }})"  class="dropdown-item">{{ $model->is_tutor ? __('buttons.revertTutor') : __('buttons.makeTutor') }}</a>
+                                                            @if(!$model->tutor)
+                                                                <a onclick="dispatch('admin.users', 'makeTutor', {{ $model->id }})"  class="dropdown-item">{{ __('buttons.makeTutor') }}</a>
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>

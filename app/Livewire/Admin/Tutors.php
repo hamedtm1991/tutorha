@@ -16,7 +16,7 @@ class Tutors extends Component
     use WithPagination;
     use WithFileUploads;
 
-    protected $listeners = ['delete', 'update', 'deleteImage'];
+    protected $listeners = ['delete', 'update', 'deleteImage', 'status'];
 
     public bool $showForm = false;
     public string $search;
@@ -38,6 +38,26 @@ class Tutors extends Component
     public function hydrate(): void
     {
         $this->resetValidation();
+    }
+
+    /**
+     * @param Tutor $tutor
+     * @return void
+     * @throws AuthorizationException
+     */
+    public function status(Tutor $tutor): void
+    {
+        $this->authorize('update', Tutor::class);
+        if ($tutor->name && $tutor->description) {
+            $tutor->status = !$tutor->status;
+            if ($tutor->save()) {
+                $this->dispatch('toast', type: 'success', message: __('general.savedSuccessfully'));
+            } else {
+                $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
+            }
+        } else {
+            $this->dispatch('toast', type: 'error', message: __('general.tutorError'));
+        }
     }
 
     /**
@@ -99,7 +119,7 @@ class Tutors extends Component
         if ($name) {
             $response = Image::deleteSingleImage($name, Image::TYPE_MODEL, Image::DRIVER_PUBLIC)->getData()->status;
             if ($response) {
-                $this->imageList = Image::imageList($this->product, Image::DRIVER_PUBLIC)->getData()->paths;
+                $this->imageList = Image::imageList($this->tutor, Image::DRIVER_PUBLIC)->getData()->paths;
             }
         }
     }

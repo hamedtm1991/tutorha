@@ -33,18 +33,21 @@ class Users extends Component
     /**
      * @param User $user
      * @return void
+     * @throws AuthorizationException
      */
     public function makeTutor(User $user): void
     {
-        $user->is_tutor = !$user->is_tutor;
+        $this->authorize('update', User::class);
+        $tutor = $user->tutor;
 
-        if ($user->is_tutor && !$user->tutor) {
+        if ($tutor) {
+            $tutor->status = !$tutor->status;
+        } else {
             $tutor = new Tutor();
             $tutor->user_id = $user->id;
-            $tutor->save();
         }
 
-        if ($user->save()) {
+        if ($tutor->save()) {
             $this->dispatch('toast', type: 'success', message: __('general.savedSuccessfully'));
         } else {
             $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));

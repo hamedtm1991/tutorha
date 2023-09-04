@@ -83,6 +83,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">{{ __('general.name') }}</th>
+                                        <th scope="col">{{ __('general.status') }}</th>
                                         <th scope="col">{{ __('general.options') }}</th>
                                     </tr>
                                     </thead>
@@ -91,6 +92,9 @@
                                         <tr>
                                             <th scope="row">{{ $model->id }}</th>
                                             <td>{{ $model->name ?? $model->user->id . ' / ' .$model->user->name }}</td>
+                                            <td onclick="getConfirm('admin.tutors', 'status', {{ $model->id }},  '{{ __('general.sure') }}', '', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')">
+                                                <i class="{{ $model->status ? 'fa fa-check text-success' : 'fa fa-times text-danger' }}"></i>
+                                            </td>
                                             <td>
                                                 <div class="dropdown show">
                                                     <a class="btn btn-action" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
