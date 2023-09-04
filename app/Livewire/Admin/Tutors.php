@@ -6,6 +6,8 @@ use App\Livewire\Admin\Forms\TutorForm;
 use App\Models\Product;
 use App\Models\Tutor;
 use App\Services\V1\Image\Image;
+use App\Traits\ComponentTools;
+use App\Traits\ImageTools;
 use Illuminate\Auth\Access\AuthorizationException;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -15,22 +17,13 @@ class Tutors extends Component
 {
     use WithPagination;
     use WithFileUploads;
+    use ImageTools;
+    use ComponentTools;
 
     protected $listeners = ['delete', 'update', 'deleteImage', 'status'];
 
-    public bool $showForm = false;
-    public string $search;
     public TutorForm $form;
     public Tutor|null $tutor;
-    public array $imageList = [];
-
-    /**
-     * @return void
-     */
-    public function updatingSearch(): void
-    {
-        $this->resetPage();
-    }
 
     /**
      * @return void
@@ -75,14 +68,6 @@ class Tutors extends Component
 
     /**
      * @return void
-     */
-    public function cancel(): void
-    {
-        $this->showForm = false;
-    }
-
-    /**
-     * @return void
      * @throws AuthorizationException
      */
     public function save(): void
@@ -107,20 +92,6 @@ class Tutors extends Component
             $this->dispatch('toast', type: 'success', message: __('general.savedSuccessfully'));
         } else {
             $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
-        }
-    }
-
-    /**
-     * @param string $name
-     * @return void
-     */
-    public function deleteImage(string $name): void
-    {
-        if ($name) {
-            $response = Image::deleteSingleImage($name, Image::TYPE_MODEL, Image::DRIVER_PUBLIC)->getData()->status;
-            if ($response) {
-                $this->imageList = Image::imageList($this->tutor, Image::DRIVER_PUBLIC)->getData()->paths;
-            }
         }
     }
 

@@ -3,6 +3,8 @@
 namespace App\Livewire\Admin;
 
 use App\Models\Tag;
+use App\Traits\ComponentTools;
+use App\Traits\DeleteFunction;
 use Illuminate\Auth\Access\AuthorizationException;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
@@ -11,22 +13,13 @@ use Livewire\WithPagination;
 class Tags extends Component
 {
     use WithPagination;
+    use DeleteFunction;
+    use ComponentTools;
     protected $listeners = ['delete', 'update'];
 
     #[Rule('required|string|min:3|max:100')]
     public string|null $name = '';
-    public string $search;
-    public bool $showForm = false;
     public Tag $tag;
-
-
-    /**
-     * @return void
-     */
-    public function updatingSearch(): void
-    {
-        $this->resetPage();
-    }
 
     /**
      * @return void
@@ -57,14 +50,6 @@ class Tags extends Component
 
     /**
      * @return void
-     */
-    public function cancel(): void
-    {
-        $this->showForm = false;
-    }
-
-    /**
-     * @return void
      * @throws AuthorizationException
      */
     public function save(): void
@@ -84,22 +69,6 @@ class Tags extends Component
             $this->showForm = false;
             $this->reset();
             $this->dispatch('toast', type: 'success', message: __('general.savedSuccessfully'));
-        } else {
-            $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
-        }
-    }
-
-    /**
-     * @param Tag $tag
-     * @return void
-     * @throws AuthorizationException
-     */
-    public function delete(Tag $tag): void
-    {
-        $this->authorize('delete', Tag::class);
-
-        if ($tag->delete()) {
-            $this->dispatch('toast', type: 'success', message: __('general.deletedSuccessfully', ['id' => $tag->id]));
         } else {
             $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
         }

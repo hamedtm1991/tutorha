@@ -111,7 +111,7 @@ class CourseTest extends TestCase
         $product = Product::first();
 
         Livewire::test(Courses::class)
-            ->call('delete', $product->id)
+            ->call('delete', 'Product-' . $product->id)
             ->assertHasNoErrors()
             ->assertStatus(200);
     }

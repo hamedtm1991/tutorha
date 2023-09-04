@@ -5,6 +5,9 @@ namespace App\Livewire\Admin;
 use App\Livewire\Admin\Forms\CourseForm;
 use App\Models\Product;
 use App\Services\V1\Image\Image;
+use App\Traits\ComponentTools;
+use App\Traits\DeleteFunction;
+use App\Traits\ImageTools;
 use Illuminate\Auth\Access\AuthorizationException;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -14,23 +17,15 @@ class Courses extends Component
 {
     use WithPagination;
     use WithFileUploads;
+    use ImageTools;
+    use ComponentTools;
+    use DeleteFunction;
 
     protected $listeners = ['delete', 'update', 'deleteImage'];
     public array $searchItems = ['id', 'name'];
     public array $searchItemTutors = ['name'];
-    public bool $showForm = false;
-    public string $search;
     public CourseForm $form;
     public Product|null $product;
-    public array $imageList = [];
-
-    /**
-     * @return void
-     */
-    public function updatingSearch(): void
-    {
-        $this->resetPage();
-    }
 
     /**
      * @return void
@@ -68,14 +63,6 @@ class Courses extends Component
 
     /**
      * @return void
-     */
-    public function cancel(): void
-    {
-        $this->showForm = false;
-    }
-
-    /**
-     * @return void
      * @throws AuthorizationException
      */
     public function save(): void
@@ -107,36 +94,6 @@ class Courses extends Component
             $this->dispatch('toast', type: 'success', message: __('general.savedSuccessfully'));
         } else {
             $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
-        }
-    }
-
-    /**
-     * @param Product $product
-     * @return void
-     * @throws AuthorizationException
-     */
-    public function delete(Product $product): void
-    {
-        $this->authorize('delete', Product::class);
-
-        if ($product->delete()) {
-            $this->dispatch('toast', type: 'success', message: __('general.deletedSuccessfully', ['id' => $product->id]));
-        } else {
-            $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
-        }
-    }
-
-    /**
-     * @param string $name
-     * @return void
-     */
-    public function deleteImage(string $name): void
-    {
-        if ($name) {
-            $response = Image::deleteSingleImage($name, Image::TYPE_MODEL, Image::DRIVER_PUBLIC)->getData()->status;
-            if ($response) {
-                $this->imageList = Image::imageList($this->product, Image::DRIVER_PUBLIC)->getData()->paths;
-            }
         }
     }
 

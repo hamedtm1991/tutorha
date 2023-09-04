@@ -4,6 +4,8 @@ namespace App\Livewire\Admin;
 
 use App\Models\Tutor;
 use App\Models\User;
+use App\Traits\ComponentTools;
+use App\Traits\DeleteFunction;
 use Illuminate\Auth\Access\AuthorizationException;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -11,24 +13,15 @@ use Livewire\WithPagination;
 class Users extends Component
 {
     use WithPagination;
+    use ComponentTools;
+    use DeleteFunction;
 
     protected $listeners = ['delete', 'roles', 'makeTutor'];
 
-
-    public string $search;
     public array $roles;
-    public bool $showForm = false;
     public array $items;
     public User $selectedUser;
     public array $searchItems = ['id', 'name'];
-
-    /**
-     * @return void
-     */
-    public function updatingSearch(): void
-    {
-        $this->resetPage();
-    }
 
     /**
      * @param User $user
@@ -57,36 +50,12 @@ class Users extends Component
     /**
      * @param User $user
      * @return void
-     * @throws AuthorizationException
-     */
-    public function delete(User $user): void
-    {
-        $this->authorize('delete', User::class);
-
-        if ($user->delete()) {
-            $this->dispatch('toast', type: 'success', message: __('general.deletedSuccessfully', ['id' => $user->id]));
-        } else {
-            $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
-        }
-    }
-
-    /**
-     * @param User $user
-     * @return void
      */
     public function roles(User $user): void
     {
         $this->showForm = true;
         $this->selectedUser = $user;
         $this->items = $user->roles->pluck('name', 'id')->toArray();
-    }
-
-    /**
-     * @return void
-     */
-    public function cancel(): void
-    {
-        $this->showForm = false;
     }
 
     /**

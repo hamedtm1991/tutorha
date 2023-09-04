@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin;
 
 use App\Models\Permission;
+use App\Traits\ComponentTools;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -12,26 +13,15 @@ use Spatie\Permission\Models\Role;
 class Acl extends Component
 {
     use WithPagination;
+    use ComponentTools;
 
     protected $listeners = ['delete', 'update'];
 
-
-    public string $search;
     public string|null $name;
     public Role|null $role = null;
     public array $permissions;
     public array $items;
     public array $searchItems = ['id', 'name'];
-    public bool $showForm = false;
-
-
-    /**
-     * @return void
-     */
-    public function updatingSearch(): void
-    {
-        $this->resetPage();
-    }
 
     /**
      * @return void
@@ -59,14 +49,6 @@ class Acl extends Component
         $this->role = $role;
         $this->name = $role->name;
         $this->items = $role->permissions->pluck('name', 'id')->toArray();
-    }
-
-    /**
-     * @return void
-     */
-    public function cancel(): void
-    {
-        $this->showForm = false;
     }
 
     /**

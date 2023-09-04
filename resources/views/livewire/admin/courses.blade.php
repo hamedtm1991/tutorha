@@ -177,7 +177,7 @@
                                                             <a onclick="dispatch('admin.courses', 'update', {{ $model->id }})" class="dropdown-item">{{ __('buttons.edit') }}</a>
                                                         @endif
                                                         @if(Auth::user()->can('product.delete'))
-                                                            <a onclick="getConfirm('admin.courses', 'delete', {{ $model->id }}, '{{ __('general.sure') }}', '{{ __('general.noRevert') }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')" class="dropdown-item">{{ __('buttons.delete') }}</a>
+                                                            <a onclick="getConfirm('admin.courses', 'delete', '{{ 'Product-' . $model->id }}', '{{ __('general.sure') }}', '{{ __('general.noRevert') }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')" class="dropdown-item">{{ __('buttons.delete') }}</a>
                                                         @endif
                                                     </div>
                                                 </div>

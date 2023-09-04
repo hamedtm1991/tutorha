@@ -71,7 +71,7 @@
                                                     </a>
                                                     <div class="drp-select dropdown-menu">
                                                         @if(Auth::user()->can('user.delete'))
-                                                            <a onclick="getConfirm('admin.users', 'delete', {{ $model->id }}, '{{ __('general.sure') }}', '{{ __('general.noRevert') }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')" class="dropdown-item">{{ __('buttons.delete') }}</a>
+                                                            <a onclick="getConfirm('admin.users', 'delete', '{{ 'User-' . $model->id }}', '{{ __('general.sure') }}', '{{ __('general.noRevert') }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')" class="dropdown-item">{{ __('buttons.delete') }}</a>
                                                         @endif
                                                         @if(Auth::user()->can('user.update'))
                                                             <a onclick="dispatch('admin.users', 'roles', {{ $model->id }})"  class="dropdown-item">{{ __('buttons.managingRoles') }}</a>

@@ -80,7 +80,7 @@
                                                             <a onclick="dispatch('admin.tags', 'update', {{ $model->id }})" href="#" class="dropdown-item">{{ __('buttons.edit') }}</a>
                                                         @endif
                                                         @if(Auth::user()->can('tag.delete'))
-                                                            <a onclick="getConfirm('admin.tags', 'delete', {{ $model->id }}, '{{ __('general.sure') }}', '{{ __('general.noRevert') }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')" class="dropdown-item">{{ __('buttons.delete') }}</a>
+                                                            <a onclick="getConfirm('admin.tags', 'delete', '{{ 'Tag-' . $model->id }}', '{{ __('general.sure') }}', '{{ __('general.noRevert') }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')" class="dropdown-item">{{ __('buttons.delete') }}</a>
                                                         @endif
                                                     </div>
                                                 </div>
