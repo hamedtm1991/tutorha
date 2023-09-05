@@ -6,12 +6,12 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class header extends Component
+class HeadView extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(public string $title, public string|null $modelName = null)
     {
         //
     }
@@ -21,6 +21,6 @@ class header extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.header');
+        return view('components.head-view');
     }
 }

@@ -1,18 +1,5 @@
 <div>
-    <div class="row justify-content-between">
-        <div class="col-lg-12 col-md-12 col-sm-12 pb-4">
-            <div class="dashboard_wrap d-flex align-items-center justify-content-between">
-                <div class="arion">
-                    <nav class="transparent">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">{{ __('general.dashboard') }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ __('general.users') }}</li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
+    <x-head-view title="users" />
 
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12">
@@ -23,28 +10,11 @@
                         <div class="mt-2">
                             @error('roles.*') <span class="error text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <div class="form-group smalls mt-4">
-                            <button type="submit" class="btn theme-bg text-white">{{ __('buttons.submit') }}</button>
-                            <button wire:click="cancel" type="button" class="btn btn-secondary text-white">{{ __('buttons.cancel') }}</button>
-                        </div>
+                        <x-form-buttons/>
                     </form>
                 @else
-                    <div class="row">
-                        <div class="col-xl-12 col-lg-12 col-md-12 mb-4">
-                            <h6 class="m-0">{{ __('general.users') }}</h6>
-                        </div>
-                    </div>
-
-                    <div class="row justify-content-between">
-                        <div class="col-xl-4 col-lg-5 col-md-6">
-                            <div class="form-group smalls row align-items-center">
-                                <label class="col-xl-2 col-lg-2 col-sm-2 col-form-label">جستجو</label>
-                                <div class="col-xl-10 col-lg-10 col-sm-10">
-                                    <input wire:model.live.debounce.150ms="search" type="text" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <x-title title="users" />
+                    <x-search/>
 
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 mb-2">

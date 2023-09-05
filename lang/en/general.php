@@ -53,4 +53,5 @@ return [
     'tutors' => 'Tutors',
     'tutorError' => 'Name and description are required',
     'status' => 'Status',
+    'search' => 'Search',
 ];
