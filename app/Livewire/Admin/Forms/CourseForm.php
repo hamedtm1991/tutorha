@@ -35,9 +35,6 @@ class CourseForm extends Form
     #[Rule(['form.features.*' => 'string|min:10|max:50',])]
     public array  $features = [];
 
-    #[Rule(['form.episodes.*' => 'string|min:10|max:50',])]
-    public array  $episodes = [];
-
     public array $tags = [];
 
     #[Rule('required|array')]
@@ -61,7 +58,6 @@ class CourseForm extends Form
         $this->numberOfEpisodes = $product->options['numberOfEpisodes'] ?? '';
         $this->level = $product->options['level'] ?? '';
         $this->features = $product->options['features'] ?? [];
-        $this->episodes = $product->options['episodes'] ?? [];
         $this->tags = $product->tags->pluck('name', 'id')->toArray();
         $this->tutors = $product->tutors->pluck('name', 'id')->toArray();
     }
@@ -79,7 +75,6 @@ class CourseForm extends Form
         $product->long_description = $this->ckeditor2;
         $product->price = $this->price;
         $product->fake_price = empty($this->fakePrice) ? null : $this->fakePrice;
-        $options['episodes'] = $this->episodes;
         $options['features'] = $this->features;
         $options['time'] = $this->time;
         $options['numberOfEpisodes'] = $this->numberOfEpisodes;

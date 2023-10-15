@@ -13,4 +13,5 @@ return [
     'managingRoles' => 'Role Managing',
     'makeTutor' => 'Make tutor',
     'revertTutor' => 'Revert Tutor',
+    'episodes' => 'Episodes',
 ];

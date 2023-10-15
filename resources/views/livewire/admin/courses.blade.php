@@ -83,14 +83,10 @@
                         <div class="mt-2">
                             @error('form.features.*') <span class="error text-danger">{{ $message }}</span> @enderror
                         </div>
-                        <livewire:widgets.multipleinputs title="episodes" placeHolder="episode" wire:model="form.episodes" />
-                        <div class="mt-2">
-                            @error('form.episodes.*') <span class="error text-danger">{{ $message }}</span> @enderror
-                        </div>
 
                         <livewire:widgets.select instance="Tag" title="tags" :searchItems="$searchItems" wire:model="form.tags" key="1" />
 
-                        <livewire:widgets.select instance="Tutor" title="tutors" :searchItems="$searchItemTutors" wire:model="form.tutors" key="2" />
+                        <livewire:widgets.select :where="$where" instance="Tutor" title="tutors" :searchItems="$searchItemTutors" wire:model="form.tutors" key="2" />
                         <div class="mt-2">
                             @error('form.tutors') <span class="error text-danger">{{ $message }}</span> @enderror
                         </div>
@@ -141,6 +137,7 @@
                                                     <div class="drp-select dropdown-menu">
                                                         @if(Auth::user()->can('product.update'))
                                                             <a onclick="dispatch('admin.courses', 'update', {{ $model->id }})" class="dropdown-item">{{ __('buttons.edit') }}</a>
+                                                            <a href="{{ route('admin.episodes', $model->id) }}" class="dropdown-item">{{ __('buttons.episodes') }}</a>
                                                         @endif
                                                         @if(Auth::user()->can('product.delete'))
                                                             <a onclick="getConfirm('admin.courses', 'delete', '{{ 'Product-' . $model->id }}', '{{ __('general.sure') }}', '{{ __('general.noRevert') }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')" class="dropdown-item">{{ __('buttons.delete') }}</a>

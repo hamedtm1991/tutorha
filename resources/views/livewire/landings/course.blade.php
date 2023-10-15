@@ -23,6 +23,15 @@
                         </div>
                     </div>
                 </div>
+                <video
+                    id="player"
+                    class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered"
+                    width="640" height="268"
+                    controls
+                    preload="auto"
+                    data-setup='{"controlBar": {"pictureInPictureToggle": false}}'
+                >
+                </video>
             </div>
         </div>
     </div>
@@ -43,81 +52,24 @@
                     @endif
 
                     <div class="edu_wraper">
-                        <h4 class="edu_title">آموزش کار با Premiere Pro</h4>
+                        <h4 class="edu_title">{{ __('general.episodes') }}</h4>
                         <div id="accordionExample" class="accordion shadow circullum">
-
-                            <!-- Part 1 -->
-                            <div class="card">
-                                <div id="headingOne" class="card-header bg-white shadow-sm border-0">
-                                    <h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="d-block position-relative text-dark collapsible-link py-2">مقدمه و معرفی دوره</a></h6>
-                                </div>
-                                <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample" class="collapse show">
-                                    <div class="card-body pl-3 pr-3">
-                                        <ul class="lectures_lists">
-                                            <li class="complete"><div class="lectures_lists_title"><i class="fas fa-check dios"></i></div>نحوه ایمپورت کردن فایل‌ها و مرتب سازی آنها<span class="cls_timing">40:20</span></li>
-                                            <li class="progressing"><div class="lectures_lists_title"><i class="fas fa-play dios"></i></div>پوشه بندی و ساختار فایل‌ها به روش من<span class="cls_timing">20:12</span></li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>آشنایی با پنل‌های اصلی در پریمیر<span class="cls_timing">32:10</span></li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>اجرای پریمیر و ایجاد اولین پروژه در پریمیر<span class="cls_timing">25:05</span></li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>آشنایی با فضای نرم افزار پریمیر و درک Workspace<span class="cls_timing">18:10</span></li>
-                                        </ul>
+                            @foreach($episodes as $index => $group)
+                                <div class="card">
+                                    <div id="heading{{ $index }}" class="card-header bg-white shadow-sm border-0">
+                                        <h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#collapse{{ $index }}" aria-expanded="true" aria-controls="collapse{{ $index }}" class="d-block position-relative text-dark collapsible-link py-2">{{ $index }}</a></h6>
+                                    </div>
+                                    <div id="collapse{{ $index }}" aria-labelledby="heading{{ $index }}" data-parent="#accordionExample" class="collapse show">
+                                        <div class="card-body pl-3 pr-3">
+                                            <ul class="lectures_lists">
+                                                @foreach($group as $episode)
+                                                    <a class="videourl" cover="{{ url(route('getPublicImage', ['episode-' . $episode->id . '-main', rand()])) }}" data-url="{{ getVideoUrl($episode->links[0]) }}"><li class="complete"><div class="lectures_lists_title"><i class="fas fa-check dios"></i></div>{{ $episode->title }}<span class="cls_timing">{{ $episode->time }}</span></li></a>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- Part 2 -->
-                            <div class="card">
-                                <div id="headingTwo" class="card-header bg-white shadow-sm border-0">
-                                    <h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="d-block position-relative collapsed text-dark collapsible-link py-2">شروع کار با پریمیر پرو</a></h6>
-                                </div>
-                                <div id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionExample" class="collapse">
-                                    <div class="card-body pl-3 pr-3">
-                                        <ul class="lectures_lists">
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>نحوه ساخت یک سکانس جدید<span class="cls_timing">32:10</span></li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>Link و Overwrite کردن فایل ها<span class="cls_timing">32:10</span></li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>نکات مهم برای یک تدوین عالی و مناسب بازارکار<span class="cls_timing">32:10</span></li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>آشنایی کامل با تایم لاین در پریمیر<span class="cls_timing">25:05</span></li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>پنل Program Monitor و تنظیمات مهم آن<span class="cls_timing">18:10</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Part 3 -->
-                            <div class="card">
-                                <div id="headingThree" class="card-header bg-white shadow-sm border-0">
-                                    <h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="d-block position-relative collapsed text-dark collapsible-link py-2">ادیتینگ (تدوین ویدیو در پریمیر) از مبتدی تا حرفه ای</a></h6>
-                                </div>
-                                <div id="collapseThree" aria-labelledby="headingThree" data-parent="#accordionExample" class="collapse">
-                                    <div class="card-body pl-3 pr-3">
-                                        <ul class="lectures_lists">
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>نحوه ساخت شورتکات های جدید<span class="cls_timing">32:10</span></li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>تکنیک های سینک کردن صدا و تصویر در پریمیر<span class="cls_timing">32:10</span></li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>رزولوشن و جزئیات مربوط به آن<span class="cls_timing">32:10</span></li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>آشنایی با اصول سینک کردن<span class="cls_timing">25:05</span></li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>مفهوم Nest کردن و بررسی جزئیات آن<span class="cls_timing">18:10</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Part 04 -->
-                            <div class="card">
-                                <div id="headingFour" class="card-header bg-white shadow-sm border-0">
-                                    <h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour" class="d-block position-relative collapsed text-dark collapsible-link py-2">ماسک در پریمیر  (Masking in Premiere)</a></h6>
-                                </div>
-                                <div id="collapseFour" aria-labelledby="headingFour" data-parent="#accordionExample" class="collapse">
-                                    <div class="card-body pl-3 pr-3">
-                                        <ul class="lectures_lists">
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>انیمیت کردن تصویر‌ها (Keyframes)<span class="cls_timing">32:10</span></li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>تنظیمات سکانس مخصوص ساخت ویدیو برای اینستاگرام<span class="cls_timing">32:10</span></li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>نحوه سینک صدا و تصویر به صورت دستی<span class="cls_timing">32:10</span></li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>استفاده از مارکر ها برای سینک صدا و تصویر<span class="cls_timing">25:05</span></li>
-                                            <li class="unview"><div class="lectures_lists_title"><i class="fa fa-lock dios lock"></i></div>Multi-Camera در پریمیر و نحوه کار با آن<span class="cls_timing">18:10</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
+                            @endforeach
                         </div>
                     </div>
 

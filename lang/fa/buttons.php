@@ -13,4 +13,5 @@ return [
     'managingRoles' => 'مدیریت نقش ها',
     'makeTutor' => 'تبدیل به استاد',
     'revertTutor' => 'خارج کردن از حالت استاد',
+    'episodes' => 'قسمت ها',
 ];

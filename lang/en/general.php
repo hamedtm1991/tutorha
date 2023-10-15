@@ -54,4 +54,9 @@ return [
     'tutorError' => 'Name and description are required',
     'status' => 'Status',
     'search' => 'Search',
+    'link' => 'Link',
+    'links' => 'Links',
+    'time' => 'Time',
+    'course' => 'Course',
+    'group' => 'Group',
 ];

@@ -2,7 +2,8 @@
 
 namespace App\Livewire\Admin;
 
-use App\Livewire\Admin\Forms\CourseForm;
+use App\Livewire\Admin\Forms\EpisodeForm;
+use App\Models\Episode;
 use App\Models\Product;
 use App\Services\V1\Image\Image;
 use App\Traits\ComponentTools;
@@ -13,20 +14,23 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 
-class Courses extends Component
+class Episodes extends Component
 {
     use WithPagination;
-    use WithFileUploads;
-    use ImageTools;
     use ComponentTools;
     use DeleteFunction;
+    use WithFileUploads;
+    use ImageTools;
 
     protected $listeners = ['delete', 'update', 'deleteImage'];
-    public array $searchItems = ['id', 'name'];
-    public array $searchItemTutors = ['name'];
-    public CourseForm $form;
-    public Product|null $product;
-    public array $where = ['status' => true];
+    public Product $product;
+    public EpisodeForm $form;
+    public Episode|null $episode;
+
+    public function mount(Product $product): void
+    {
+        $this->product = $product;
+    }
 
     /**
      * @return void
@@ -42,24 +46,22 @@ class Courses extends Component
     public function create(): void
     {
         $this->form->reset();
-        $this->dispatch('setDataOnCkeditor', '', '');
         $this->dispatch('setData');
-        $this->product = null;
+        $this->episode = null;
         $this->showForm = true;
     }
 
     /**
-     * @param Product $product
+     * @param Episode $episode
      * @return void
      */
-    public function update(Product $product): void
+    public function update(Episode $episode): void
     {
         $this->showForm = true;
-        $this->product = $product;
-        $this->form->setProduct($product);
+        $this->episode = $episode;
+        $this->form->setForm($episode);
         $this->dispatch('setData');
-        $this->dispatch('setDataOnCkeditor', $this->form->ckeditor1, $this->form->ckeditor2);
-        $this->imageList = Image::imageList($this->product, Image::DRIVER_PUBLIC)->getData()->paths;
+        $this->imageList = Image::imageList($this->episode, Image::DRIVER_PUBLIC)->getData()->paths;
     }
 
     /**
@@ -68,26 +70,21 @@ class Courses extends Component
      */
     public function save(): void
     {
-        if (empty($this->product)) {
+        if (empty($this->episode)) {
             $this->authorize('create', Product::class);
-            $product = new Product();
+            $episode = new Episode();
+            $episode->product_id = $this->product->id;
         } else {
             $this->authorize('update', Product::class);
-            $product = $this->product;
+            $episode = $this->episode;
         }
 
         $this->form->validate();
-        $this->form->setData($product);
+        $this->form->setData($episode);
 
-        if ($product->save()) {
-            if ($this->form->tags) {
-                $product->tags()->sync(array_flip($this->form->tags));
-            }
-
-            $product->tutors()->sync(array_flip($this->form->tutors));
-
+        if ($episode->save()) {
             if ($this->form->photo) {
-                Image::modelImages($product, [$this->form->photo], Image::DRIVER_PUBLIC);
+                Image::modelImages($episode, [$this->form->photo], Image::DRIVER_PUBLIC);
             }
             $this->showForm = false;
             $this->form->reset();
@@ -100,7 +97,7 @@ class Courses extends Component
 
     public function render()
     {
-        $data = Product::query();
+        $data = Episode::query();
 
         if (!empty($this->search)) {
             $data->orWhere(function($query) {
@@ -108,7 +105,10 @@ class Courses extends Component
             });
         }
 
+        $data->where('product_id', $this->product->id);
+
         $data = $data->orderByDesc('id')->paginate(10);
-        return view('livewire.admin.courses', compact('data'))->layout('components.layouts.admin-with-ckeditor');
+
+        return view('livewire.admin.episodes', compact('data'))->layout('components.layouts.admin');
     }
 }

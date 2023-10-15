@@ -21,6 +21,17 @@ return new class extends Migration
             $table->json('options')->nullable();
             $table->timestamps();
         });
+
+        Schema::create('episodes', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->string('title');
+            $table->string('group');
+            $table->json('links');
+            $table->string('time', 50);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -28,6 +39,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('episodes');
         Schema::dropIfExists('products');
     }
 };

@@ -6,7 +6,9 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
+                'resources/css/videojs.css',
                 'resources/js/app.js',
+                'resources/js/videojs.js',
                 'resources/js/bootstrap.js',
                 'resources/js/app2.js',
                 'resources/js/ckeditor.js',
