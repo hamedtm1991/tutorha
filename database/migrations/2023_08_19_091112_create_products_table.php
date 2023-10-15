@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('price');
             $table->unsignedBigInteger('fake_price')->nullable();
             $table->json('options')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
 
@@ -30,6 +31,7 @@ return new class extends Migration
             $table->string('group');
             $table->json('links');
             $table->string('time', 50);
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

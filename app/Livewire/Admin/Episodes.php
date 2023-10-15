@@ -22,7 +22,7 @@ class Episodes extends Component
     use WithFileUploads;
     use ImageTools;
 
-    protected $listeners = ['delete', 'update', 'deleteImage'];
+    protected $listeners = ['delete', 'update', 'deleteImage', 'status'];
     public Product $product;
     public EpisodeForm $form;
     public Episode|null $episode;
@@ -38,6 +38,22 @@ class Episodes extends Component
     public function hydrate(): void
     {
         $this->resetValidation();
+    }
+
+    /**
+     * @param Episode $episode
+     * @return void
+     * @throws AuthorizationException
+     */
+    public function status(Episode $episode): void
+    {
+        $this->authorize('update', Episode::class);
+        $episode->status = !$episode->status;
+        if ($episode->save()) {
+            $this->dispatch('toast', type: 'success', message: __('general.savedSuccessfully'));
+        } else {
+            $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
+        }
     }
 
     /**

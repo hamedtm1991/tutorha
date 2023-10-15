@@ -114,6 +114,7 @@
                                         <th scope="col">{{ __('general.level') }}</th>
                                         <th scope="col">{{ __('general.createdAt') }}</th>
                                         <th scope="col">{{ __('general.updatedAt') }}</th>
+                                        <th scope="col">{{ __('general.status') }}</th>
                                         <th scope="col">{{ __('general.options') }}</th>
                                     </tr>
                                     </thead>
@@ -129,6 +130,9 @@
                                             <td>{{ empty($model->options['level']) ? '' : __('general.' . $model->options['level']) }}</td>
                                             <td>{{ localDate($model->created_at) }}</td>
                                             <td>{{ localDate($model->updated_at) }}</td>
+                                            <td onclick="getConfirm('admin.courses', 'status', {{ $model->id }},  '{{ __('general.sure') }}', '', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')">
+                                                <i class="{{ $model->status ? 'fa fa-check text-success' : 'fa fa-times text-danger' }}"></i>
+                                            </td>
                                             <td>
                                                 <div class="dropdown show">
                                                     <a class="btn btn-action" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

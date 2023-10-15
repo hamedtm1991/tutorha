@@ -67,6 +67,7 @@
                                         <th scope="col">{{ __('general.name') }}</th>
                                         <th scope="col">{{ __('general.time') }}</th>
                                         <th scope="col">{{ __('general.group') }}</th>
+                                        <th scope="col">{{ __('general.status') }}</th>
                                         <th scope="col">{{ __('general.options') }}</th>
                                     </tr>
                                     </thead>
@@ -77,6 +78,9 @@
                                             <td>{{ $model->title }}</td>
                                             <td>{{ $model->time }}</td>
                                             <td>{{ $model->group }}</td>
+                                            <td onclick="getConfirm('admin.episodes', 'status', {{ $model->id }},  '{{ __('general.sure') }}', '', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')">
+                                                <i class="{{ $model->status ? 'fa fa-check text-success' : 'fa fa-times text-danger' }}"></i>
+                                            </td>
                                             <td>
                                                 <div class="dropdown show">
                                                     <a class="btn btn-action" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

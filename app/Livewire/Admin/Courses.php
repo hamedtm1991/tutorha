@@ -21,7 +21,7 @@ class Courses extends Component
     use ComponentTools;
     use DeleteFunction;
 
-    protected $listeners = ['delete', 'update', 'deleteImage'];
+    protected $listeners = ['delete', 'update', 'deleteImage', 'status'];
     public array $searchItems = ['id', 'name'];
     public array $searchItemTutors = ['name'];
     public CourseForm $form;
@@ -34,6 +34,22 @@ class Courses extends Component
     public function hydrate(): void
     {
         $this->resetValidation();
+    }
+
+    /**
+     * @param Product $course
+     * @return void
+     * @throws AuthorizationException
+     */
+    public function status(Product $course): void
+    {
+        $this->authorize('update', Product::class);
+        $course->status = !$course->status;
+        if ($course->save()) {
+            $this->dispatch('toast', type: 'success', message: __('general.savedSuccessfully'));
+        } else {
+            $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
+        }
     }
 
     /**
