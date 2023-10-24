@@ -23,15 +23,17 @@
                         </div>
                     </div>
                 </div>
-                <video
-                    id="player"
-                    class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered"
-                    width="640" height="268"
-                    controls
-                    preload="auto"
-                    data-setup='{"controlBar": {"pictureInPictureToggle": false}}'
-                >
-                </video>
+                <div wire:ignore>
+                    <video
+                        id="player"
+                        class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered"
+                        width="640" height="268"
+                        controls
+                        preload="auto"
+                        data-setup='{"controlBar": {"pictureInPictureToggle": false}}'
+                    >
+                    </video>
+                </div>
             </div>
         </div>
     </div>
@@ -63,7 +65,14 @@
                                         <div class="card-body pl-3 pr-3">
                                             <ul class="lectures_lists">
                                                 @foreach($group as $episode)
-                                                    <a class="videourl" cover="{{ url(route('getPublicImage', ['episode-' . $episode->id . '-main', rand()])) }}" data-url="{{ getVideoUrl($episode->links[0]) }}"><li class="complete"><div class="lectures_lists_title"><i class="fas fa-check dios"></i></div>{{ $episode->title }}<span class="cls_timing">{{ $episode->time }}</span></li></a>
+                                                    @php($url = getVideoUrl($episode->links[0] ?? '', $episode))
+                                                    <a style="display: @if(empty($url)) none @endif" class="videourl" cover="{{ url(route('getPublicImage', ['episode-' . $episode->id . '-main', rand()])) }}" data-url="{{ $url }}"><li class="complete"><div class="lectures_lists_title"><i class="fas fa-check dios"></i></div>{{ $episode->title }}<span class="cls_timing">{{ $episode->time }}</span></li></a>
+
+                                                    @if(!Auth::check() && empty($url))
+                                                        <a wire:click="login"><li class="complete"><div class="lectures_lists_title"><i class="fas fa-check dios"></i></div>{{ $episode->title }}<span class="cls_timing">{{ number_format($episode->price) . ' / ' . $episode->time }}</span></li></a>
+                                                    @elseif(empty($url))
+                                                        <a onclick="getConfirm('landings.course', 'pay', '{{ $episode->id }}', '{{ __('general.sure') }}', '{{ __('general.reducingMoney', ['value' => number_format($episode->price) . ' ' . __('general.toman')]) }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')"><li class="complete"><div class="lectures_lists_title"><i class="fas fa-check dios"></i></div>{{ $episode->title }}<span class="cls_timing">{{ number_format($episode->price) . ' / ' . $episode->time }}</span></li></a>
+                                                    @endif
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -92,14 +101,6 @@
                 <div class="col-lg-4 col-md-12 order-lg-last">
 
                     <div class="ed_view_box style_2 stick_top">
-
-                        <div class="ed_author">
-                            <h2 class="theme-cl m-0">{{ number_format($product->price) }}
-                                @if($product->fake_price)
-                                    <span class="old_prc">{{ number_format($product->fake_price) }}</span>
-                                @endif
-                            </h2>
-                        </div>
                         <div class="ed_view_features">
                             <div class="eld mb-3">
                                 <ul class="edu_list right">
@@ -117,10 +118,6 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="ed_view_link">
-                            <a href="#" class="btn theme-bg enroll-btn">ثبت نام<i class="ti-angle-left"></i></a>
-                        </div>
-
                     </div>
 
                 </div>

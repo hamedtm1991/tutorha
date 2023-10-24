@@ -15,6 +15,10 @@ return [
     'discountRemoved' => 'تخفیف با موفقیت حذف شد',
     'sure' => 'آیا اطمینان کامل دارید؟',
     'noRevert' => 'این عملیات غیر قابل بازگشت می باشد!',
+    'reducingMoney' => ':value از کیف پول شما کسر می شود',
+    'toman' => 'تومان',
+    'successfulPurchase' => 'خرید شما با موفقیت انجام شد',
+    'notEnoughMoney' => 'اعتبار شما کافی نیست',
 
 
     'users' => 'کاربران',

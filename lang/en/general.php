@@ -15,6 +15,10 @@ return [
     'discountRemoved' => 'Discount has been removed successfully',
     'sure' => 'Are You Sure?',
     'noRevert' => 'You wont be able to revert this!',
+    'reducingMoney' => ':value will be deducted from your wallet',
+    'toman' => 'Toman',
+    'successfulPurchase' => 'Your purchase is successful',
+    'notEnoughMoney' => 'Not enough money',
 
 
     'users' => 'Users',

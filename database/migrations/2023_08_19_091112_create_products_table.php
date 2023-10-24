@@ -27,6 +27,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->unsignedBigInteger('price');
+            $table->unsignedBigInteger('fake_price')->nullable();
             $table->string('title');
             $table->string('group');
             $table->json('links');

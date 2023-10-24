@@ -22,6 +22,20 @@
                             </div>
                         </div>
                         <div class="form-group smalls">
+                            <label class="mb-2">{{ __('general.price') }}</label>
+                            <input wire:model="form.price" type="number" class="form-control">
+                            <div class="mt-2">
+                                @error('form.price') <span class="error text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                        <div class="form-group smalls">
+                            <label class="mb-2">{{ __('general.fakePrice') }}</label>
+                            <input wire:model="form.fakePrice" type="number" class="form-control">
+                            <div class="mt-2">
+                                @error('form.fakePrice') <span class="error text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                        <div class="form-group smalls">
                             <label class="mb-2">{{ __('general.cover') }}</label>
                             <input type="file" wire:model="form.photo" class="form-control">
                             <div class="mt-2">
@@ -41,7 +55,7 @@
                         </div>
                         <div class="form-group smalls">
                             <label class="mb-2">{{ __('general.time') }}</label>
-                            <input wire:model="form.time" type="number" class="form-control">
+                            <input wire:model="form.time" type="text" class="form-control">
                             <div class="mt-2">
                                 @error('form.time') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
@@ -66,6 +80,8 @@
                                         <th scope="col">#</th>
                                         <th scope="col">{{ __('general.name') }}</th>
                                         <th scope="col">{{ __('general.time') }}</th>
+                                        <th scope="col">{{ __('general.price') }}</th>
+                                        <th scope="col">{{ __('general.fakePrice') }}</th>
                                         <th scope="col">{{ __('general.group') }}</th>
                                         <th scope="col">{{ __('general.status') }}</th>
                                         <th scope="col">{{ __('general.options') }}</th>
@@ -77,6 +93,8 @@
                                             <th scope="row">{{ $model->id }}</th>
                                             <td>{{ $model->title }}</td>
                                             <td>{{ $model->time }}</td>
+                                            <td>{{ number_format($model->price) }}</td>
+                                            <td>{{ number_format($model->fake_price) }}</td>
                                             <td>{{ $model->group }}</td>
                                             <td onclick="getConfirm('admin.episodes', 'status', {{ $model->id }},  '{{ __('general.sure') }}', '', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')">
                                                 <i class="{{ $model->status ? 'fa fa-check text-success' : 'fa fa-times text-danger' }}"></i>

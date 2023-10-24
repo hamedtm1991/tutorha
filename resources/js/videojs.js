@@ -4,34 +4,51 @@ import videojsqualityselector from "videojs-hls-quality-selector";
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    let player = videojs('player');
+    if (document.querySelector('.videourl') !== null) {
+        let player = videojs('player');
 
-    const firstLink = document.querySelector('.videourl').getAttribute("data-url");
-    const firstPoster = document.querySelector('.videourl').getAttribute("cover");
-    player.poster(firstPoster)
-    player.src({src: firstLink, type: 'application/x-mpegURL'})
-    player.hlsQualitySelector = videojsqualityselector;
-    player.hlsQualitySelector({
-        displayCurrentQuality: true,
-    });
-    player.playbackRates([0.5, 1, 1.5, 2])
-
-
-    function changeUrl(url, poster)
-    {
-        player.src({src: url, type: 'application/x-mpegURL'})
-        player.poster(poster)
+        const firstLink = document.querySelector('.videourl').getAttribute("data-url");
+        const firstPoster = document.querySelector('.videourl').getAttribute("cover");
+        player.poster(firstPoster)
+        player.src({src: firstLink, type: 'application/x-mpegURL'})
+        player.hlsQualitySelector = videojsqualityselector;
+        player.hlsQualitySelector({
+            displayCurrentQuality: true,
+        });
         player.playbackRates([0.5, 1, 1.5, 2])
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
 
-    document.querySelectorAll(".videourl").forEach(el=> {
-        el.addEventListener("click", e => {
-            let url = el.getAttribute("data-url")
-            let poster = el.getAttribute("cover")
-            changeUrl(url, poster)
+
+        function changeUrl(url, poster)
+        {
+            player.src({src: url, type: 'application/x-mpegURL'})
+            player.poster(poster)
+            player.playbackRates([0.5, 1, 1.5, 2])
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+
+        player.currentTime(10);
+
+        player.on('ended', function() {
+            alert('video is done!');
+        });
+
+        let previousTime = 10;
+        player.on('timeupdate', function() {
+            let currentTime = this.currentTime();
+            if ((currentTime - previousTime) > 5) {
+                previousTime = currentTime;
+                console.log(currentTime);
+            }
+        });
+
+        document.querySelectorAll(".videourl").forEach(el=> {
+            el.addEventListener("click", e => {
+                let url = el.getAttribute("data-url")
+                let poster = el.getAttribute("cover")
+                changeUrl(url, poster)
+            })
         })
-    })
+    }
 });
 
 

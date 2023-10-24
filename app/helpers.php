@@ -3,8 +3,8 @@
 use Carbon\Carbon;
 use Illuminate\Http\Response as status;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use App\Models\Episode;
 
 /**
  * @param $date
@@ -28,19 +28,21 @@ function localDate($date, $enFormat = null, $faFormat = null): string
     }
 }
 
-function getVideoUrl(string $link)
+function getVideoUrl(string $link, Episode $episode)
 {
-    $explode = explode('-', $link);
-    $name = $explode[0];
-    $numberOfEpisode = $explode[1];
-    $response = Http::asForm()->post('http://192.168.1.5:8000/api/url/video', [
-        'secret' => bcrypt(md5(env('VIDEO_SIGN_SECRET_KEY'))),
-        'name' => $name,
-        'episode' => $numberOfEpisode,
-    ]);
+    if (empty($episode->price) || $episode->checkOrder()) {
+        $explode = explode('-', $link);
+        $name = $explode[0] ?? '';
+        $numberOfEpisode = $explode[1] ?? 0;
+        $response = Http::asForm()->post('http://192.168.1.5:8000/api/url/video', [
+            'secret' => bcrypt(md5(env('VIDEO_SIGN_SECRET_KEY'))),
+            'name' => $name,
+            'episode' => $numberOfEpisode,
+        ]);
 
-    if ($response->status() === status::HTTP_OK) {
-        return $response->getBody()->getContents();
+        if ($response->status() === status::HTTP_OK) {
+            return $response->getBody()->getContents();
+        }
     }
 
     return '';

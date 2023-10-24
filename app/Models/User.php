@@ -66,6 +66,14 @@ class User extends Authenticatable
     }
 
     /**
+     * @return HasOne
+     */
+    public function wallet(): HasOne
+    {
+        return $this->hasOne(Wallet::class);
+    }
+
+    /**
      * @return JsonResponse
      */
     public function generateToken() : JsonResponse
@@ -97,5 +105,18 @@ class User extends Authenticatable
     public function staredNameOrMobile(): string
     {
         return empty($this->name) ? substr_replace($this->mobile, '****', 5, 4) : $this->name;
+    }
+
+    /**
+     * @param bool $confirmedBySystem
+     * @return string
+     */
+    public function confirmedBy(bool $confirmedBySystem = false): string
+    {
+        if ($confirmedBySystem) {
+            return 'system' . ' / ' . now();
+        }
+
+        return $this->name . ' / ' . $this->mobile . ' / ' . 'userId: ' . $this->id . ' / ' . now();
     }
 }

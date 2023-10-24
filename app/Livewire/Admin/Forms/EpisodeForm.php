@@ -23,6 +23,12 @@ class EpisodeForm extends Form
     #[Rule('image|max:1024')] // 1MB Max
     public $photo = '';
 
+    #[Rule('required|numeric')]
+    public string  $price = '';
+
+    #[Rule('numeric')]
+    public string|null  $fakePrice = '';
+
 
     /**
      * @param Episode $model
@@ -33,6 +39,8 @@ class EpisodeForm extends Form
         $this->title = $model->title;
         $this->group = $model->group;
         $this->time = $model->time;
+        $this->price = $model->price;
+        $this->fakePrice = $model->fake_price ?? '';
         $this->links = $model->links ?? [];
     }
 
@@ -45,6 +53,8 @@ class EpisodeForm extends Form
         $model->title = $this->title;
         $model->group = $this->group;
         $model->time = $this->time;
+        $model->price = $this->price;
+        $model->fake_price = empty($this->fakePrice) ? null : $this->fakePrice;
         $model->links = $this->links;
     }
 }

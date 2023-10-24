@@ -168,7 +168,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        \App\Services\V1\Image\ImageServiceProvider::class,
+        App\Services\V1\Image\ImageServiceProvider::class,
+        App\Services\V1\Financial\FinancialServiceProvider::class,
+        App\Services\V1\Wallet\WalletServiceProvider::class
     ])->toArray(),
 
     /*
