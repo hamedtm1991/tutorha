@@ -8,6 +8,9 @@ use App\Livewire\Admin\Courses;
 use App\Livewire\Admin\Tags;
 use App\Livewire\Admin\Tutors;
 use App\Livewire\Admin\Episodes;
+use App\Livewire\Admin\Transactions;
+use App\Livewire\Admin\Orders;
+use App\Livewire\Admin\Payments;
 
 Route::get('dashboard', Dashboard::class)->name('dashboard');
 Route::get('users', Users::class)->name('users');
@@ -16,3 +19,6 @@ Route::get('courses', Courses::class)->name('courses');
 Route::get('courses/{product}/episodes', Episodes::class)->name('episodes');
 Route::get('tags', Tags::class)->name('tags');
 Route::get('tutors', Tutors::class)->name('tutors');
+Route::get('transactions', Transactions::class)->name('transactions');
+Route::get('orders', Orders::class)->name('orders');
+Route::get('payments', Payments::class)->name('payments');

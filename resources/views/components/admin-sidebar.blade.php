@@ -24,6 +24,14 @@
                 </li>
                 <li class="{{ request()->routeIs('admin.courses') ? 'active' : ''  }}"><a href="{{ route('admin.courses') }}"><i class="fas fa-chalkboard-teacher"></i>{{ __('general.courses') }}</a></li>
                 <li class="{{ request()->routeIs('admin.tags') ? 'active' : ''  }}"><a href="{{ route('admin.tags') }}"><i class="fas fa-tags"></i>{{ __('general.tags') }}</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0);"><i class="fas fa-dollar-sign"></i>{{ __('general.financial') }}<span class="ti-angle-left"></span></a>
+                    <ul class="nav nav-second-level {{ request()->routeIs('admin.transactions', 'admin.orders', 'admin.payments') ? 'collapse show' : ''  }}">
+                        <li class="{{ request()->routeIs('admin.transactions') ? 'active' : ''  }}"><a href="{{ route('admin.transactions') }}">{{ __('general.transactions') }}</a></li>
+                        <li class="{{ request()->routeIs('admin.orders') ? 'active' : ''  }}"><a href="{{ route('admin.orders') }}">{{ __('general.orders') }}</a></li>
+                        <li class="{{ request()->routeIs('admin.payments') ? 'active' : ''  }}"><a href="{{ route('admin.payments') }}">{{ __('general.payments') }}</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
 
