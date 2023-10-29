@@ -3,6 +3,7 @@
 return [
     'somethingWrong' => 'یه چیزی اشتباه شد دوباره تلاش کن.',
     'savedSuccessfully' => 'با موفقیت ذخیره شد.',
+    'doneSuccessfully' => 'با موفقیت انجام شد.',
     'updatedSuccessfully' => 'شناسه: :id با موفقیت به روز شد.',
     'deletedSuccessfully' => 'شناسه: :id با موفقیت حذف شد.',
     'addedToCart' => 'شناسه: :id با موفقیت به سبد خرید اضافه شد.',
@@ -19,6 +20,7 @@ return [
     'toman' => 'تومان',
     'successfulPurchase' => 'خرید شما با موفقیت انجام شد',
     'notEnoughMoney' => 'اعتبار شما کافی نیست',
+    'transactionHelp' => 'برای افزایش اعتبار "increase" و برای کاهش اعتبار "decrease" را وارد کنید.',
 
 
     'users' => 'کاربران',

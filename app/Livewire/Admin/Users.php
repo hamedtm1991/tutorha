@@ -4,9 +4,11 @@ namespace App\Livewire\Admin;
 
 use App\Models\Tutor;
 use App\Models\User;
+use App\Services\V1\Wallet\Wallet;
 use App\Traits\ComponentTools;
 use App\Traits\DeleteFunction;
 use Illuminate\Auth\Access\AuthorizationException;
+use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -16,12 +18,21 @@ class Users extends Component
     use ComponentTools;
     use DeleteFunction;
 
-    protected $listeners = ['delete', 'roles', 'makeTutor'];
+    protected $listeners = ['delete', 'roles', 'makeTutor', 'wallet'];
 
     public array $roles;
     public array $items;
     public User $selectedUser;
     public array $searchItems = ['id', 'name'];
+
+    #[Rule('required|numeric|min:5000')]
+    public string  $value = '';
+
+    #[Rule('required|string|min:3|max:255')]
+    public string|null  $description = '';
+
+    #[Rule('required|string|in:increase,decrease')]
+    public string|null  $type = '';
 
     /**
      * @param User $user
@@ -53,9 +64,19 @@ class Users extends Component
      */
     public function roles(User $user): void
     {
-        $this->showForm = true;
+        $this->showForm = 'roles';
         $this->selectedUser = $user;
         $this->items = $user->roles->pluck('name', 'id')->toArray();
+    }
+
+    /**
+     * @param User $user
+     * @return void
+     */
+    public function wallet(User $user): void
+    {
+        $this->showForm = 'wallet';
+        $this->selectedUser = $user;
     }
 
     /**
@@ -80,6 +101,32 @@ class Users extends Component
 
         $this->selectedUser->syncRoles(array_keys($this->roles));
         $this->showForm = false;
+    }
+
+    /**
+     * @return void
+     */
+    public function transaction()
+    {
+        $this->authorize('update', User::class);
+
+        $this->validate();
+
+        if ($this->type === 'increase') {
+            $response = Wallet::increaseByAdmin($this->value, $this->selectedUser->id, $this->description);
+        } elseif ($this->type === 'decrease') {
+            $response = Wallet::decreaseByAdmin($this->value, $this->selectedUser->id, $this->description);
+        }
+
+        if (isset($response['status']) && $response['status']) {
+            $this->showForm = false;
+            $this->reset();
+            $this->dispatch('toast', type: 'success', message: __('general.doneSuccessfully'));
+        } else {
+            $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
+        }
+
+
     }
 
     /**

@@ -4,7 +4,7 @@ namespace App\Traits;
 
 trait ComponentTools {
     public string $search;
-    public bool $showForm = false;
+    public bool|string $showForm = false;
 
     /**
      * @return void

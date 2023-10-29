@@ -4,11 +4,36 @@
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12">
             <div class="dashboard_wrap">
-                @if($showForm)
+                @if($showForm === 'roles')
                     <form wire:submit.prevent="save" autocomplete="off">
                         <livewire:widgets.select instance="Role" title="role" :items="$items" :searchItems="$searchItems" />
                         <div class="mt-2">
                             @error('roles.*') <span class="error text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        <x-form-buttons/>
+                    </form>
+                @elseif($showForm === 'wallet')
+                    <form wire:submit.prevent="transaction" autocomplete="off">
+                        <div class="form-group smalls">
+                            <label class="mb-2">{{ __('general.value') }}</label>
+                            <input wire:model="value" type="number" class="form-control">
+                            <div class="mt-2">
+                                @error('value') <span class="error text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                        <div class="form-group smalls">
+                            <label class="mb-2">{{ __('general.description') }}</label>
+                            <textarea wire:model="description" type="text" class="form-control"></textarea>
+                            <div class="mt-2">
+                                @error('description') <span class="error text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                        <div class="form-group smalls">
+                            <label class="mb-2">{{ __('general.type') . ' (' . __('general.transactionHelp') . ')' }} </label>
+                            <input wire:model="type" type="text" class="form-control">
+                            <div class="mt-2">
+                                @error('type') <span class="error text-danger">{{ $message }}</span> @enderror
+                            </div>
                         </div>
                         <x-form-buttons/>
                     </form>
@@ -45,6 +70,7 @@
                                                         @endif
                                                         @if(Auth::user()->can('user.update'))
                                                             <a onclick="dispatch('admin.users', 'roles', {{ $model->id }})"  class="dropdown-item">{{ __('buttons.managingRoles') }}</a>
+                                                            <a onclick="dispatch('admin.users', 'wallet', {{ $model->id }})"  class="dropdown-item">{{ __('buttons.transaction') }}</a>
                                                             @if(!$model->tutor)
                                                                 <a onclick="dispatch('admin.users', 'makeTutor', {{ $model->id }})"  class="dropdown-item">{{ __('buttons.makeTutor') }}</a>
                                                             @endif

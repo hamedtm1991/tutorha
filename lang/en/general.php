@@ -3,6 +3,7 @@
 return [
     'somethingWrong' => 'Something went Wrong, try again.',
     'savedSuccessfully' => 'Saved successfully.',
+    'doneSuccessfully' => 'Done successfully.',
     'updatedSuccessfully' => 'Id: :id has been updated successfully.',
     'deletedSuccessfully' => 'Id: :id has been deleted successfully.',
     'addedToCart' => 'Id: :id has been added to cart successfully.',
@@ -19,6 +20,7 @@ return [
     'toman' => 'Toman',
     'successfulPurchase' => 'Your purchase is successful',
     'notEnoughMoney' => 'Not enough money',
+    'transactionHelp' => 'For increase balance enter "increase" and for decreasing balance enter "decrease"',
 
 
     'users' => 'Users',

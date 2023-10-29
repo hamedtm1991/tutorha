@@ -14,4 +14,5 @@ return [
     'makeTutor' => 'Make tutor',
     'revertTutor' => 'Revert Tutor',
     'episodes' => 'Episodes',
+    'transaction' => 'Transaction',
 ];
