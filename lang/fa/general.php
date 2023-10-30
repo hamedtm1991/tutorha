@@ -21,6 +21,15 @@ return [
     'successfulPurchase' => 'خرید شما با موفقیت انجام شد',
     'notEnoughMoney' => 'اعتبار شما کافی نیست',
     'transactionHelp' => 'برای افزایش اعتبار "increase" و برای کاهش اعتبار "decrease" را وارد کنید.',
+    'increase_admin' => 'افزایش اعتبار توسط ادمین',
+    'increase_transfer' => 'افزایش اعتبار توسط انتقال',
+    'increase_online' => 'افزایش اعتبار به صورت انلاین',
+    'increase_card' => 'افزایش اعتبار به صورت کارت به کارت',
+    'increase_purchase' => 'افزایش اعتبار توسط خرید به صورت جایزه',
+    'decrease_admin' => 'کاهش اعتبار توسط ادمین',
+    'decrease_purchase' => 'کاهش اعتبار توسط خرید',
+    'decrease_transfer' => 'کاهش اعتبار توسط انتقال',
+    'tooManyAttempts' => 'تعداد تلاش ها بیش از حد!',
 
 
     'users' => 'کاربران',
@@ -58,6 +67,7 @@ return [
     'userId' => 'ایدی کاربر',
     'payments' => 'پرداخت ها',
     'increaseBalance' => 'افزایش اعتبار',
+    'orderId' => 'شماره سفارش',
 
     'name' => 'نام',
     'title' => 'عنوان',

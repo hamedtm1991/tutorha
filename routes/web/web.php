@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ImageController;
+use App\Livewire\Panel\Transactions;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Auth;
 use App\Livewire\Landings\Home;
@@ -26,4 +27,5 @@ Route::get('/images/public/get/{name}/{rand}', [ImageController::class, 'getPubl
 Route::middleware(['auth'])->group(function () {
     Route::get('/images/get/{name}/{rand}', [ImageController::class, 'getImage'])->name('getImage');
     Route::get('payment', Payment::class)->name('payment');
+    Route::get('transactions', Transactions::class)->name('transactions');
 });

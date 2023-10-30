@@ -21,6 +21,15 @@ return [
     'successfulPurchase' => 'Your purchase is successful',
     'notEnoughMoney' => 'Not enough money',
     'transactionHelp' => 'For increase balance enter "increase" and for decreasing balance enter "decrease"',
+    'increase_admin' => 'Increase by admin',
+    'increase_transfer' => 'Increase by transfer',
+    'increase_online' => 'Online increase',
+    'increase_card' => 'Card increase',
+    'increase_purchase' => 'Increase by purchase',
+    'decrease_admin' => 'Decrease by admin',
+    'decrease_purchase' => 'Decrease by purchase',
+    'decrease_transfer' => 'Decrease by transfer',
+    'tooManyAttempts' => 'Too many messages sent!',
 
 
     'users' => 'Users',
@@ -57,6 +66,7 @@ return [
     'userId' => 'User Id',
     'payments' => 'Payments',
     'increaseBalance' => 'Increase balance',
+    'orderId' => 'Order id',
 
     'name' => 'Name',
     'title' => 'Title',
