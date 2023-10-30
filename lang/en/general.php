@@ -56,6 +56,7 @@ return [
     'orders' => 'Orders',
     'userId' => 'User Id',
     'payments' => 'Payments',
+    'increaseBalance' => 'Increase balance',
 
     'name' => 'Name',
     'title' => 'Title',

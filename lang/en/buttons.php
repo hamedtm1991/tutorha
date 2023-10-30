@@ -15,4 +15,5 @@ return [
     'revertTutor' => 'Revert Tutor',
     'episodes' => 'Episodes',
     'transaction' => 'Transaction',
+    'pay' => 'Pay',
 ];

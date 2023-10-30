@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Auth;
 use App\Livewire\Landings\Home;
 use App\Livewire\Landings\Course;
+use App\Livewire\Landings\Payment;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,5 @@ Route::get('/images/public/get/{name}/{rand}', [ImageController::class, 'getPubl
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/images/get/{name}/{rand}', [ImageController::class, 'getImage'])->name('getImage');
+    Route::get('payment', Payment::class)->name('payment');
 });

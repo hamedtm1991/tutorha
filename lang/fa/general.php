@@ -57,6 +57,7 @@ return [
     'orders' => 'سفارش ها',
     'userId' => 'ایدی کاربر',
     'payments' => 'پرداخت ها',
+    'increaseBalance' => 'افزایش اعتبار',
 
     'name' => 'نام',
     'title' => 'عنوان',

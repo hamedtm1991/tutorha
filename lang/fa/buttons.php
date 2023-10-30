@@ -15,4 +15,5 @@ return [
     'revertTutor' => 'خارج کردن از حالت استاد',
     'episodes' => 'قسمت ها',
     'transaction' => 'تراکنش',
+    'pay' => 'پرداخت',
 ];
