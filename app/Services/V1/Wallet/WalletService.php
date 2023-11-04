@@ -157,6 +157,7 @@ class WalletService
         $walletTransaction->type = $this->type;
         $walletTransaction->resnumber = WalletTransaction::walletTransactionNumber();
         $walletTransaction->wallet_id = $this->wallet->id;
+        $walletTransaction->user_id = $this->wallet->user_id;
         $walletTransaction->status = $this->status;
         $walletTransaction->detail = $this->detail;
         $walletTransaction->order_id = $this->orderId;
