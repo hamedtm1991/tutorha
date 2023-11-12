@@ -66,12 +66,12 @@
                                             <ul class="lectures_lists">
                                                 @foreach($group as $episode)
                                                     @php($url = getVideoUrl($episode->links[0] ?? '', $episode))
-                                                    <a style="display: @if(empty($url)) none @endif" class="videourl" cover="{{ url(route('getPublicImage', ['episode-' . $episode->id . '-main', rand()])) }}" data-url="{{ $url }}"><li class="complete"><div class="lectures_lists_title"><i class="fas fa-check dios"></i></div>{{ $episode->title }}<span class="cls_timing">{{ $episode->time }}</span></li></a>
+                                                    <a style="display: @if(empty($url)) none @endif" class="videourl" episodeid="{{ $episode->id }}" productid="{{ $product->id }}" cover="{{ url(route('getPublicImage', ['episode-' . $episode->id . '-main', rand()])) }}" data-url="{{ $url }}"><li class="complete"><div class="lectures_lists_title"><i class="fas fa-{{ !empty($watchDetail[$episode->id]) ? 'check' : 'play' }} dios"></i></div>{{ $episode->title }}<span class="cls_timing">{{ $episode->time }}</span></li></a>
 
                                                     @if(!Auth::check() && empty($url))
-                                                        <a wire:click="login"><li class="complete"><div class="lectures_lists_title"><i class="fas fa-check dios"></i></div>{{ $episode->title }}<span class="cls_timing">{{ number_format($episode->price) . ' / ' . $episode->time }}</span></li></a>
+                                                        <a wire:click="login"><li class="unview"><div class="lectures_lists_title"><i class="fas fa-lock dios"></i></div>{{ $episode->title }}<span class="cls_timing">{{ number_format($episode->price) . ' / ' . $episode->time }}</span></li></a>
                                                     @elseif(empty($url))
-                                                        <a onclick="getConfirm('landings.course', 'pay', '{{ $episode->id }}', '{{ __('general.sure') }}', '{{ __('general.reducingMoney', ['value' => number_format($episode->price) . ' ' . __('general.toman')]) }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')"><li class="complete"><div class="lectures_lists_title"><i class="fas fa-check dios"></i></div>{{ $episode->title }}<span class="cls_timing">{{ number_format($episode->price) . ' / ' . $episode->time }}</span></li></a>
+                                                        <a onclick="getConfirm('landings.course', 'pay', '{{ $episode->id }}', '{{ __('general.sure') }}', '{{ __('general.reducingMoney', ['value' => number_format($episode->price) . ' ' . __('general.toman')]) }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')"><li class="unview"><div class="lectures_lists_title"><i class="fas fa-lock dios"></i></div>{{ $episode->title }}<span class="mx-3">{{ number_format($episode->price) . ' ' . __('general.toman') }}</span><span class="cls_timing">{{ $episode->time }}</span></li></a>
                                                     @endif
                                                 @endforeach
                                             </ul>
@@ -86,7 +86,7 @@
                     @foreach($product->tutors as $tutor)
                         <div class="single_instructor">
                             <div class="single_instructor_thumb">
-                                <a href="#"><img src="{{ url(route('getPublicImage', ['tutor-' . $tutor->id . '-main', rand()])) }}" class="img-fluid" alt=""></a>
+                                <a href="#"><img src="{{ url(route('getPublicImage', ['tutor-' . $tutor->id . '-main', rand()])) }}" class="img-fluid" alt="{{ $tutor->name }}"></a>
                             </div>
                             <div class="single_instructor_caption">
                                 <h4><a href="#">{{ $tutor->name }}</a></h4>
@@ -127,26 +127,11 @@
     </section>
     <!-- ============================ Course Detail ================================== -->
 
-    <!-- ============================ Call To Action ================================== -->
-    <section class="theme-bg call_action_wrap-wrap">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <div class="call_action_wrap">
-                        <div class="call_action_wrap-head">
-                            <h3 class="font-2">آیا سوالی دارید؟</h3>
-                            <span>ما به شما کمک خواهیم کرد تا شغل و رشد خود را افزایش دهید.</span>
-                        </div>
-                        <a href="#" class="btn btn-call_action_wrap">امروز با ما تماس بگیرید</a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ============================ Call To Action End ================================== -->
-
     <a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
 </div>
 
+@push('seo')
+    <meta name="description" content="{{ $product->description }}">
+    <meta name="keywords" content="{{ $product->options['metaKeywords'] }}">
+    <title>{{ $product->title }}</title>
+@endpush

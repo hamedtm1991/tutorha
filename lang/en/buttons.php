@@ -2,6 +2,7 @@
 
 return [
     'login' => 'Login',
+    'logout' => 'Logout',
     'submit' => 'Submit',
     'resendVerification' => 'Resend Verification code',
     'yes' => 'Yes',

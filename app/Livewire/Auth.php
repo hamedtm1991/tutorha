@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Role;
 use App\Services\V1\Auth\AuthService;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
@@ -73,7 +74,12 @@ class Auth extends Component
             $this->addError('code', $response->getData()->message);
         }
 
-        $this->redirect('/admin/dashboard');
+        if (\Illuminate\Support\Facades\Auth::user()->hasAnyRole(Role::all())) {
+            $this->redirect('/admin/dashboard');
+        } else {
+            $this->redirect('/home');
+        }
+
     }
 
     /**

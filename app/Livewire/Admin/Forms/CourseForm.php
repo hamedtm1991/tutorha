@@ -26,6 +26,9 @@ class CourseForm extends Form
     #[Rule('required|string|min:1|max:10')]
     public string  $time = '';
 
+    #[Rule('required|string|min:1|max:255')]
+    public string  $metaKeywords = '';
+
     #[Rule('required|numeric')]
     public string  $numberOfEpisodes = '';
 
@@ -58,6 +61,7 @@ class CourseForm extends Form
         $this->numberOfEpisodes = $product->options['numberOfEpisodes'] ?? '';
         $this->level = $product->options['level'] ?? '';
         $this->features = $product->options['features'] ?? [];
+        $this->metaKeywords = $product->options['metaKeywords'] ?? [];
         $this->tags = $product->tags->pluck('name', 'id')->toArray();
         $this->tutors = $product->tutors->pluck('name', 'id')->toArray();
     }
@@ -76,6 +80,7 @@ class CourseForm extends Form
         $product->price = $this->price;
         $product->fake_price = empty($this->fakePrice) ? null : $this->fakePrice;
         $options['features'] = $this->features;
+        $options['metaKeywords'] = $this->metaKeywords;
         $options['time'] = $this->time;
         $options['numberOfEpisodes'] = $this->numberOfEpisodes;
         $options['level'] = $this->level;

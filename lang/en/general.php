@@ -103,4 +103,7 @@ return [
     'time' => 'Time',
     'course' => 'Course',
     'group' => 'Group',
+    'metaKeywords' => 'Meta Keywords',
+
+    'home' => 'Home',
 ];

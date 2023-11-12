@@ -2,6 +2,7 @@
 
 return [
     'login' => 'ورود',
+    'logout' => 'خروج',
     'submit' => 'تایید',
     'resendVerification' => 'ارسال مجدد کد تایید',
     'yes' => 'بله',

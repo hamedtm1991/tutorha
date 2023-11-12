@@ -7,6 +7,7 @@ use App\Livewire\Auth;
 use App\Livewire\Landings\Home;
 use App\Livewire\Landings\Course;
 use App\Livewire\Landings\Payment;
+use \App\Livewire\Landings\Landings;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,11 @@ use App\Livewire\Landings\Payment;
 */
 
 Route::get('login', Auth::class)->name('login');
+Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 Route::get('home', Home::class)->name('home');
 Route::get('course/{product}/{title}', Course::class)->name('course');
 Route::get('/images/public/get/{name}/{rand}', [ImageController::class, 'getPublicImage'])->name('getPublicImage');
+Route::get('/landings/{title}', Landings::class)->name('landings');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/images/get/{name}/{rand}', [ImageController::class, 'getImage'])->name('getImage');

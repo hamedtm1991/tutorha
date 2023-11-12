@@ -1,22 +1,32 @@
 <div>
     <!-- ============================ Hero Banner  Start================================== -->
-    <div class="hero_banner image-cover image_bottom" style="background:#f7f8f9 url(assets/img/banner-1.png) no-repeat;">
+    <div class="hero_banner image-cover image_bottom h7_bg">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-9 col-md-10 col-sm-12">
-                    <div class="simple-search-wrap">
-                        <div class="hero_search-2 text-center">
-                            <div class="elsio_tag">طرح تخفیف تابستان آموزشی</div>
-                            <h1 class="banner_title mb-4 font-2">برگزاری محدود طرح تابستان آموزشی با 45درصد تخفیف ویژه</h1>
-                            <p class="font-lg mb-4">چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
-                            <div class="input-group simple_search">
-                                <i class="fa fa-search ico"></i>
-                                <input type="text" class="form-control" placeholder="نام دوره آموزشی...">
-                                <div class="input-group-append">
-                                    <button class="btn theme-bg" type="button">جستجو</button>
-                                </div>
-                            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="simple-search-wrap text-right">
+                        <div class="hero_search-2">
+                            <div class="elsio_tag mb-5" style="font-size: large">یادگیری ساختارمند و اصولی</div>
+                            <h1 class="banner_title mb-4 font-2">در مسیر پیشرفت<br>با دوره های آموزشی توترها<br><span class="light">در کنار شما هستیم...</span></h1>
+                            <p class="mb-4" style="font-size: x-large">آموزش برنامه نویسی (Web programming), بک اند (Backend), ای تی (IT) و ... از مبتدی تا پیشرفته</p>
+{{--                            <div class="input-group simple_search">--}}
+{{--                                <i class="fa fa-search ico"></i>--}}
+{{--                                <input type="text" class="form-control" placeholder="نام دوره آموزش...">--}}
+{{--                                <div class="input-group-append">--}}
+{{--                                    <button class="btn theme-bg" type="button">جستجو</button>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="side_block extream_img">
+                        <div class="list_crs_img">
+                            <img src="{{ asset('storage/home/ic-1.png') }}" class="img-fluid cirl animate-fl-y" alt="circle" />
+                            <img src="{{ asset('storage/home/ic-2.png') }}" class="img-fluid arrow animate-fl-x" alt="arrow" />
+                            <img src="{{ asset('storage/home/ic-3.png') }}" class="img-fluid moon animate-fl-x" alt="moon" />
+                        </div>
+                        <img src="{{ asset('storage/home/side-2.png') }}" class="img-fluid" alt="guy" />
                     </div>
                 </div>
             </div>
@@ -32,15 +42,15 @@
                     <div class="crp_box ovr_top">
                         <div class="row align-items-center m-0">
                             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12">
-                                <div class="crp_tags"><h6>بیش از 700+ مسیر یادگیری آنلاین</h6></div>
+                                <div class="crp_tags"><h6>تهیه دوره ها از بهترین انتشارات ها</h6></div>
                             </div>
                             <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12">
                                 <div class="part_rcp">
                                     <ul>
-                                        <li><div class="crp_img"><img src="assets/img/lg-1.png" class="img-fluid" alt="" /></div></li>
-                                        <li><div class="crp_img"><img src="assets/img/lg-5.png" class="img-fluid" alt="" /></div></li>
-                                        <li><div class="crp_img"><img src="assets/img/lg-6.png" class="img-fluid" alt="" /></div></li>
-                                        <li><div class="crp_img"><img src="assets/img/lg-7.png" class="img-fluid" alt="" /></div></li>
+                                        <li><a href="{{ route('landings', ['title' => 'oreilly']) }}"><div class="crp_img"><img src="{{ asset('storage/home/lg-12.png') }}" class="img-fluid" alt="O’Reilly" /></div></a></li>
+                                        <li><a href="{{ route('landings', ['title' => 'packt']) }}"><div class="crp_img"><img src="{{ asset('storage/home/lg-52.png') }}" class="img-fluid" alt="packt" /></div></a></li>
+                                        <li><a href="{{ route('landings', ['title' => 'wiley']) }}"><div class="crp_img"><img src="{{ asset('storage/home/lg-62.png') }}" class="img-fluid" alt="wiley" /></div></a></li>
+                                        <li><a href="{{ route('landings', ['title' => 'manning']) }}"><div class="crp_img"><img src="{{ asset('storage/home/lg-72.png') }}" class="img-fluid" alt="manning" /></div></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -58,7 +68,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-7 col-md-8">
                     <div class="sec-heading center">
-                        <h3 class="font-2">آموزش های <span class="theme-cl">پرمخاطب</span></h3>
+                        <h3 class="font-2">دوره ها</h3>
                     </div>
                 </div>
             </div>
@@ -95,12 +105,9 @@
                                     <div class="crs_fl_first">
                                         <div class="crs_tutor">
                                             @foreach($model->tutors as $tutor)
-                                                <div class="crs_tutor_thumb"><a href="instructor-detail.html"><img src="{{ url(route('getPublicImage', ['tutor-' . $tutor->id . '-main', rand()])) }}" class="img-fluid circle" alt="" /></a></div><div class="crs_tutor_name"><a href="instructor-detail.html">{{ $tutor->name }}</a></div>
+                                                <div class="crs_tutor_thumb"><a href="instructor-detail.html"><img src="{{ url(route('getPublicImage', ['tutor-' . $tutor->id . '-main', rand()])) }}" class="img-fluid circle" alt="{{ $tutor->name }}" /></a></div><div class="crs_tutor_name"><a href="instructor-detail.html">{{ $tutor->name }}</a></div>
                                             @endforeach
                                         </div>
-                                    </div>
-                                    <div class="crs_fl_last">
-                                        <div class="crs_price"><h2><span class="theme-cl">{{ number_format($model->price) }}</span><span class="currency">تومان</span></h2></div>
                                     </div>
                                 </div>
                             </div>
@@ -109,11 +116,11 @@
                 @endforeach
             </div>
 
-            <div class="row justify-content-center">
-                <div class="col-lg-7 col-md-8 mt-2">
-                    <div class="text-center"><a href="grid-layout-with-sidebar.html" class="btn btn-md theme-bg-light theme-cl">مشاهده سایر دوره ها</a></div>
-                </div>
-            </div>
+{{--            <div class="row justify-content-center">--}}
+{{--                <div class="col-lg-7 col-md-8 mt-2">--}}
+{{--                    <div class="text-center"><a href="grid-layout-with-sidebar.html" class="btn btn-md theme-bg-light theme-cl">مشاهده سایر دوره ها</a></div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
         </div>
     </section>
@@ -130,14 +137,14 @@
             <div class="row align-items-center justify-content-between mb-5">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <div class="lmp_caption">
-                        <h2 class="mb-3 font-2">معرفی بهترین مربیان در شهر شما</h2>
-                        <p>در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+                        <h2 class="mb-3 font-2">نکات قابل توجه</h2>
+                        <p>سعی ما بر این است که یادگیری را برای شما لذت بخش کنیم.</p>
                         <div class="mb-3 ml-4 mr-lg-0 ml-lg-4">
                             <div class="d-flex align-items-center">
                                 <div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
                                     <i class="fas fa-check"></i>
                                 </div>
-                                <h6 class="mb-0 mr-3">دسترسی کاملا مادام العمر</h6>
+                                <h6 class="mb-0 mx-3">دسترسی مادام العمر به قسمت های خریداری شده</h6>
                             </div>
                         </div>
                         <div class="mb-3 ml-4 mr-lg-0 ml-lg-4">
@@ -145,7 +152,7 @@
                                 <div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
                                     <i class="fas fa-check"></i>
                                 </div>
-                                <h6 class="mb-0 mr-3">بیش از 20 منبع قابل دانلود</h6>
+                                <h6 class="mb-0 mx-3">امکان تهیه هر قسمت از دوره به صورت مجزا</h6>
                             </div>
                         </div>
                         <div class="mb-3 ml-4 mr-lg-0 ml-lg-4">
@@ -153,7 +160,7 @@
                                 <div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
                                     <i class="fas fa-check"></i>
                                 </div>
-                                <h6 class="mb-0 mr-3">ارائه مدرک معتبر</h6>
+                                <h6 class="mb-0 mx-3">استفاده از بهترین منابع</h6>
                             </div>
                         </div>
                         <div class="mb-3 ml-4 mr-lg-0 ml-lg-4">
@@ -161,16 +168,15 @@
                                 <div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
                                     <i class="fas fa-check"></i>
                                 </div>
-                                <h6 class="mb-0 mr-3">آزمایشی رایگان 7 روز</h6>
+                                <h6 class="mb-0 mx-3">پشتیبانی</h6>
                             </div>
                         </div>
-                        <div class="text-right mt-4"><a href="#" class="btn btn-md text-light theme-bg">شروع ثبت نام</a></div>
                     </div>
                 </div>
 
                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12">
                     <div class="lmp_thumb">
-                        <img src="assets/img/lmp-2.png" class="img-fluid" alt="" />
+                        <img style="border-radius: 5%" src="{{ asset('storage/home/lmp-21.jpg') }}" class="img-fluid" alt="attentions" />
                     </div>
                 </div>
             </div>
@@ -182,57 +188,17 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <div class="lmp_thumb">
-                        <img src="assets/img/lmp-1.png" class="img-fluid" alt="" />
+                        <img style="border-radius: 5%" src="{{ asset('storage/home/lmp-22.jpg') }}" class="img-fluid" alt="our goal" />
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12">
                     <div class="lmp_caption">
-                        <ol class="list-unstyled p-0">
-                            <li class="d-flex align-items-start my-3 my-md-4">
-                                <div class="rounded-circle p-3 p-sm-4 d-flex align-items-center justify-content-center theme-bg">
-                                    <div class="position-absolute text-white h5 mb-0">1</div>
-                                </div>
-                                <div class="mr-3 mr-md-4">
-                                    <h4 class="font-2">ایجاد حساب کاربری</h4>
-                                    <p>
-                                        برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="d-flex align-items-start my-3 my-md-4">
-                                <div class="rounded-circle p-3 p-sm-4 d-flex align-items-center justify-content-center theme-bg">
-                                    <div class="position-absolute text-white h5 mb-0">2</div>
-                                </div>
-                                <div class="mr-3 mr-md-4">
-                                    <h4 class="font-2">عضویت در باشگاه</h4>
-                                    <p>
-                                        دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="d-flex align-items-start my-3 my-md-4">
-                                <div class="rounded-circle p-3 p-sm-4 d-flex align-items-center justify-content-center theme-bg">
-                                    <div class="position-absolute text-white h5 mb-0">3</div>
-                                </div>
-                                <div class="mr-3 mr-md-4">
-                                    <h4 class="font-2">شروع به یادگیری</h4>
-                                    <p>
-                                        برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="d-flex align-items-start my-3 my-md-4">
-                                <div class="rounded-circle p-3 p-sm-4 d-flex align-items-center justify-content-center theme-bg">
-                                    <div class="position-absolute text-white h5 mb-0">4</div>
-                                </div>
-                                <div class="mr-3 mr-md-4">
-                                    <h4 class="font-2">دریافت مدرک</h4>
-                                    <p>
-                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
-                                    </p>
-                                </div>
-                            </li>
-                        </ol>
+                        <div class="mx-3">
+                            <h2 class="font-2">هدف ما</h2>
+                            <p>
+                                برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -250,25 +216,11 @@
     <div class="clearfix"></div>
     <!-- ============================ article End ================================== -->
 
-    <!-- ============================ Call To Action ================================== -->
-    <section class="theme-bg call_action_wrap-wrap">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <div class="call_action_wrap">
-                        <div class="call_action_wrap-head">
-                            <h3 class="font-2">آیا سوالی دارید؟</h3>
-                            <span>ما به شما کمک خواهیم کرد تا شغل و رشد خود را افزایش دهید.</span>
-                        </div>
-                        <a href="#" class="btn btn-call_action_wrap">امروز با ما تماس بگیرید</a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ============================ Call To Action End ================================== -->
-
     <a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
 </div>
+
+@push('seo')
+    <meta name="description" content="آموزش برنامه نویسی (Web programming), بک اند (Backend), ای تی (IT) و ... از مبتدی تا پیشرفته">
+    <meta name="keywords" content="backend, نرم افزار ,بک اند ,کامپیوتر  ,برنامه نویسی ,آموزش">
+    <title>خانه</title>
+@endpush

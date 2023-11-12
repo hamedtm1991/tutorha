@@ -79,6 +79,13 @@
                                 @error('form.level') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
                         </div>
+                        <div class="form-group smalls">
+                            <label class="mb-2">{{ __('general.metaKeywords') }}</label>
+                            <input wire:model="form.metaKeywords" type="text" class="form-control">
+                            <div class="mt-2">
+                                @error('form.metaKeywords') <span class="error text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
                         <livewire:widgets.multipleinputs title="features" placeHolder="feature" wire:model="form.features" />
                         <div class="mt-2">
                             @error('form.features.*') <span class="error text-danger">{{ $message }}</span> @enderror

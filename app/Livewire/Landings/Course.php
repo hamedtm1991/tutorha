@@ -4,8 +4,10 @@ namespace App\Livewire\Landings;
 
 use App\Models\Episode;
 use App\Models\Product;
+use App\Models\UserWatchDetail;
 use App\Services\V1\Wallet\Wallet;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Course extends Component
@@ -16,7 +18,7 @@ class Course extends Component
     public array $tags = [];
     public int $i = 8;
 
-    protected $listeners = ['pay'];
+    protected $listeners = ['pay', 'end'];
 
     /**
      * @param Episode $episode
@@ -48,8 +50,31 @@ class Course extends Component
         return $this->redirect(Route('login'));
     }
 
+    /**
+     * @param string $productId
+     * @param string $episodeId
+     * @return void
+     */
+    public function end(string $productId, string $episodeId)
+    {
+        if (Auth::check()) {
+            $watchDetail = UserWatchDetail::where('product_id', $productId)->where('episode_id', $episodeId)->where('user_id', Auth::id())->first();
+
+            if (!$watchDetail) {
+                $watchDetail = new UserWatchDetail();
+                $watchDetail->user_id = Auth::id();
+                $watchDetail->product_id = $productId;
+                $watchDetail->episode_id = $episodeId;
+                $watchDetail->completed = true;
+                $watchDetail->save();
+            }
+        }
+    }
+
     public function render()
     {
-        return view('livewire.landings.course')->layout('components.layouts.video');
+        $watchDetail = UserWatchDetail::where('user_id', Auth::id())->where('product_id', $this->product->id)->get();
+        $watchDetail = $watchDetail->pluck('completed', 'episode_id')->toArray();
+        return view('livewire.landings.course', compact('watchDetail'))->layout('components.layouts.video');
     }
 }

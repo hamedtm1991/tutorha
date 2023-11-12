@@ -104,4 +104,7 @@ return [
     'time' => 'زمان',
     'course' => 'دوره',
     'group' => 'گروه',
+    'metaKeywords' => 'Meta Keywords',
+
+    'home' => 'خانه',
 ];
