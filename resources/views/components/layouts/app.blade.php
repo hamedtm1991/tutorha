@@ -8,6 +8,15 @@
 
     <!-- Custom CSS -->
     @vite(['resources/css/app.css'])
+    <style>
+        .visibledevice {display:none;}
+        .visibledesktop {display:block;}
+
+        @media (max-width : 1400px) {
+            .visibledevice {display:block;}
+            .visibledesktop {display:none;}
+        }
+    </style>
     @stack('styles')
 
 </head>

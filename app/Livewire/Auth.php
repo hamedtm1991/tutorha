@@ -74,10 +74,12 @@ class Auth extends Component
             $this->addError('code', $response->getData()->message);
         }
 
-        if (\Illuminate\Support\Facades\Auth::user()->hasAnyRole(Role::all())) {
-            $this->redirect('/admin/dashboard');
-        } else {
-            $this->redirect('/home');
+        if (\Illuminate\Support\Facades\Auth::check()) {
+            if (\Illuminate\Support\Facades\Auth::user()->hasAnyRole(Role::all())) {
+                $this->redirect('/admin/dashboard');
+            } else {
+                $this->redirect('/home');
+            }
         }
 
     }

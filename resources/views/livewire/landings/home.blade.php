@@ -9,19 +9,12 @@
                             <div class="elsio_tag mb-5" style="font-size: large">یادگیری ساختارمند و اصولی</div>
                             <h1 class="banner_title mb-4 font-2">در مسیر پیشرفت<br>با دوره های آموزشی توترها<br><span class="light">در کنار شما هستیم...</span></h1>
                             <p class="mb-4" style="font-size: x-large">آموزش برنامه نویسی (Web programming), بک اند (Backend), ای تی (IT) و ... از مبتدی تا پیشرفته</p>
-{{--                            <div class="input-group simple_search">--}}
-{{--                                <i class="fa fa-search ico"></i>--}}
-{{--                                <input type="text" class="form-control" placeholder="نام دوره آموزش...">--}}
-{{--                                <div class="input-group-append">--}}
-{{--                                    <button class="btn theme-bg" type="button">جستجو</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="side_block extream_img">
-                        <div class="list_crs_img">
+                        <div class="list_crs_img visibledesktop">
                             <img src="{{ asset('storage/home/ic-1.png') }}" class="img-fluid cirl animate-fl-y" alt="circle" />
                             <img src="{{ asset('storage/home/ic-2.png') }}" class="img-fluid arrow animate-fl-x" alt="arrow" />
                             <img src="{{ asset('storage/home/ic-3.png') }}" class="img-fluid moon animate-fl-x" alt="moon" />
@@ -188,15 +181,18 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <div class="lmp_thumb">
-                        <img style="border-radius: 5%" src="{{ asset('storage/home/lmp-22.jpg') }}" class="img-fluid" alt="our goal" />
+                        <img style="border-radius: 5%" src="{{ asset('storage/home/lmp-24.jpg') }}" class="img-fluid" alt="our goal" />
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12">
                     <div class="lmp_caption">
-                        <div class="mx-3">
+                        <div class="mx-3" style="text-align: justify">
                             <h2 class="font-2">هدف ما</h2>
-                            <p>
-                                برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.
+                            <p style="font-size: large">
+                                از آن جا که بسیاری از برنامه‌نویسان دانش خود را به صورت تجربی کسب کرده‌اند و  همینطور برخی از منابع نیز انتقال دانش‌ را فقط به صورت تجربی در نظر گرفته‌اند، تیم ما قصد دارد آموزش‌هایی با کیفیت، اصولی و با استفاده از بهترین منابع به روز دنیا در سطوح مختلف آموزشی تهیه نماید.
+                            </p>
+                            <p style="font-size: large">
+                                امیدواریم در مسیر حرفه‌ای شدن، راه را برای شما هموارتر کنیم.
                             </p>
                         </div>
                     </div>
