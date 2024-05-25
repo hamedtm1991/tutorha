@@ -1,9 +1,9 @@
-FROM php:8.1-fpm
+FROM php:8.3-fpm
 
 # Arguments defined in docker-compose.yml
 ARG user
 ARG uid
-ARG NODE_VERSION=19
+ARG NODE_VERSION=20
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \

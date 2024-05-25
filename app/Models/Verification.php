@@ -55,7 +55,7 @@ class Verification extends Model
 
         $user->verification()->create([
             'code' => $code,
-            'expire_at' => now()->addMinutes(env('VERIFICATION_CODE_EXPIRE_TIME_IN_MINUTES') ?? 2)
+            'expire_at' => now()->addMinutes((int) env('VERIFICATION_CODE_EXPIRE_TIME_IN_MINUTES', 2))
         ]);
 
         return $code;

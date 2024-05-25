@@ -1,0 +1,10 @@
+{
+    "platform": "laravel",
+    "app": "tutorha",
+    "laravel": {
+        "phpVersion": "8.3",
+        "buildAssets": true,
+        "configCache": true,
+        "routeCache": true
+    }
+}
