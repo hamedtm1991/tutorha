@@ -21,7 +21,7 @@ class Courses extends Component
     use ComponentTools;
     use DeleteFunction;
 
-    protected $listeners = ['delete', 'update', 'deleteImage', 'status'];
+    protected $listeners = ['delete', 'update', 'deleteImage', 'status', 'isFinished'];
     public array $searchItems = ['id', 'name'];
     public array $searchItemTutors = ['name'];
     public CourseForm $form;
@@ -45,6 +45,22 @@ class Courses extends Component
     {
         $this->authorize('update', Product::class);
         $course->status = !$course->status;
+        if ($course->save()) {
+            $this->dispatch('toast', type: 'success', message: __('general.savedSuccessfully'));
+        } else {
+            $this->dispatch('toast', type: 'error', message: __('general.somethingWrong'));
+        }
+    }
+
+    /**
+     * @param Product $course
+     * @return void
+     * @throws AuthorizationException
+     */
+    public function isFinished(Product $course): void
+    {
+        $this->authorize('update', Product::class);
+        $course->is_finished = !$course->is_finished;
         if ($course->save()) {
             $this->dispatch('toast', type: 'success', message: __('general.savedSuccessfully'));
         } else {

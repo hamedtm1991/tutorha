@@ -122,6 +122,7 @@
                                         <th scope="col">{{ __('general.createdAt') }}</th>
                                         <th scope="col">{{ __('general.updatedAt') }}</th>
                                         <th scope="col">{{ __('general.status') }}</th>
+                                        <th scope="col">{{ __('general.isFinished') }}</th>
                                         <th scope="col">{{ __('general.options') }}</th>
                                     </tr>
                                     </thead>
@@ -139,6 +140,9 @@
                                             <td>{{ localDate($model->updated_at) }}</td>
                                             <td onclick="getConfirm('admin.courses', 'status', {{ $model->id }},  '{{ __('general.sure') }}', '', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')">
                                                 <i class="{{ $model->status ? 'fa fa-check text-success' : 'fa fa-times text-danger' }}"></i>
+                                            </td>
+                                            <td onclick="getConfirm('admin.courses', 'isFinished', {{ $model->id }},  '{{ __('general.sure') }}', '', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')">
+                                                <i class="{{ $model->is_finished ? 'fa fa-check text-success' : 'fa fa-times text-danger' }}"></i>
                                             </td>
                                             <td>
                                                 <div class="dropdown show">

@@ -98,6 +98,7 @@ return [
     'tutors' => 'استاد ها',
     'tutorError' => 'نام و شرح الزامی است',
     'status' => 'وضعیت',
+    'isFinished' => 'اتمام',
     'search' => 'جستجو',
     'link' => 'لینک',
     'links' => 'لینک ها',
@@ -105,6 +106,8 @@ return [
     'course' => 'دوره',
     'group' => 'گروه',
     'metaKeywords' => 'Meta Keywords',
+    'finished' => 'اتمام',
+    'notFinished' => 'در حال ضبط',
 
     'home' => 'خانه',
 ];

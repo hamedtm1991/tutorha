@@ -107,6 +107,7 @@
                                     <li><i class="ti-time"></i>{{ __('general.episodes') }}:<strong>{{ $product->options['numberOfEpisodes'] }}</strong></li>
                                     <li><i class="ti-time"></i>{{ __('general.courseTime') }}:<strong>{{ $product->options['time'] }}</strong></li>
                                     <li><i class="ti-tag"></i>{{ __('general.level') }}:<strong>{{ __('general.' . $product->options['level']) }}</strong></li>
+                                    <li><i class="ti-check"></i>{{ __('general.status') }}:<strong>{{ $product->is_finished ? __('general.finished') : __('general.notFinished') }}</strong></li>
                                 </ul>
                             </div>
                             <div class="eld mb-3">

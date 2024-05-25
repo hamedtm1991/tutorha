@@ -34,7 +34,7 @@ function getVideoUrl(string $link, Episode $episode)
         $explode = explode('-', $link);
         $name = $explode[0] ?? '';
         $numberOfEpisode = $explode[1] ?? 0;
-        $response = Http::asForm()->post('http://192.168.1.5:8000/api/url/video', [
+        $response = Http::asForm()->post(env('DL_SERVER_ADDRESS') . '/api/url/video', [
             'secret' => bcrypt(md5(env('VIDEO_SIGN_SECRET_KEY'))),
             'name' => $name,
             'episode' => $numberOfEpisode,

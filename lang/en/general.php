@@ -97,6 +97,7 @@ return [
     'tutors' => 'Tutors',
     'tutorError' => 'Name and description are required',
     'status' => 'Status',
+    'isFinished' => 'Is finished',
     'search' => 'Search',
     'link' => 'Link',
     'links' => 'Links',
@@ -104,6 +105,8 @@ return [
     'course' => 'Course',
     'group' => 'Group',
     'metaKeywords' => 'Meta Keywords',
+    'finished' => 'Finished',
+    'notFinished' => 'In process',
 
     'home' => 'Home',
 ];

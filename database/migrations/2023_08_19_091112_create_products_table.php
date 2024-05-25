@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('price');
             $table->unsignedBigInteger('fake_price')->nullable();
             $table->json('options')->nullable();
+            $table->boolean('is_finished')->default(0);
             $table->boolean('status')->default(0);
             $table->timestamps();
         });
