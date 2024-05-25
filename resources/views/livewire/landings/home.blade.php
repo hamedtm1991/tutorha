@@ -15,11 +15,11 @@
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="side_block extream_img">
                         <div class="list_crs_img visibledesktop">
-                            <img src="{{ asset('storage/home/ic-1.png') }}" class="img-fluid cirl animate-fl-y" alt="circle" />
-                            <img src="{{ asset('storage/home/ic-2.png') }}" class="img-fluid arrow animate-fl-x" alt="arrow" />
-                            <img src="{{ asset('storage/home/ic-3.png') }}" class="img-fluid moon animate-fl-x" alt="moon" />
+                            <img src="{{ secure_asset('storage/home/ic-1.png') }}" class="img-fluid cirl animate-fl-y" alt="circle" />
+                            <img src="{{ secure_asset('storage/home/ic-2.png') }}" class="img-fluid arrow animate-fl-x" alt="arrow" />
+                            <img src="{{ secure_asset('storage/home/ic-3.png') }}" class="img-fluid moon animate-fl-x" alt="moon" />
                         </div>
-                        <img src="{{ asset('storage/home/side-2.png') }}" class="img-fluid" alt="guy" />
+                        <img src="{{ secure_asset('storage/home/side-2.png') }}" class="img-fluid" alt="guy" />
                     </div>
                 </div>
             </div>
@@ -40,10 +40,10 @@
                             <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12">
                                 <div class="part_rcp">
                                     <ul>
-                                        <li><a href="{{ route('landings', ['title' => 'oreilly']) }}"><div class="crp_img"><img src="{{ asset('storage/home/lg-12.png') }}" class="img-fluid" alt="O’Reilly" /></div></a></li>
-                                        <li><a href="{{ route('landings', ['title' => 'packt']) }}"><div class="crp_img"><img src="{{ asset('storage/home/lg-52.png') }}" class="img-fluid" alt="packt" /></div></a></li>
-                                        <li><a href="{{ route('landings', ['title' => 'wiley']) }}"><div class="crp_img"><img src="{{ asset('storage/home/lg-62.png') }}" class="img-fluid" alt="wiley" /></div></a></li>
-                                        <li><a href="{{ route('landings', ['title' => 'manning']) }}"><div class="crp_img"><img src="{{ asset('storage/home/lg-72.png') }}" class="img-fluid" alt="manning" /></div></a></li>
+                                        <li><a href="{{ route('landings', ['title' => 'oreilly']) }}"><div class="crp_img"><img src="{{ secure_asset('storage/home/lg-12.png') }}" class="img-fluid" alt="O’Reilly" /></div></a></li>
+                                        <li><a href="{{ route('landings', ['title' => 'packt']) }}"><div class="crp_img"><img src="{{ secure_asset('storage/home/lg-52.png') }}" class="img-fluid" alt="packt" /></div></a></li>
+                                        <li><a href="{{ route('landings', ['title' => 'wiley']) }}"><div class="crp_img"><img src="{{ secure_asset('storage/home/lg-62.png') }}" class="img-fluid" alt="wiley" /></div></a></li>
+                                        <li><a href="{{ route('landings', ['title' => 'manning']) }}"><div class="crp_img"><img src="{{ secure_asset('storage/home/lg-72.png') }}" class="img-fluid" alt="manning" /></div></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -169,7 +169,7 @@
 
                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12">
                     <div class="lmp_thumb">
-                        <img style="border-radius: 5%" src="{{ asset('storage/home/lmp-21.jpg') }}" class="img-fluid" alt="attentions" />
+                        <img style="border-radius: 5%" src="{{ secure_asset('storage/home/lmp-21.jpg') }}" class="img-fluid" alt="attentions" />
                     </div>
                 </div>
             </div>
@@ -181,7 +181,7 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <div class="lmp_thumb">
-                        <img style="border-radius: 5%" src="{{ asset('storage/home/lmp-24.jpg') }}" class="img-fluid" alt="our goal" />
+                        <img style="border-radius: 5%" src="{{ secure_asset('storage/home/lmp-24.jpg') }}" class="img-fluid" alt="our goal" />
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12">

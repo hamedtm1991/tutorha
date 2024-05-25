@@ -7,7 +7,7 @@
         <nav id="navigation" class="navigation navigation-landscape">
             <div class="nav-header">
                 <a class="nav-brand" href="{{ route('home') }}">
-                    <img src="{{ asset('storage/logo.png') }}" class="logo" alt="" />
+                    <img src="{{ secure_asset('storage/logo.png') }}" class="logo" alt="" />
                 </a>
                 <div class="nav-toggle"></div>
                 <div class="mobile_nav">

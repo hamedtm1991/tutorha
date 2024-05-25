@@ -1,5 +1,5 @@
 <h1 class="mb-5">مننیگ (Manning) لباس های رنگارنگ برای هر سلیقه!</h1>
-<img height="500px" width="800px" src="{{ asset('storage/landings/manning-1.png') }}" class="img-fluid mb-3" alt="manning logo">
+<img height="500px" width="800px" src="{{ secure_asset('storage/landings/manning-1.png') }}" class="img-fluid mb-3" alt="manning logo">
 <div style="font-size: x-large; text-align: justify">
     <p>
         مننیگ (Manning) انتشاراتی برای متخصصان نرم افزار، مهندسان، معماران، مدیران و تمام کسانی که به صورت حرفه‌ای در
@@ -9,7 +9,7 @@
         این انتشارات کتاب‌های خود را به صورت آنلاین و چاپی ارائه می‌دهد.
     </p>
 </div>
-<img height="500px" width="800px" src="{{ asset('storage/landings/manning-2.jpg') }}" class="img-fluid mb-3 img-fluid" alt="manning books">
+<img height="500px" width="800px" src="{{ secure_asset('storage/landings/manning-2.jpg') }}" class="img-fluid mb-3 img-fluid" alt="manning books">
 <div style="font-size: x-large; text-align: justify" class="mt-3">
     <p>
         طرح کتاب‌های مننیگ (Manning) برگرفته از لباس‌های مناطق مختلف جهان می‌باشد چرا که این انتشارت معتقد است که در دو
