@@ -6,5 +6,11 @@
         "buildAssets": true,
         "configCache": true,
         "routeCache": true
-    }
+    },
+    "disks": [
+        {
+            "name": "data",
+            "mountTo": "storage"
+        }
+    ]
 }
