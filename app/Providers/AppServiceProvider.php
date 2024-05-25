@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Response as status;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        if(config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
+
         Response::macro('ok', function ($message) {
             return response()->json([
                 'status' => true,
