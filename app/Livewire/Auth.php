@@ -78,7 +78,7 @@ class Auth extends Component
             if (\Illuminate\Support\Facades\Auth::user()->hasAnyRole(Role::all())) {
                 $this->redirect('/admin/dashboard');
             } else {
-                $this->redirect('/home');
+                $this->redirect('/');
             }
         }
 
