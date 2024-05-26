@@ -47,7 +47,7 @@ class Sms implements Gateway
     private function notify(User $user)
     {
         $code = Verification::generateCode($user);
-//        $user->notify(new \App\Notifications\V1\Otp($code, $user->mobile));
+        $user->notify(new \App\Notifications\V1\Otp($code, $user->mobile));
 
         return response()->json([
             'status' => true,
