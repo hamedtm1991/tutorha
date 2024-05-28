@@ -54,7 +54,7 @@ window.getConfirm = function (action, event, id, title, text, confirmButtonText,
 };
 
 window.dispatch = function (action, event, id, optionalParameter){
-    Livewire.dispatchTo('', action, event, [id, optionalParameter])
+    Livewire.dispatchTo(action, event, [id, optionalParameter])
 };
 
 window.addEventListener('closingModal', event => {

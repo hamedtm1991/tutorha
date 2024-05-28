@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         player.on('ended', function() {
-            Livewire.dispatchTo('', 'landings.course', 'end', [player.getAttribute('productid'), player.getAttribute('episodeid')])
+            Livewire.dispatchTo('landings.course', 'end', [player.getAttribute('productid'), player.getAttribute('episodeid')])
         });
 
         // player.currentTime(10);
