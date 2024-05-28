@@ -47,7 +47,7 @@ window.getConfirm = function (action, event, id, title, text, confirmButtonText,
     }).then((result) => {
         if (result.isConfirmed) {
             if (action) {
-                Livewire.dispatchTo('', action, event, [id], optionalParameter)
+                Livewire.dispatchTo(action, event, [id], optionalParameter)
             }
         }
     });
