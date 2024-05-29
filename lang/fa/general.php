@@ -108,6 +108,7 @@ return [
     'metaKeywords' => 'Meta Keywords',
     'finished' => 'اتمام',
     'notFinished' => 'در حال ضبط',
+    'alreadyPaid' => 'قبلا پرداخت شده است',
 
     'home' => 'خانه',
 ];

@@ -3,6 +3,7 @@
 namespace App\Livewire\Landings;
 
 use App\Models\Episode;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\UserWatchDetail;
 use App\Services\V1\Wallet\Wallet;
@@ -26,12 +27,17 @@ class Course extends Component
      */
     public function pay(Episode $episode): void
     {
-        $response = Wallet::payWithoutCart($episode);
+        $order = $episode->orders()->where('status', Order::STATUSPAID)->where('user_id', Auth::id())->first();
+        if (is_null($order)) {
+            $response = Wallet::payWithoutCart($episode);
 
-        if ($response['status']) {
-            $this->dispatch('toast', type: 'success', message: __('general.successfulPurchase'));
+            if ($response['status']) {
+                $this->dispatch('toast', type: 'success', message: __('general.successfulPurchase'));
+            } else {
+                $this->dispatch('toast', type: 'error', message: $response['error']);
+            }
         } else {
-            $this->dispatch('toast', type: 'error', message: $response['error']);
+            $this->dispatch('toast', type: 'error', message: __('general.alreadyPaid'));
         }
     }
 

@@ -107,6 +107,7 @@ return [
     'metaKeywords' => 'Meta Keywords',
     'finished' => 'Finished',
     'notFinished' => 'In process',
+    'alreadyPaid' => 'Already paid',
 
     'home' => 'Home',
 ];
