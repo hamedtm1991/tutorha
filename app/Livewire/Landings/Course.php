@@ -27,8 +27,7 @@ class Course extends Component
      */
     public function pay(Episode $episode): void
     {
-        $order = $episode->orders()->where('status', Order::STATUSPAID)->where('user_id', Auth::id())->first();
-        if (is_null($order)) {
+        if ($episode->checkOrder()) {
             $response = Wallet::payWithoutCart($episode);
 
             if ($response['status']) {

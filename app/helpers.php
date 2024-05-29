@@ -40,6 +40,8 @@ function getVideoUrl(string $link, Episode $episode)
             'episode' => $numberOfEpisode,
         ]);
 
+        dd($response);
+
         if ($response->status() === status::HTTP_OK) {
             return $response->getBody()->getContents();
         }
