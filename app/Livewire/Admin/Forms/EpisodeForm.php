@@ -17,7 +17,7 @@ class EpisodeForm extends Form
     #[Rule('required|string|min:1|max:50')]
     public string|null  $time = '';
 
-    #[Rule(['form.links.*' => 'string|min:3|max:255',])]
+    #[Rule(['links.*' => 'string|min:3|max:255',])]
     public array  $links = [];
 
     #[Rule('image|max:1024')] // 1MB Max
