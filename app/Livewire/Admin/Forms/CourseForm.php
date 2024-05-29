@@ -35,7 +35,7 @@ class CourseForm extends Form
     #[Rule('required|string|in:beginner,intermediate,advanced')]
     public string  $level = '';
 
-    #[Rule(['form.features.*' => 'string|min:10|max:50',])]
+    #[Rule(['features.*' => 'string|min:10|max:50',])]
     public array  $features = [];
 
     public array $tags = [];
