@@ -6,7 +6,7 @@ use App\Models\Episode;
 use App\Models\Product;
 use App\Models\UserWatchDetail;
 use App\Services\V1\Wallet\Wallet;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -38,7 +38,7 @@ class Course extends Component
     public function mount(Product $product)
     {
         $this->product = $product;
-        $this->episodes = Episode::where('product_id', $this->product->id)->get()->groupBy('group');
+        $this->episodes = collect(Episode::where('product_id', $this->product->id)->get()->groupBy('group')->all());
         $this->tags = $product->tags->pluck('name')->toArray();
     }
 
