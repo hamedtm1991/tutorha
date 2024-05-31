@@ -27,7 +27,7 @@ class Course extends Component
      */
     public function pay(Episode $episode): void
     {
-        if ($episode->checkOrder()) {
+        if (!$episode->checkOrder()) {
             $response = Wallet::payWithoutCart($episode);
 
             if ($response['status']) {

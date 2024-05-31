@@ -38,6 +38,7 @@ function getVideoUrl(string $link, Episode $episode)
             'secret' => bcrypt(md5(env('VIDEO_SIGN_SECRET_KEY'))),
             'name' => $name,
             'episode' => $numberOfEpisode,
+            'ip' => \Illuminate\Support\Facades\Request::ip()
         ]);
 
         if ($response->status() === status::HTTP_OK) {
