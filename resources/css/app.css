@@ -2083,6 +2083,8 @@ nav a {
 .header {
     background:#fff;
     z-index:6;
+    position: sticky;
+    top:0;
 }
 
 .header-top {
@@ -3127,16 +3129,24 @@ span.esli_vd {
 }
 .crs_grid_thumb {
     position: relative;
-    padding: 10px;
-    width: 100%;
     background: #ffffff;
     min-height: 150px;
+    height:300px;
+    width:100%;
+    object-fit: cover;
 }
 .crs_grid_thumb .crs_detail_link {
     height: auto;
     display: block;
     position: relative;
 }
+
+.crs_grid_thumb img {
+    height:300px;
+    width:100%;
+    object-fit: contain;
+}
+
 .crs_video_ico {
     width: 36px;
     height: 36px;
@@ -3286,6 +3296,12 @@ span.esli_vd {
     display: block;
     position: relative;
 }
+
+.crs_tutor_thumb img {
+    height:30px;
+    width:30px;
+}
+
 .crs_tutor_name {
     padding-right: 6px;
 }

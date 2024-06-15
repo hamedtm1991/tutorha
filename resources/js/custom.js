@@ -185,11 +185,11 @@ $(function() {
 	$(window).on('scroll', function() {
 		var scroll = $(window).scrollTop();
 
-		if (scroll >= 50) {
-			$(".header").addClass("header-fixed");
-		} else {
-			$(".header").removeClass("header-fixed");
-		}
+		// if (scroll >= 50) {
+		// 	$(".header").addClass("header-fixed");
+		// } else {
+		// 	$(".header").removeClass("header-fixed");
+		// }
 	});
 
 	// Property Slide

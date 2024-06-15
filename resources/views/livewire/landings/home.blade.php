@@ -58,22 +58,22 @@
     <!-- ============================ Latest Cources Start ================================== -->
     <section>
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-start">
                 <div class="col-lg-7 col-md-8">
-                    <div class="sec-heading center">
+                    <div class="sec-heading">
                         <h3 class="font-2">دوره ها</h3>
                     </div>
                 </div>
             </div>
 
-            <div class="row justify-content-center">
+            <div class="row justify-content-start">
                 <!-- Single Grid -->
                 @foreach($data as $model)
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                         <div class="crs_grid">
                             <div class="crs_grid_thumb">
                                 <a href="{{ route('course', [$model->id, str_replace(' ', '-', $model->title)]) }}" class="crs_detail_link">
-                                    <img src="{{ url(route('getPublicImage', ['Product-' . $model->id . '-main', rand()])) }}" class="img-fluid rounded" alt="{{ $model->title }}" />
+                                    <img src="{{ url(route('getPublicImage', ['Product-' . $model->id . '-main', rand()])) }}" class="rounded" alt="{{ $model->title }}" />
                                 </a>
                             </div>
                             <div class="crs_grid_caption">
@@ -84,7 +84,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                <div class="crs_title"><h4><a href="{{ route('course', [$model->id, str_replace(' ', '-', $model->title)]) }}" class="crs_title_link">{{ $model->title }}</a></h4></div>
+                                <div class="crs_title text-truncate"><h4><a href="{{ route('course', [$model->id, str_replace(' ', '-', $model->title)]) }}" class="crs_title_link">{{ $model->title }}...</a></h4></div>
                                 <div class="crs_info_detail">
                                     <ul>
                                         <li><i class="fa fa-clock text-danger"></i><span>{{ $model->options['time'] }}</span></li>
