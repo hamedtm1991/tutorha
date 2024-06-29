@@ -31,6 +31,12 @@
                             </div>
                         </div>
 
+                        <div class="col-lg-4 col-md-4">
+                            <div class="footer_widget">
+                                <a referrerpolicy='origin' target='_blank' href='https://trustseal.enamad.ir/?id=503408&Code=HUBwTXBelXsCr4917bBKffOHCkBnp6hI'><img referrerpolicy='origin' src='https://trustseal.enamad.ir/logo.aspx?id=503408&Code=HUBwTXBelXsCr4917bBKffOHCkBnp6hI' alt='' style='cursor:pointer' code='HUBwTXBelXsCr4917bBKffOHCkBnp6hI'></a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
