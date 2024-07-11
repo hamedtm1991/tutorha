@@ -15,18 +15,17 @@ class CardToCard implements Gateway
      * @param int $price
      * @param string $resNumber
      * @param string $returnUrl
-     * @return string
+     * @return void
      */
-    public function pay(int $price, string $resNumber, string $returnUrl): string
-    {
-        return true;
-    }
+    public function pay(int $price, string $resNumber, string $returnUrl): void
+    {}
 
     /**
      * @param Payment $payment
+     * @param $info
      * @return bool
      */
-    public function confirm(Payment $payment): bool
+    public function confirm(Payment $payment, $info): bool
     {
         if ($payment->status === Payment::STATUSUNPAID) {
             return DB::transaction(function () use ($payment) {
@@ -60,8 +59,8 @@ class CardToCard implements Gateway
             $payment->sign = $payment->sign();
 
             if ($payment->save()) {
-//                $payment->user->notify(new SmsSystem(__('sms.paymentFailure'), 'force'));
-//                $payment->user->notify(new MailSystem(__('email.cardToCardFailed'), 'force'));
+                $payment->user->notify(new SmsSystem(__('sms.paymentFailure'), 'force'));
+                $payment->user->notify(new MailSystem(__('email.cardToCardFailed'), 'force'));
                 return true;
             }
         }
