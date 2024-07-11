@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="text-center mt-5">
-                <button class="btn btn-success">{{ __('buttons.pay') }}</button>
+                <button type="submit" class="btn btn-success">{{ __('buttons.pay') }}</button>
             </div>
         </form>
     </section>
