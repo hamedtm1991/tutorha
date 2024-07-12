@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Wallet\Wallet;
+use App\Livewire\Auth;
 use App\Models\Payment;
 use App\Models\WalletTransaction;
 use App\Services\V1\Payment\PaymentService;
@@ -53,6 +54,6 @@ class PaymentController extends Controller
             $respond = $paymentService->confirm($payment, $info);
         }
 
-        return redirect()->route('home');
+        return redirect()->route('transactions');
     }
 }

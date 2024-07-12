@@ -10,12 +10,11 @@
                             <table class="table dash_list">
                                 <thead>
                                 <tr>
-                                    <th scope="col">#</th>
                                     <th scope="col">{{ __('general.type') }}</th>
                                     <th scope="col">{{ __('general.resnumber') }}</th>
                                     <th scope="col">{{ __('general.value') }}</th>
                                     <th scope="col">{{ __('general.status') }}</th>
-                                    <th scope="col">{{ __('general.transfer') }}</th>
+                                    <th scope="col">{{ __('general.createdAt') }}</th>
                                     <th scope="col">{{ __('general.detail') }}</th>
                                 </tr>
                                 </thead>
@@ -31,12 +30,11 @@
                                         }
                                     @endphp
                                     <tr>
-                                        <th scope="row">{{ $model->id }}</th>
                                         <td class="bg-{{ $model->type == \App\Models\WalletTransaction::TYPE_INCREASE ? 'success' : 'danger'  }}">{{ $model->type == \App\Models\WalletTransaction::TYPE_INCREASE ? __('general.increase') : __('general.decrease') }}</td>
                                         <td>{{ $model->resnumber }}</td>
                                         <td>{{ number_format($model->value) . ' ' . __('general.toman') }}</td>
                                         <td class="bg-{{ $statusColor }}">{{ __('general.' . $model->status) }}</td>
-                                        <td>{{ empty($model->transfer_from_id) ? '-' : __('general.from') . $model->transferFrom->name . ' (' . $model->transfer_from_id . ') ' . __('general.to') . $model->transferTo->name . ' (' . $model->transfer_to_id . ')' }}</td>
+                                        <td>{{ localDate($model->created_at) }}</td>
                                         <td>
                                             @php($orderId = $model->order_id ? ' / ' . __('general.orderId') . ': ' : '')
                                             {{ __('general.' . $model->detail) . $orderId . $model->order_id  }}
