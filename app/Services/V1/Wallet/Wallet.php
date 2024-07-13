@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static Collection cardToCard(Payment $payment);
  * @method static Collection increaseByAdmin(int $value, int $userId, string $message);
  * @method static Collection decreaseByAdmin(int $value, int $userId, string $message);
+ * @method static Collection increaseByBank(Payment $payment);
  * @method static Collection pay();
  * @method static Collection payWithoutCart(Episode $episode);
  */

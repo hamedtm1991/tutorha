@@ -18,7 +18,8 @@ class WalletServiceProvider extends ServiceProvider
                 new IncreaseByAdminBuilder(),
                 new DecreaseByAdminBuilder(),
                 new PayBuilder(),
-                new PayWithoutCartBuilder()
+                new PayWithoutCartBuilder(),
+                new IncreaseByBankBuilder()
             );
         });
     }

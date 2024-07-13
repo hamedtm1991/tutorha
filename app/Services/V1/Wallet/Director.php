@@ -19,6 +19,7 @@ class Director
     private Builder $decreaseByAdmin;
     private Builder $pay;
     private Builder $payWithoutCart;
+    private Builder $increaseByBank;
 
     /**
      * @param Builder $transfer
@@ -28,6 +29,8 @@ class Director
      * @param Builder $increaseByAdmin
      * @param Builder $decreaseByAdmin
      * @param Builder $pay
+     * @param Builder $payWithoutCart
+     * @param Builder $increaseByBank
      */
     public function __construct(Builder $transfer,
                                 Builder $rejectTransfer,
@@ -37,6 +40,7 @@ class Director
                                 Builder $decreaseByAdmin,
                                 Builder $pay,
                                 Builder $payWithoutCart,
+                                Builder $increaseByBank,
                                 ) {
         $this->transfer = $transfer;
         $this->rejectTransfer = $rejectTransfer;
@@ -46,6 +50,7 @@ class Director
         $this->decreaseByAdmin = $decreaseByAdmin;
         $this->pay = $pay;
         $this->payWithoutCart = $payWithoutCart;
+        $this->increaseByBank = $increaseByBank;
     }
 
     /**
@@ -76,6 +81,15 @@ class Director
     public function increaseByAdmin(int $value, int $userId, string $message): array
     {
         return $this->increaseByAdmin->execute(['value' => $value, 'user-id' => $userId, 'description' => $message]);
+    }
+
+    /**
+     * @param Payment $payment
+     * @return array
+     */
+    public function increaseByBank(Payment $payment): array
+    {
+        return $this->increaseByBank->execute(['value' => (int) $payment->price, 'status' => $payment->status, 'userId' => $payment->user_id]);
     }
 
     /**
