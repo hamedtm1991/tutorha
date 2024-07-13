@@ -29,7 +29,10 @@
                 </div>
             </div>
             <div class="text-center display-3 mt-5">
-                <input wire:model="price" onkeyup="changeValue()" id="pay-input" type="text">
+                <input wire:model="price"  id="pay-input-main" type="text" hidden="hidden">
+                <div>
+                    <input onkeyup="changeValue()" id="pay-input" type="text">
+                </div>
                 <div>
                     @error('price') <span class="error text-danger fs-2">{{ $message }}</span> @enderror
                 </div>
@@ -49,12 +52,14 @@
     <script>
         function autoValue(value)
         {
+            Livewire.first().set('price', value.replace(/\D/g, ""))
             document.getElementById("pay-input").value = Number(value).toLocaleString().replace(/\d(?=(\d{3})+\.)/g, '$&,');
         }
 
         function changeValue()
         {
             let value = document.getElementById("pay-input").value;
+            Livewire.first().set('price', value.replace(/\D/g, ""))
             let afterEdit = value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             document.getElementById("pay-input").value = afterEdit;
         }

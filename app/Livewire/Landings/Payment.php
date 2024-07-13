@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Payment extends Component
 {
-    #[Validate('required|string')]
+    #[Validate('required|integer')]
     public string $price = '';
 
     /**
