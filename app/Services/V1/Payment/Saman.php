@@ -24,7 +24,7 @@ class Saman implements Gateway
         $token = $client->RequestToken(env('SEP_MERCHANT_ID'),			/// MID
             $resnumber, 		/// ResNum
 //            (int) ($price . 0) 	/// TotalAmount In Rials
-            $price
+            $price . 0
             ,'0'			/// Optional
             ,'0'			/// Optional
             ,'0'			/// Optional

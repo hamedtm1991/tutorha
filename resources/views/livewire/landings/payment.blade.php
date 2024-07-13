@@ -52,7 +52,7 @@
     <script>
         function autoValue(value)
         {
-            Livewire.first().set('price', value.replace(/\D/g, ""))
+            Livewire.first().set('price', value)
             document.getElementById("pay-input").value = Number(value).toLocaleString().replace(/\d(?=(\d{3})+\.)/g, '$&,');
         }
 
