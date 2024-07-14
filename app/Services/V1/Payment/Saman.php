@@ -63,7 +63,7 @@ class Saman implements Gateway
                 'TerminalNumber' => env('SEP_MERCHANT_ID'),
             ]);
 
-            $payment->bank_info = json_encode(array_merge($info, ['confirm' => $res]), true);
+            $payment->bank_info = json_encode(array_merge($info, ['confirm' => $res->json()]), true);
 
             if($res && $res->json('ResultCode') === 2) {
                 return true;
