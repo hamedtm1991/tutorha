@@ -54,6 +54,7 @@ class Saman implements Gateway
     {
         $payment->refnumber = $info['RefNum'];
         $payment->bank_name = 'Saman';
+        $payment->bank_info = json_encode($info, true);
 
         if($info['State'] === Payment::BANKSTATEOK)
         {
@@ -62,7 +63,7 @@ class Saman implements Gateway
                 'TerminalNumber' => env('SEP_MERCHANT_ID'),
             ]);
 
-            $payment->bank_info = json_encode(array_merge($info, json_decode($res->json(), true)), true);
+            $payment->bank_info = json_encode(array_merge($info, ['confirm' => $res]), true);
 
             if($res && $res->json('ResultCode') === 2) {
                 return true;
@@ -86,7 +87,6 @@ class Saman implements Gateway
         }
 
         $payment->status = Payment::STATUSREJECT;
-        $payment->bank_info = json_encode($info, true);
         if ($payment->save()) {
             $payment->user->notify(new SmsSystem(__('sms.paymentFailure'), 'force'));
             $payment->user->notify(new MailSystem(__('email.onlinePurchaseFailed'), 'force'));
