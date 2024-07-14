@@ -34,7 +34,7 @@
                                         <td>{{ $model->resnumber }}</td>
                                         <td>{{ number_format($model->value) . ' ' . __('general.toman') }}</td>
                                         <td class="bg-{{ $statusColor }}">{{ __('general.' . $model->status) }}</td>
-                                        <td>{{ localDate($model->created_at, 'Y-m-d H:i:s', 'Y-m-d H:i:s') }}</td>
+                                        <td>{{ localDate($model->created_at, 'Y-m-d H:i:s', '%A، %d %B %Y H:i:s') }}</td>
                                         <td>
                                             @php($orderId = $model->order_id ? ' / ' . __('general.orderId') . ': ' : '')
                                             {{ __('general.' . $model->detail) . $orderId . $model->order_id  }}

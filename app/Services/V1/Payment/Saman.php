@@ -58,12 +58,14 @@ class Saman implements Gateway
 
         if($info['State'] === Payment::BANKSTATEOK)
         {
-            $res = Http::post('https://sep.shaparak.ir/onlinepg/onlinepg', [
+            $res = Http::post('https://sep.shaparak.ir/verifyTxnRandomSessionkey/ipg/VerifyTransaction', [
                 'RefNum' => $info['RefNum'],
                 'TerminalNumber' => env('SEP_MERCHANT_ID'),
             ]);
 
-            if( $res->json('ResultCode') === 0 ) {
+            dd($res, $res->json('ResultCode'), $res->json('Resul2'));
+
+            if($res->json('ResultCode') === 0 ) {
                 return true;
             } else {
                 $payment->status = Payment::STATUSPAID;
