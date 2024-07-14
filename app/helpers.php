@@ -23,8 +23,7 @@ function localDate($date, $enFormat = null, $faFormat = null): string
         return Carbon::parse($date)->format($format);
     } else {
         $format = is_null($faFormat) ? '%A، %d %B %Y' : $faFormat;
-
-        return jdate($date)->format($format);
+        return jdate(Carbon::parse($date)->setTimezone('asia/tehran'))->format($format);
     }
 }
 
