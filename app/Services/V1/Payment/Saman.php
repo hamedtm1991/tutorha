@@ -9,8 +9,6 @@ use App\Services\V1\Wallet\Wallet;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
-use SoapClient;
-use SoapFault;
 
 class Saman implements Gateway
 {
@@ -25,7 +23,7 @@ class Saman implements Gateway
         $response = Http::post('https://sep.shaparak.ir/onlinepg/onlinepg', [
             'action' => 'token',
             'TerminalId' => env('SEP_MERCHANT_ID'),
-            'Amount' => $price,
+            'Amount' => $price . 0,
             'ResNum' => $resnumber,
             'RedirectUrl' => $returnUrl,
             'CellNumber' => Auth::user()->mobile,
@@ -51,7 +49,6 @@ class Saman implements Gateway
      * @param Payment $payment
      * @param array $info
      * @return bool
-     * @throws SoapFault
      */
     public function confirm(Payment $payment, array $info): bool
     {
@@ -61,13 +58,12 @@ class Saman implements Gateway
 
         if($info['State'] === Payment::BANKSTATEOK)
         {
-            $Verify_URL='https://sep.shaparak.ir/payments/referencepayment.asmx?WSDL';
+            $res = Http::post('https://sep.shaparak.ir/onlinepg/onlinepg', [
+                'RefNum' => $info['RefNum'],
+                'TerminalNumber' => env('SEP_MERCHANT_ID'),
+            ]);
 
-            $client = new soapclient($Verify_URL);
-            $res =  $client->verifyTransaction($info['RefNum'] ,env('SEP_MERCHANT_ID'));#reference number and seller id
-
-            if( $res <= 0 )
-            {
+            if( $res->json('ResultCode') === 0 ) {
                 return true;
             } else {
                 $payment->status = Payment::STATUSPAID;
@@ -100,5 +96,6 @@ class Saman implements Gateway
     public function reject(Payment $payment): bool
     {
         // TODO: Implement reject() method.
+        return true;
     }
 }
