@@ -6,7 +6,9 @@ use App\Models\Payment;
 use App\Notifications\V1\MailSystem;
 use App\Notifications\V1\SmsSystem;
 use App\Services\V1\Wallet\Wallet;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use SoapClient;
 use SoapFault;
 
@@ -20,34 +22,27 @@ class Saman implements Gateway
      */
     public function pay(int $price, string $resnumber, string $returnUrl): void
     {
-        $client = new soapclient('https://sep.shaparak.ir/Payments/InitPayment.asmx?WSDL');
-        $token = $client->RequestToken(env('SEP_MERCHANT_ID'),			/// MID
-            $resnumber, 		/// ResNum
-//            (int) ($price . 0) 	/// TotalAmount In Rials
-            $price . 0
-            ,'0'			/// Optional
-            ,'0'			/// Optional
-            ,'0'			/// Optional
-            ,'0'			/// Optional
-            ,'0'			/// Optional
-            ,'0'			/// Optional
-            ,'ResNum1'		/// Optional
-            ,'ResNum2'		/// Optional
-            ,'0'			/// Optional
-            ,$returnUrl //$RedirectURL	/// Optional
-        );
+        $response = Http::post('https://sep.shaparak.ir/onlinepg/onlinepg', [
+            'action' => 'token',
+            'TerminalId' => env('SEP_MERCHANT_ID'),
+            'Amount' => $price,
+            'ResNum' => $resnumber,
+            'RedirectUrl' => $returnUrl,
+            'CellNumber' => Auth::user()->mobile,
+        ]);
 
-        echo "<form action='https://sep.shaparak.ir/payment.aspx' id='samanBank' method='POST'>
-				<input name='token' type='hidden' value='".$token."'>
-				<input name='RedirectURL' type='hidden' value='$returnUrl'>
-				<input name='btn' type='submit' value='Send' style='display: none'>
-			</form>";
+        echo '<form id="samanBank"
+             action="https://sep.shaparak.ir/OnlinePG/OnlinePG"
+             method="post">
+             <input type="hidden" name="Token" value="' . $response->json('token') . '" />
+             <input type="hidden" name="GetMethod" type="text" value=""> <!--true | false | empty string | null-->
+        </form>';
 
         echo "<script type=\"text/javascript\">
-                window.onload=function(){
-                    document.forms['samanBank'].submit();
-                }
-                </script>";
+            window.onload=function(){
+                document.forms['samanBank'].submit();
+            }
+            </script>";
 
         echo 'در حال اتصال به درگاه بانک سامان ...';
     }
