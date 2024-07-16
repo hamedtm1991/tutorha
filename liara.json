@@ -11,6 +11,10 @@
         {
             "name": "data",
             "mountTo": "storage"
+        },
+        {
+            "name": "public",
+            "mountTo": "public"
         }
     ]
 }
