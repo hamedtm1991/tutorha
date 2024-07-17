@@ -110,6 +110,7 @@ return [
     'notFinished' => 'در حال ضبط',
     'alreadyPaid' => 'قبلا پرداخت شده است',
     'portal' => 'درگاه پرداخت',
+    'reject' => 'رد شده',
 
     'home' => 'خانه',
 ];
