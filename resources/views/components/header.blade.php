@@ -67,9 +67,7 @@
             <div class="nav-menus-wrapper">
                 <ul class="nav-menu">
                     @if(\Illuminate\Support\Facades\Auth::check())
-                        <li class="{{ request()->routeIs('home') ? 'active' : ''  }}"><a class="fs-5" href="{{ route('home') }}">{{ __('general.home') }}</a></li>
                         <li class="{{ request()->routeIs('transactions') ? 'active' : ''  }}"><a class="fs-5" href="{{ route('transactions') }}">{{ __('general.transactions') }}</a></li>
-                        <li class="{{ request()->routeIs('payments') ? 'active' : ''  }}"><a class="fs-5" href="{{ route('payments') }}">{{ __('general.payments') }}</a></li>
                     @endif
                 </ul>
 

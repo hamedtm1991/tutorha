@@ -18,7 +18,7 @@
 
 @push('seo')
     <meta name="description" content="مننیگ (Manning) انتشاراتی برای متخصصان نرم افزار، مهندسان، معماران، مدیران و تمام کسانی که به صورت حرفه‌ای در زمینه کامپیوتر فعالیت می کنند می‌باشد.">
-    <meta name="keywords" content="packt, پکت, backend, نرم افزار ,بک اند ,کامپیوتر  ,برنامه نویسی">
+    <meta name="keywords" content="packt, پکت, backend, نرم افزار ,بک اند ,کامپیوتر  ,برنامه‌نویسی">
     <meta name="author" content="HAMED TAGHAVIMODAM" />
     <title>پکت (Packt) انشاراتی ثابت قدم در هدف خود</title>
 @endpush

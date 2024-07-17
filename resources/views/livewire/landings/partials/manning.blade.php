@@ -21,7 +21,7 @@
 
 @push('seo')
 <meta name="description" content="مننیگ (Manning) انتشاراتی برای متخصصان نرم افزار، مهندسان، معماران، مدیران و تمام کسانی که به صورت حرفه‌ای در زمینه کامپیوتر فعالیت می کنند می‌باشد.">
-    <meta name="keywords" content="manning, مننیگ, backend, برنامه نویسی ,نرم افزار ,بک اند ,کامپیوتر">
+    <meta name="keywords" content="manning, مننیگ, backend, برنامه‌نویسی ,نرم افزار ,بک اند ,کامپیوتر">
     <meta name="author" content="HAMED TAGHAVIMODAM" />
     <title>مننیگ (Manning) لباس های رنگارنگ برای هر سلیقه!</title>
 @endpush

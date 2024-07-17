@@ -38,7 +38,7 @@ return [
     'role' => 'نقش',
     'roles' => 'نقش ها',
     'courses' => 'دوره ها',
-    'transactions' => 'تراکنش ها',
+    'transactions' => 'تراکنش‌ها',
     'financial' => 'مالی',
     'wallet_id' => 'آیدی کیف پول',
     'increase' => 'افزایش',
@@ -109,6 +109,7 @@ return [
     'finished' => 'اتمام',
     'notFinished' => 'در حال ضبط',
     'alreadyPaid' => 'قبلا پرداخت شده است',
+    'portal' => 'درگاه پرداخت',
 
     'home' => 'خانه',
 ];

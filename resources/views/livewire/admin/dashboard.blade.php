@@ -65,7 +65,7 @@
         <div class="col-lg-8 col-md-12 col-sm-12">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <h5>دوره های ویژه</h5>
+                    <h5>دوره‌های ویژه</h5>
                 </div>
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div class="grousp_crs">
@@ -147,7 +147,7 @@
 
                         <div class="ground-content">
                             <h6><a href="#">علی مرادی</a></h6>
-                            <small class="text-fade">برگزاری دوره های جدید تابستانی</small>
+                            <small class="text-fade">برگزاری دوره‌های جدید تابستانی</small>
                             <span class="small">2 دقیقه پیش</span>
                         </div>
                     </div>

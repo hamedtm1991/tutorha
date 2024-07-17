@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Response as status;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
@@ -63,6 +65,22 @@ class AppServiceProvider extends ServiceProvider
 
         Builder::macro('search', function(string $attribute, string $searchTerm) {
             return $this->orWhere($attribute, 'LIKE', "%{$searchTerm}%");
+        });
+
+        Collection::macro('paginate', function ($perPage = 15, $pageName = 'page', $page = null, $options = []) {
+
+            // Resolve current page from request
+            $page = $page ?: LengthAwarePaginator::resolveCurrentPage($pageName);
+
+            // Paginate the Collection
+            return new LengthAwarePaginator(
+                $this->forPage($page, $perPage),
+                $this->count(),
+                $perPage,
+                $page,
+                $options
+            );
+
         });
     }
 }

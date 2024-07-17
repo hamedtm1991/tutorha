@@ -7,8 +7,8 @@
                     <div class="simple-search-wrap text-right">
                         <div class="hero_search-2">
                             <div class="elsio_tag mb-5" style="font-size: large">یادگیری ساختارمند و اصولی</div>
-                            <h1 class="banner_title mb-4 font-2">در مسیر پیشرفت<br>با دوره های آموزشی توترها<br><span class="light">در کنار شما هستیم...</span></h1>
-                            <p class="mb-4" style="font-size: x-large">آموزش برنامه نویسی (Web programming), بک اند (Backend), ای تی (IT) و ... از مبتدی تا پیشرفته</p>
+                            <h1 class="banner_title mb-4 font-2">در مسیر پیشرفت<br>با دوره‌های آموزشی توترها<br><span class="light">در کنار شما هستیم...</span></h1>
+                            <p class="mb-4" style="font-size: x-large">آموزش برنامه‌نویسی (Web programming), بک اند (Backend), ای تی (IT) و ... از مبتدی تا پیشرفته</p>
                         </div>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
                                 <div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
                                     <i class="fas fa-check"></i>
                                 </div>
-                                <h6 class="mb-0 mx-3">دسترسی مادام العمر به قسمت های خریداری شده</h6>
+                                <h6 class="mb-0 mx-3">دسترسی مادام العمر به قسمت‌های خریداری شده</h6>
                             </div>
                         </div>
                         <div class="mb-3 ml-4 mr-lg-0 ml-lg-4">
@@ -216,7 +216,7 @@
 </div>
 
 @push('seo')
-    <meta name="description" content="آموزش برنامه نویسی (Web programming), بک اند (Backend), ای تی (IT) و ... از مبتدی تا پیشرفته">
-    <meta name="keywords" content="backend, نرم افزار ,بک اند ,کامپیوتر  ,برنامه نویسی ,آموزش">
+    <meta name="description" content="آموزش برنامه‌نویسی (Web programming), بک اند (Backend), ای تی (IT) و ... از مبتدی تا پیشرفته">
+    <meta name="keywords" content="backend, نرم افزار ,بک اند ,کامپیوتر  ,برنامه‌نویسی ,آموزش">
     <title>خانه</title>
 @endpush

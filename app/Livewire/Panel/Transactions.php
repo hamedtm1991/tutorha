@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Panel;
 
+use App\Models\Payment;
 use App\Models\WalletTransaction;
 use App\Traits\ComponentTools;
 use Illuminate\Support\Facades\Auth;
@@ -15,13 +16,10 @@ class Transactions extends Component
 
     public function render()
     {
-        $data = WalletTransaction::query()->where('wallet_id', optional(Auth::user()->wallet)->id);
+        $data = WalletTransaction::query()->where('wallet_id', optional(Auth::user()->wallet)->id)->orderByDesc('id')->get();
+        $data2 = Payment::query()->where('user_id', Auth::id())->orderByDesc('id')->get();
 
-        if (!empty($this->search)) {
-            $data->search('order_id', $this->search);
-        }
-
-        $data = $data->orderByDesc('id')->paginate(10);
+        $data = $data->concat($data2)->sortByDesc('created_at')->paginate(10);
 
         return view('livewire.panel.transactions', compact('data'));
     }

@@ -108,6 +108,7 @@ return [
     'finished' => 'Finished',
     'notFinished' => 'In process',
     'alreadyPaid' => 'Already paid',
+    'portal' => 'Bank',
 
     'home' => 'Home',
 ];

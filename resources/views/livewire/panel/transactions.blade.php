@@ -21,24 +21,44 @@
                                 <tbody>
                                 @foreach($data as $model)
                                     @php
-                                        if ($model->status == \App\Models\WalletTransaction::STATUS_CONFIRMED) {
-                                            $statusColor = 'success';
-                                        } elseif ($model->status == \App\Models\WalletTransaction::STATUS_REJECTED) {
-                                            $statusColor = 'danger';
-                                        } elseif ($model->status == \App\Models\WalletTransaction::STATUS_PENDING) {
-                                            $statusColor = 'warning';
+                                        if ($model->type === \App\Models\Payment::TYPE_ONLINE) {
+                                            if ($model->status == \App\Models\Payment::STATUSPAID) {
+                                                $statusColor = 'success';
+                                            } elseif ($model->status == \App\Models\Payment::STATUSREJECT) {
+                                                $statusColor = 'danger';
+                                            } elseif ($model->status == \App\Models\Payment::STATUSUNPAID) {
+                                                $statusColor = 'warning';
+                                            } elseif ($model->status == \App\Models\Payment::STATUSCANCELED) {
+                                                $statusColor = 'danger';
+                                            }
+                                        } else {
+                                            if ($model->status == \App\Models\WalletTransaction::STATUS_CONFIRMED) {
+                                                $statusColor = 'success';
+                                            } elseif ($model->status == \App\Models\WalletTransaction::STATUS_REJECTED) {
+                                                $statusColor = 'danger';
+                                            } elseif ($model->status == \App\Models\WalletTransaction::STATUS_PENDING) {
+                                                $statusColor = 'warning';
+                                            }
                                         }
                                     @endphp
                                     <tr>
-                                        <td class="bg-{{ $model->type == \App\Models\WalletTransaction::TYPE_INCREASE ? 'success' : 'danger'  }}">{{ $model->type == \App\Models\WalletTransaction::TYPE_INCREASE ? __('general.increase') : __('general.decrease') }}</td>
+                                        @if($model->type === \App\Models\Payment::TYPE_ONLINE)
+                                            <td>{{ __('general.portal') }}</td>
+                                        @else
+                                            <td class="bg-{{ $model->type == \App\Models\WalletTransaction::TYPE_INCREASE ? 'success' : 'danger'  }}">{{ $model->type == \App\Models\WalletTransaction::TYPE_INCREASE ? __('general.increase') : __('general.decrease') }}</td>
+                                        @endif
                                         <td>{{ $model->resnumber }}</td>
                                         <td>{{ number_format($model->value) . ' ' . __('general.toman') }}</td>
-                                        <td class="bg-{{ $statusColor }}">{{ __('general.' . $model->status) }}</td>
+                                        <td class="bg-{{ $statusColor ?? 'white' }}">{{ __('general.' . $model->status) }}</td>
                                         <td>{{ localDate($model->created_at, 'Y-m-d H:i:s', '%A، %d %B %Y H:i:s') }}</td>
-                                        <td>
-                                            @php($orderId = $model->order_id ? ' / ' . __('general.orderId') . ': ' : '')
-                                            {{ __('general.' . $model->detail) . $orderId . $model->order_id  }}
-                                        </td>
+                                        @if($model->type === \App\Models\Payment::TYPE_ONLINE)
+                                            <td>{{ __('general.portal') . ' ' . $model->bank_name }}</td>
+                                        @else
+                                            <td>
+                                                @php($orderId = $model->order_id ? ' / ' . __('general.orderId') . ': ' : '')
+                                                {{ __('general.' . $model->detail) . $orderId . $model->order_id  }}
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>
