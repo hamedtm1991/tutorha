@@ -98,7 +98,7 @@
                                     <div class="crs_fl_first">
                                         <div class="crs_tutor">
                                             @foreach($model->tutors as $tutor)
-                                                <div class="crs_tutor_thumb"><a href="instructor-detail.html"><img src="{{ url(route('getPublicImage', ['tutor-' . $tutor->id . '-main', rand()])) }}" class="img-fluid circle" alt="{{ $tutor->name }}" /></a></div><div class="crs_tutor_name"><a href="instructor-detail.html">{{ $tutor->name }}</a></div>
+                                                <div class="crs_tutor_thumb"><a href="instructor-detail.html"><img src="{{ url(route('getPublicImage', ['Tutor-' . $tutor->id . '-main', rand()])) }}" class="img-fluid circle" alt="{{ $tutor->name }}" /></a></div><div class="crs_tutor_name"><a href="instructor-detail.html">{{ $tutor->name }}</a></div>
                                             @endforeach
                                         </div>
                                     </div>

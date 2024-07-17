@@ -64,7 +64,7 @@ class Saman implements Gateway
             ]);
 
             $resultCode = $res->json('ResultCode') ?? -5000;
-            $bankInfo = json_encode(array_merge($info, ['verify_datail' => $resultCode]), true);
+            $bankInfo = json_encode(array_merge($info, ['verify_datail' => $res->json()]), true);
 
             $payment->bank_info = $bankInfo;
 
@@ -90,6 +90,9 @@ class Saman implements Gateway
         }
 
         $payment->status = Payment::STATUSREJECT;
+        if ($info['StateCode'] === -1) {
+            $payment->status = Payment::STATUSCANCELED;
+        }
         if (is_null($bankInfo)) {
             $payment->bank_info = json_encode($info, true);
         }

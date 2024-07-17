@@ -26,7 +26,8 @@
                             <div class="footer_widget">
                                 <h4 class="widget_title">اطلاعات تماس</h4>
                                 <ul class="footer-menu">
-                                    <li><a>تلفن: ۰۹۱۲۱۸۹۵۸۳۱</a></li>
+                                    <li>موبایل: ۰۹۱۲۱۸۹۵۸۳۱</li>
+                                    <li>تلفن: ۰۲۱۴۴۴۸۰۲۸۵</li>
                                 </ul>
                             </div>
                         </div>
