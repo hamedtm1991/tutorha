@@ -110,6 +110,7 @@ return [
     'alreadyPaid' => 'Already paid',
     'portal' => 'Bank',
     'reject' => 'Rejected',
+    'Saman' => 'Saman',
 
     'home' => 'Home',
 ];

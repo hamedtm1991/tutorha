@@ -48,11 +48,11 @@
                                             <td class="bg-{{ $model->type == \App\Models\WalletTransaction::TYPE_INCREASE ? 'success' : 'danger'  }}">{{ $model->type == \App\Models\WalletTransaction::TYPE_INCREASE ? __('general.increase') : __('general.decrease') }}</td>
                                         @endif
                                         <td>{{ $model->resnumber }}</td>
-                                        <td>{{ number_format($model->value) . ' ' . __('general.toman') }}</td>
+                                        <td>{{ number_format($model->value ?? $model->price) . ' ' . __('general.toman') }}</td>
                                         <td class="bg-{{ $statusColor ?? 'white' }}">{{ __('general.' . $model->status) }}</td>
                                         <td>{{ localDate($model->created_at, 'Y-m-d H:i:s', '%A، %d %B %Y H:i:s') }}</td>
                                         @if($model->type === \App\Models\Payment::TYPE_ONLINE)
-                                            <td>{{ __('general.portal') . ' ' . $model->bank_name }}</td>
+                                            <td>{{ __('general.portal') . ' ' . __('general.' . $model->bank_name) }}</td>
                                         @else
                                             <td>
                                                 @php($orderId = $model->order_id ? ' / ' . __('general.orderId') . ': ' : '')
