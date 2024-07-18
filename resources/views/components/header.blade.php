@@ -68,6 +68,7 @@
                 <ul class="nav-menu">
                     @if(\Illuminate\Support\Facades\Auth::check())
                         <li class="{{ request()->routeIs('transactions') ? 'active' : ''  }}"><a class="fs-5" href="{{ route('transactions') }}">{{ __('general.transactions') }}</a></li>
+                        <li class="{{ request()->routeIs('courses') ? 'active' : ''  }}"><a class="fs-5" href="{{ route('courses') }}">{{ __('general.myCourses') }}</a></li>
                     @endif
                 </ul>
 

@@ -111,6 +111,7 @@ return [
     'portal' => 'Bank',
     'reject' => 'Rejected',
     'Saman' => 'Saman',
+    'myCourses' => 'My courses',
 
     'home' => 'Home',
 ];

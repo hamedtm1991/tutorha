@@ -9,7 +9,7 @@ use App\Livewire\Landings\Course;
 use App\Livewire\Landings\Payment;
 use App\Livewire\Landings\Landings;
 use App\Http\Controllers\PaymentController;
-use App\Livewire\Panel\Payments;
+use App\Livewire\Panel\Courses;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('payment', Payment::class)->name('payment');
     Route::get('payment/bank/{value}', [PaymentController::class, 'increase'])->name('bank');
     Route::get('transactions', Transactions::class)->name('transactions');
-    Route::get('payments', Payments::class)->name('payments');
+    Route::get('courses', Courses::class)->name('courses');
 });
 
 Route::get('login', Auth::class)->name('login');

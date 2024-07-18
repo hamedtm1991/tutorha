@@ -43,4 +43,12 @@ class Product extends Model
     {
         return $this->hasMany(Episode::class);
     }
+
+    /**
+     * @return MorphToMany
+     */
+    public function orders(): MorphToMany
+    {
+        return $this->morphToMany(Order::class, 'orderable')->withPivot('quantity', 'discount', 'price');
+    }
 }
