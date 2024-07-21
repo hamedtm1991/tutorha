@@ -19,7 +19,7 @@ class Landings extends Component
 
     public function render()
     {
-        if (!$this->title || !in_array($this->title, ['oreilly', 'packt', 'wiley', 'manning'])) {
+        if (!$this->title || !in_array($this->title, ['oreilly', 'packt', 'wiley', 'manning', 'terms'])) {
             abort(404);
         }
 

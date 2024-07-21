@@ -90,7 +90,7 @@ class Saman implements Gateway
         }
 
         $payment->status = Payment::STATUSREJECT;
-        if ($info['StateCode'] === -1) {
+        if ($info['State'] === 'CanceledByUser') {
             $payment->status = Payment::STATUSCANCELED;
         }
         if (is_null($bankInfo)) {

@@ -18,7 +18,7 @@
                                     <i class="fas fa-user"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">{{__('general.increaseBalance')}}
+                                    <a class="dropdown-item" href="{{ route('payment') }}">{{__('general.increaseBalance')}}
                                         <i class="fas fa-plus"></i>
                                     </a>
                                     <a class="dropdown-item" href="#">
@@ -27,7 +27,7 @@
                                         {{ empty($value) ? 0 : number_format($value) }}
                                     </a>
 
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="{{ route('login') }}">
                                         {{__('buttons.logout')}}
                                     </a>
                                 </div>
@@ -87,13 +87,13 @@
                             </a>
                         </li>
                         <li class="mx-5">
-                            <a class="fs-5" href="{{ route('transactions') }}">
+                            <span class="fs-5" href="{{ route('transactions') }}">
                                 @php($value = optional(\Illuminate\Support\Facades\Auth::user()->wallet)->value)
                                 <span class="">
                                     {{ __('general.toman') }} {{ empty($value) ? 0 : number_format($value) }}
                                 </span>
                                 <i class="fas fa-wallet"></i>
-                            </a>
+                            </span>
                         </li>
                         <li class="add-listing bg-danger">
                             <a href="{{ route('logout') }}" class="text-white">{{ __('buttons.logout') }}</a>

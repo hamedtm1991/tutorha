@@ -4,7 +4,7 @@
             <div class="row justify-content-center">
 
                 <div class="col-lg-10 col-md-10">
-                    <div class="text-center">
+                    <div>
                         @include('livewire.landings.partials.' . $title)
                     </div>
                 </div>

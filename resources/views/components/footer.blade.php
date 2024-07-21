@@ -17,7 +17,7 @@
                             <div class="footer_widget">
                                 <h4 class="widget_title">بخش ها</h4>
                                 <ul class="footer-menu">
-                                    <li><a href="#">قوانین</a></li>
+                                    <li><a href="{{ route('landings', ['title' => 'terms']) }}">شرایط استفاده</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -28,6 +28,7 @@
                                 <ul class="footer-menu">
                                     <li>موبایل: ۰۹۱۲۱۸۹۵۸۳۱</li>
                                     <li>تلفن: ۰۲۱۴۴۴۸۰۲۸۵</li>
+                                    <li>ایمیل: info@tutorha.com</li>
                                 </ul>
                             </div>
                         </div>
@@ -48,7 +49,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12 col-md-12 text-center">
-                    <p class="mb-0">© 2023</p>
+                    <p class="mb-0">تمام حقوق اين وب‌سايت برای فروشگاه آنلاین توترها است.</p>
                 </div>
             </div>
         </div>

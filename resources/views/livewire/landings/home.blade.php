@@ -131,7 +131,7 @@
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <div class="lmp_caption">
                         <h2 class="mb-3 font-2">نکات قابل توجه</h2>
-                        <p>سعی ما بر این است که یادگیری را برای شما لذت بخش کنیم.</p>
+                        <h5>سعی ما بر این است که یادگیری را برای شما لذت بخش کنیم.</h5>
                         <div class="mb-3 ml-4 mr-lg-0 ml-lg-4">
                             <div class="d-flex align-items-center">
                                 <div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
