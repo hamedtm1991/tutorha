@@ -31,7 +31,7 @@
         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
             <div class="dashboard_stats_wrap">
                 <div class="rounded-circle p-4 p-sm-4 d-inline-flex align-items-center justify-content-center theme-bg mb-2"><div class="position-absolute text-white h5 mb-0"><i class="fas fa-book"></i></div></div>
-                <div class="dashboard_stats_wrap_content"><h4>607</h4> <span>تعداد دوره ها</span></div>
+                <div class="dashboard_stats_wrap_content"><h4>607</h4> <span>تعداد دوره‌ها</span></div>
             </div>
         </div>
 

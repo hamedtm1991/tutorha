@@ -37,7 +37,7 @@ return [
     'acl' => 'دسترسی ها',
     'role' => 'نقش',
     'roles' => 'نقش ها',
-    'courses' => 'دوره ها',
+    'courses' => 'دوره‌ها',
     'transactions' => 'تراکنش‌ها',
     'financial' => 'مالی',
     'wallet_id' => 'آیدی کیف پول',

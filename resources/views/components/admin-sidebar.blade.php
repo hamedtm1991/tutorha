@@ -6,7 +6,7 @@
             <h4>{{ \App\Models\User::nameOrMobile() }}</h4>
             <div class="elso_syu77">
                 <div class="one_third"><div class="one_45ic text-warning bg-light-warning"><i class="fas fa-star"></i></div><span>امتیازات</span></div>
-                <div class="one_third"><div class="one_45ic text-success bg-light-success"><i class="fas fa-file-invoice"></i></div><span>دوره ها</span></div>
+                <div class="one_third"><div class="one_45ic text-success bg-light-success"><i class="fas fa-file-invoice"></i></div><span>دوره‌ها</span></div>
                 <a href="{{ route('admin.users') }}" class="one_third"><div class="one_45ic text-purple bg-light-purple"><i class="fas fa-user"></i></div><span>{{ __('general.users') }}</span></a>
             </div>
         </div>
