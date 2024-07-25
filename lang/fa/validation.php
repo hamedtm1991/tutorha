@@ -118,6 +118,8 @@ return [
     'url'                  => ':attribute معتبر نمی‌باشد.',
     'uuid'                 => ':attribute باید یک UUID معتبر باشد.',
     'minimumValueError' => ':attribute نباید کوچکتر از :size باشد.',
+    'min_digits' => ':attribute نباید کوچکتر از :min باشد.',
+    'max_digits' => ':attribute نباید بزرگتر از :max باشد.',
 
     /*
     |--------------------------------------------------------------------------

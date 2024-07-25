@@ -47,3 +47,19 @@ function getVideoUrl(string $link, Episode $episode)
 
     return '';
 }
+
+/**
+ * @param $string
+ * @return string
+ */
+function convertPersianNumbersToEnglish($string): string
+{
+    $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+    $arabic = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+
+    $num = range(0, 9);
+    $convertedPersianNums = str_replace($persian, $num, $string);
+    $englishNumbersOnly = str_replace($arabic, $num, $convertedPersianNums);
+
+    return $englishNumbersOnly;
+}

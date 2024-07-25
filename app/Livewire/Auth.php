@@ -20,8 +20,9 @@ class Auth extends Component
      */
     public function initialAuth(): void
     {
+        $this->mobile = convertPersianNumbersToEnglish($this->mobile);
         $request = $this->validate([
-            'mobile' => 'required|numeric|digits_between:11,12',
+            'mobile' => 'required|numeric|min_digits:11|max_digits:12',
         ]);
 
         if (substr($request['mobile'], 0, 2) != 98) {
@@ -64,8 +65,9 @@ class Auth extends Component
     public function verify(): void
     {
         $this->clearInputs = true;
+        $this->code = convertPersianNumbersToEnglish($this->code);
         $request = $this->validate([
-            'code' => 'required|numeric|digits_between:6,6',
+            'code' => 'required|numeric|min_digits:4|max_digits:4',
         ]);
 
         $authService = new AuthService();

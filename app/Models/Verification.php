@@ -49,7 +49,7 @@ class Verification extends Model
             return $code->code;
         } else {
             do {
-                $code = mt_rand(100000, 999999);
+                $code = mt_rand(1000, 9999);
             } while($this->checkCodeIsUnique($user, $code));
         }
 

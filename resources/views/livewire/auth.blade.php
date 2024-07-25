@@ -17,24 +17,20 @@
                                 <div class="rcs_log_124">
                                     <div class="Lpo09"><h4>{{ __('auth.login') }}</h4></div>
                                     <div class="form-group">
-                                        <label class="mb-1">{{ __('inputs.verificationCode') }}</label>
-                                        <p id="demo" style="color: green"></p>
+                                        <label class="mb-1"> کد تایید برای شماره {{ $mobileBackup }} پیامک شد <a href="{{ route('login') }}"> | ویرایش شماره</a> </label>
                                         <a id="resend-verification" class="mb-2" href="#" x-on:click="$wire.resendVerification()" style="display: none; color: #02b97c">{{ __('buttons.resendVerification') }}</a>
                                         <input hidden="hidden"  id="code" type="text" class="form-control" placeholder="******" wire:model="code" />
                                         <div class="my-container">
                                             <div id="my-inputs" class="my-inputs">
-                                                <div id='inputs'>
+                                                <div id='inputs' style="font-size: 35px">
                                                     <input id='input1' class="auth-input" type='text' maxLength="1" />
                                                     <input id='input2' class="auth-input" type='text' maxLength="1" />
                                                     <input id='input3' class="auth-input" type='text' maxLength="1" />
                                                     <input id='input4' class="auth-input" type='text' maxLength="1" />
-                                                    <input id='input5' class="auth-input" type='text' maxLength="1" />
-                                                    <input id='input6' class="auth-input" type='text' maxLength="1" />
                                                 </div>
                                                 <div class="mt-3" style="color: red; direction: rtl">@error('code') {{ $message }} @enderror</div>
+                                                <p id="demo" style="color: green;font-size: 25px;text-align: center"></p>
                                         </div>
-
-
                                     </div>
                                     <div class="form-group mt-3 mb-2">
                                         <button id="form-verify" type="submit" class="btn full-width btn-md theme-bg text-white">{{ __('buttons.login') }}</button>
@@ -59,7 +55,7 @@
                                     <div class="Lpo09"><h4>{{ __('auth.login') }}</h4></div>
                                     <div class="form-group">
                                         <label class="mb-1">{{ __('inputs.mobileNumber') }}</label>
-                                        <input type="text" class="form-control" placeholder="0912xxxxxxx" wire:model="mobile" />
+                                        <input id="mobile" type="text" class="form-control" placeholder="0912xxxxxxx" wire:model="mobile" />
                                         <div class="mt-2" style="color: red">@error('mobile') {{ $message }} @enderror</div>
                                     </div>
                                     <div class="form-group mt-3 mb-2">

@@ -64,6 +64,8 @@
 
     Livewire.on('verificationTimer', () => {
         setTimeout(() => {
+            document.getElementById('input1').focus()
+
         function addListener(input, index) {
 
             input.addEventListener("focus", () => {
@@ -91,14 +93,14 @@
                     input.value = "";
                 }
 
-                if (otp.length >= 6) {
+                if (otp.length >= 4) {
                     Livewire.first().set('code', otp.join(''))
                     document.getElementById('form-verify').click();
                 }
             });
         }
 
-        const inputs = ["input1", "input2", "input3", "input4", "input5", "input6"];
+        const inputs = ["input1", "input2", "input3", "input4"];
 
         inputs.map((id, i) => {
             const input = document.getElementById(id);
