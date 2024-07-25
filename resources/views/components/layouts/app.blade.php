@@ -62,6 +62,22 @@
 
     })
 
+    function toEnglishDigits(str) {
+
+        // convert persian digits [۰۱۲۳۴۵۶۷۸۹]
+        var e = '۰'.charCodeAt(0);
+        str = str.replace(/[۰-۹]/g, function(t) {
+            return t.charCodeAt(0) - e;
+        });
+
+        // convert arabic indic digits [٠١٢٣٤٥٦٧٨٩]
+        e = '٠'.charCodeAt(0);
+        str = str.replace(/[٠-٩]/g, function(t) {
+            return t.charCodeAt(0) - e;
+        });
+        return str;
+    }
+
     Livewire.on('verificationTimer', () => {
         setTimeout(() => {
             document.getElementById('input1').focus()
@@ -78,7 +94,7 @@
                     if (prev) prev.focus();
                 }
 
-                const code = parseInt(input.value);
+                const code = parseInt(toEnglishDigits(input.value));
                 if (!isNaN(code)) {
                     otp[index] = code
                     if (code >= 0 && code <= 9) {
