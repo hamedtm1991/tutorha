@@ -20,11 +20,24 @@
                                         <label class="mb-1">{{ __('inputs.verificationCode') }}</label>
                                         <p id="demo" style="color: green"></p>
                                         <a id="resend-verification" class="mb-2" href="#" x-on:click="$wire.resendVerification()" style="display: none; color: #02b97c">{{ __('buttons.resendVerification') }}</a>
-                                        <input type="text" class="form-control" placeholder="******" wire:model="code" />
-                                        <div class="mt-2" style="color: red">@error('code') {{ $message }} @enderror</div>
+                                        <input hidden="hidden"  id="code" type="text" class="form-control" placeholder="******" wire:model="code" />
+                                        <div class="my-container">
+                                            <div id="my-inputs" class="my-inputs">
+                                                <div id='inputs'>
+                                                    <input id='input1' class="auth-input" type='text' maxLength="1" />
+                                                    <input id='input2' class="auth-input" type='text' maxLength="1" />
+                                                    <input id='input3' class="auth-input" type='text' maxLength="1" />
+                                                    <input id='input4' class="auth-input" type='text' maxLength="1" />
+                                                    <input id='input5' class="auth-input" type='text' maxLength="1" />
+                                                    <input id='input6' class="auth-input" type='text' maxLength="1" />
+                                                </div>
+                                                <div class="mt-3" style="color: red; direction: rtl">@error('code') {{ $message }} @enderror</div>
+                                        </div>
+
+
                                     </div>
                                     <div class="form-group mt-3 mb-2">
-                                        <button type="submit" class="btn full-width btn-md theme-bg text-white">{{ __('buttons.login') }}</button>
+                                        <button id="form-verify" type="submit" class="btn full-width btn-md theme-bg text-white">{{ __('buttons.login') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -63,3 +76,29 @@
         </div>
     </section>
 </div>
+
+@push('styles')
+    <style>
+        .my-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 50px;
+            direction: ltr;
+        }
+
+        input {
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            border: none;
+            border-bottom: 1.5px solid #d2d2d2;
+            margin: 0 10px;
+        }
+
+        input:focus {
+            border-bottom: 1.5px solid #03b97c;
+            outline: none;
+        }
+    </style>
+@endpush

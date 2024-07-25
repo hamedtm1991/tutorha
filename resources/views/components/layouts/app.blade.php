@@ -21,7 +21,7 @@
 
 </head>
 
-<body dir="rtl">
+<body dir="rtl" style="min-height: 100vh;display: flex;flex-direction: column;justify-content: flex-start;">
     <x-header/>
 
     <div id="main-wrapper">
@@ -30,20 +30,82 @@
 
     <x-footer/>
 
+    @vite(['resources/js/app.js','resources/js/bootstrap.js','resources/js/metisMenu.js','resources/js/custom.js'])
     @stack('scripts')
-
-    @vite(['resources/js/app.js'])
-    @vite(['resources/js/bootstrap.js'])
-    @vite(['resources/js/metisMenu.js'])
-    @vite(['resources/js/custom.js'])
 </body>
 
 </html>
 
 <script>
     var x = '';
+    let code = '';
+    let otp = [];
+
+    Livewire.hook('morph.updated', ({ el, component }) => {
+        let clearInputs = Livewire.first().get('clearInputs')
+        let element = document.getElementById('input1')
+
+        if (clearInputs) {
+            let inputs = document.getElementsByClassName('auth-input')
+            for(i = 0; i < inputs.length; i++) {
+                inputs[i].value = "";
+            }
+            otp = [];
+            Livewire.first().set('clearInputs', false)
+            Livewire.first().set('code', '')
+            code = ''
+        }
+
+        if (element) {
+            element.focus()
+        }
+
+    })
 
     Livewire.on('verificationTimer', () => {
+        setTimeout(() => {
+        function addListener(input, index) {
+
+            input.addEventListener("focus", () => {
+                input.select()
+            })
+            input.addEventListener("keyup", (e) => {
+                const key = e.key; // const {key} = event; ES6+
+                if (key === "Backspace" || key === "Delete") {
+                    const prev = input.previousElementSibling;
+                    if (prev) prev.focus();
+                }
+
+                const code = parseInt(input.value);
+                if (!isNaN(code)) {
+                    otp[index] = code
+                    if (code >= 0 && code <= 9) {
+                        const n = input.nextElementSibling;
+                        if (n)
+                            n.focus();
+                    } else {
+                        input.value = "";
+                        otp[index] = 0
+                    }
+                } else {
+                    input.value = "";
+                }
+
+                if (otp.length >= 6) {
+                    Livewire.first().set('code', otp.join(''))
+                    document.getElementById('form-verify').click();
+                }
+            });
+        }
+
+        const inputs = ["input1", "input2", "input3", "input4", "input5", "input6"];
+
+        inputs.map((id, i) => {
+            const input = document.getElementById(id);
+            addListener(input,i);
+        });
+        },300)
+
 
         let seconds = 120;
 

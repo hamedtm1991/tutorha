@@ -13,6 +13,7 @@ class Auth extends Component
     public string $mobileBackup = '';
     public string $code = '';
     public bool $showCode = false;
+    public bool $clearInputs = false;
 
     /**
      * @return void
@@ -45,6 +46,7 @@ class Auth extends Component
      */
     public function resendVerification(): void
     {
+        $this->clearInputs = true;
         $authService = new AuthService();
         $authService->mobile = $this->mobileBackup;
         $response = $authService->serviceController();
@@ -61,6 +63,7 @@ class Auth extends Component
      */
     public function verify(): void
     {
+        $this->clearInputs = true;
         $request = $this->validate([
             'code' => 'required|numeric|digits_between:6,6',
         ]);
@@ -81,7 +84,6 @@ class Auth extends Component
                 $this->redirect('/');
             }
         }
-
     }
 
     /**
