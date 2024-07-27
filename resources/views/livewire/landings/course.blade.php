@@ -79,6 +79,7 @@
                     @if($product->long_description)
                         <!-- Overview -->
                         <div class="edu_wraper">
+                            <h4 class="edu_title">{{ __('general.description') }}</h4>
                             {!! $product->long_description !!}
                         </div>
                     @endif
@@ -105,6 +106,14 @@
                         <div class="ed_view_features">
                             <div class="eld mb-3">
                                 <ul class="edu_list right">
+                                    <li>
+                                        <i class="ti-user"></i>{{ __('general.tutor') }}:
+                                        <strong>
+                                            @foreach($product->tutors as $tutor)
+                                                {{ $tutor->name }}
+                                            @endforeach
+                                        </strong>
+                                    </li>
                                     <li><i class="ti-time"></i>{{ __('general.episodes') }}:<strong>{{ $product->options['numberOfEpisodes'] }}</strong></li>
                                     <li><i class="ti-time"></i>{{ __('general.courseTime') }}:<strong>{{ $product->options['time'] }}</strong></li>
                                     <li><i class="ti-tag"></i>{{ __('general.level') }}:<strong>{{ __('general.' . $product->options['level']) }}</strong></li>

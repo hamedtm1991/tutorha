@@ -112,6 +112,7 @@ return [
     'reject' => 'Rejected',
     'Saman' => 'Saman',
     'myCourses' => 'My courses',
+    'tutor' => 'Tutor',
 
     'home' => 'Home',
 ];
