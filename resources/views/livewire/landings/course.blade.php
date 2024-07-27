@@ -23,17 +23,6 @@
                         </div>
                     </div>
                 </div>
-                <div wire:ignore>
-                    <video
-                        id="player"
-                        class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered"
-                        width="640" height="268"
-                        controls
-                        preload="auto"
-                        data-setup='{"controlBar": {"pictureInPictureToggle": false}}'
-                    >
-                    </video>
-                </div>
             </div>
         </div>
     </div>
@@ -43,15 +32,19 @@
     <section class="gray">
         <div class="container">
             <div class="row">
-
                 <div class="col-lg-8 col-md-12 order-lg-first">
 
-                    @if($product->long_description)
-                        <!-- Overview -->
-                        <div class="edu_wraper">
-                            {!! $product->long_description !!}
-                        </div>
-                    @endif
+                    <div wire:ignore class="property_video radius lg mb-4">
+                        <video
+                            id="player"
+                            class="video-js vjs-fluid vjs-default-skin vjs-big-play-centered"
+                            width="640" height="268"
+                            controls
+                            preload="auto"
+                            data-setup='{"controlBar": {"pictureInPictureToggle": false}}'
+                        >
+                        </video>
+                    </div>
 
                     <div class="edu_wraper">
                         <h4 class="edu_title">{{ __('general.episodes') }}</h4>
@@ -81,6 +74,14 @@
                             @endforeach
                         </div>
                     </div>
+
+
+                    @if($product->long_description)
+                        <!-- Overview -->
+                        <div class="edu_wraper">
+                            {!! $product->long_description !!}
+                        </div>
+                    @endif
 
                     <!-- instructors -->
                     @foreach($product->tutors as $tutor)
