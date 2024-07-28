@@ -1,6 +1,5 @@
 import videojs from "video.js";
-import videojsqualityselector from "videojs-hls-quality-selector";
-
+import "videojs-quality-selector-hls";
 
 document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.videourl') !== null) {
@@ -14,8 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         player.src({src: firstLink, type: 'application/x-mpegURL'})
         player.setAttribute('productid', productid)
         player.setAttribute('episodeid', episodeid)
-        player.hlsQualitySelector = videojsqualityselector;
-        player.hlsQualitySelector({
+        player.qualitySelectorHls({
             displayCurrentQuality: true,
         });
         player.playbackRates([0.5, 1, 1.5, 2])

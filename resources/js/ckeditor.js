@@ -9,7 +9,12 @@ $( document ).ready(function() {
 
     for (let i = 1; i <= numberOfCkeditors; i++) {
         ClassicEditor
-            .create( document.querySelector( '#ckeditor' + i ) )
+            .create( document.querySelector( '#ckeditor' + i ), {
+                language: {
+                    ui: 'en',
+                    content: 'ar'
+                }
+            })
             .then(editor => {
                 ckEditors[i] = editor
                     editor.model.document.on('change:data', (evt, data) => {
