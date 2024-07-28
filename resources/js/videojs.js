@@ -1,5 +1,4 @@
 import videojs from "video.js";
-import "videojs-hls-quality-selector/node_modules/videojs-contrib-quality-levels";
 import videojsqualityselector from "videojs-hls-quality-selector";
 
 
