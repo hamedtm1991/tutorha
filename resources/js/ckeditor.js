@@ -1,4 +1,4 @@
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ClassicEditor from '@binay7587/ckeditor5-full-free';
 window.ClassicEditor = ClassicEditor;
 
 let numberOfCkeditors;
