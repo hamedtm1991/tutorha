@@ -63,5 +63,14 @@
             let afterEdit = value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             document.getElementById("pay-input").value = afterEdit;
         }
+
+
+        document.addEventListener('livewire:init', (event) => {
+            Livewire.on('price', ({price}) => {
+                let value = price;
+                let afterEdit = value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                document.getElementById("pay-input").value = afterEdit;
+            });
+        });
     </script>
 @endpush

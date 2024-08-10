@@ -49,7 +49,7 @@
                             @foreach($imageList as $image)
                                 <div class="mb-2">
                                     <img src="{{ url(route('getPublicImage', [$image, rand()])) }}" style="max-width: 250px">
-                                    <a onclick="getConfirm('admin.courses', 'deleteImage', '{{ $image }}', '{{ __('general.sure') }}', '{{ __('general.noRevert') }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')" class="fa fa-trash-alt text-danger" style="font-size: 40px"></a>
+                                    <a onclick="getConfirm('admin.episodes', 'deleteImage', '{{ $image }}', '{{ __('general.sure') }}', '{{ __('general.noRevert') }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')" class="fa fa-trash-alt text-danger" style="font-size: 40px"></a>
                                 </div>
                             @endforeach
                         </div>

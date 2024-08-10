@@ -11,6 +11,18 @@ class Payment extends Component
     public string $price = '';
 
     /**
+     * @param string $value
+     * @return void
+     */
+    public function mount(string $value = ''): void
+    {
+        if (!empty($value)) {
+            $this->price = $value;
+            $this->dispatch('price', price: $value);
+        }
+    }
+
+    /**
      * @return null
      */
     public function bank(): null

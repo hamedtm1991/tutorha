@@ -15,4 +15,13 @@ class UserObserver
     {
         $user->presenter_code = Str::random(7);
     }
+
+    /**
+     * @param User $user
+     * @return void
+     */
+    public function created(User $user): void
+    {
+        $user->wallet()->create();
+    }
 }

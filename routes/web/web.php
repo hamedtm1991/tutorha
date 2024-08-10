@@ -24,7 +24,7 @@ use App\Livewire\Panel\Courses;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/images/get/{name}/{rand}', [ImageController::class, 'getImage'])->name('getImage');
-    Route::get('payment', Payment::class)->name('payment');
+    Route::get('payment/{value?}', Payment::class)->name('payment');
     Route::get('payment/bank/{value}', [PaymentController::class, 'increase'])->name('bank');
     Route::get('transactions', Transactions::class)->name('transactions');
     Route::get('courses', Courses::class)->name('courses');

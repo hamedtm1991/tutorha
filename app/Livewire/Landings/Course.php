@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\UserWatchDetail;
 use App\Services\V1\Wallet\Wallet;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -25,8 +26,12 @@ class Course extends Component
      * @param Episode $episode
      * @return void
      */
-    public function pay(Episode $episode): void
+    public function pay(Episode $episode)
     {
+        if (!Auth::user()->wallet || Auth::user()->wallet->value < $episode->price) {
+            return $this->redirect(Route('payment', ['value' => $episode->price]));
+        }
+
         if (!$episode->checkOrder()) {
             $response = Wallet::payWithoutCart($episode);
 
