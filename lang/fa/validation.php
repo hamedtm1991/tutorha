@@ -180,5 +180,6 @@ return [
         'terms'                 => 'شرایط',
         'province'              => 'استان',
         'newPassword'           => 'رمز عبور جدید',
+        'price' => 'اعتبار'
     ],
 ];

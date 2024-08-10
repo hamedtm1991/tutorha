@@ -38,26 +38,21 @@
 	Fonts
 ------------------------------------*/
 @font-face {
-    font-family: IRANSans;
-    src: url('fonts/IRANSansWeb/IRANSansWeb.eot');
-    src: url('fonts/IRANSansWeb/IRANSansWeb.eot') format('embedded-opentype'), url('fonts/IRANSansWeb/IRANSansWeb(FaNum).woff') format('woff'), url('fonts/IRANSansWeb/IRANSansWeb.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal
+    font-family: Dana;
+    font-style: normal;
+    font-weight: normal;
+    src: url('fonts/woff2/Dana-DemiBold.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+    url('fonts/woff/Dana-DemiBold.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
 }
+
 @font-face {
-    font-family: vazir;
-    src: url('fonts/vazir/Vazir.eot');
-    src: url('fonts/vazir/Vazir.eot') format('embedded-opentype'), url('fonts/vazir/Vazir-Meduim-FD.woff') format('woff'), url('fonts/vazir/Vazir.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal
+    font-family: Dana;
+    font-style: normal;
+    font-weight: bold;
+    src: url('fonts/woff2/Dana-ExtraBold.woff2') format('woff2'),  /* FF39+,Chrome36+, Opera24+*/
+    url('fonts/woff/Dana-ExtraBold.woff') format('woff');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
 }
-@font-face {
-    font-family: vazir-bold;
-    src: url('fonts/vazir/Vazir-Bold.eot');
-    src: url('fonts/vazir/Vazir-Blod.eot') format('embedded-opentype'), url('fonts/vazir/Vazir-Bold-FD.woff') format('woff'), url('fonts/vazir/Vazir-Bold.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal
-}
+
 
 /*------------------------------------------------------------
 	Global Settings
@@ -71,7 +66,7 @@ body {
     background: #ffffff;
     color:#3c4852;
     font-size:14px;
-    font-family: 'IRANSans', sans-serif;
+    font-family: Dana, sans-serif;
     margin: 0;
     overflow-x: hidden !important;
     font-weight: 400;
@@ -191,7 +186,7 @@ h6 {
     color:#333d46;
     font-weight:600;
     text-transform: capitalize;
-    /*font-family: 'vazir-bold', sans-serif;*/
+    /*font-family: 'Dana-bold', sans-serif;*/
 }
 
 h5,
@@ -201,7 +196,8 @@ h6 {
 }
 
 .font-2{
-    font-family: 'vazir-bold', sans-serif;
+    font-family: 'Dana', sans-serif;
+    font-weight: bold;
 }
 
 h1 {
@@ -1618,7 +1614,7 @@ nav a:hover {
 .nav-menu>li>a {
     padding: 30px 12px;
     display: inline-block;
-    font-family: 'IRANSans', sans-serif;
+    font-family: 'Dana', sans-serif;
     font-weight:500;
     transition: color .3s, background .3s;
     font-size:14px;
@@ -3001,9 +2997,7 @@ li.login-attri .account-drop a {
     }
 }
 .banner_title .light {
-    color: #ffffff;
-    -webkit-text-stroke: 1px #03b97c;
-    letter-spacing: 1px;
+    color: #03b97c;
 }
 .elsio_tag.yellow {
     background: rgba(255, 152, 0,0.1);
@@ -3029,7 +3023,7 @@ li.login-attri .account-drop a {
     margin: 0 0 8px;
     font-size: 24px;
     color:#03b97c;
-    font-family: vazir-bold
+    font-family: Dana-bold
 }
 .pol_title {
     font-weight: 600;
@@ -3267,7 +3261,7 @@ span.esli_vd {
     display: flex;
     align-items: center;
     gap: 4px;
-    font-family: vazir
+    font-family: Dana
 }
 .crs_price h2 .currency{
     font-size: 22px;
@@ -3779,7 +3773,7 @@ ul.lt_cr_list li i{
     padding-right: 15px;
 }
 .edu_cat_data h4 {
-    font-family: vazir-bold;
+    font-family: Dana-bold;
     font-size: 17px;
     margin-bottom: 4px;
 }
@@ -4274,7 +4268,7 @@ ul.lt_cr_list li i{
     font-size: 20px;
     line-height: 1.2;
     margin: 5px 0 0;
-    font-family: 'vazir-bold',sans-serif
+    font-family: 'Dana-bold',sans-serif
 }
 .single_article_wrap .article_body_wrap p, .single_article_wrap .article_body_wrap .text {
     color: #6e7c90;
@@ -4298,7 +4292,7 @@ ul.lt_cr_list li i{
 .blog-page .article_detail_wrapss blockquote .name {
     color: #000c35;
     margin: 12px 0 0;
-    font-family: vazir
+    font-family: Dana
 }
 .blog-page .article_detail_wrapss .article_bottom_info {
     display: -webkit-box;
@@ -4405,7 +4399,7 @@ ul.lt_cr_list li i{
     font-size: 24px;
     line-height: 30px;
     margin: 0 0 35px;
-    font-family: vazir
+    font-family: Dana
 }
 .blog-page .article_detail_wrapss .comment-area .all-comments .comment-list ul {
     padding: 0;
@@ -4810,7 +4804,7 @@ span.tes_quote {
     align-items: center;
 }
 .prt_price h2 {
-    font-family: vazir;
+    font-family: Dana;
     font-size: 40px;
     gap:5px;
     display: flex;
@@ -5067,7 +5061,7 @@ span.tes_quote {
 }
 .blg_title h4 a {
     color:#30384e;
-    font-family: 'vazir', sans-serif;
+    font-family: 'Dana', sans-serif;
 }
 .blg_desc p {
     font-size: 14px;
@@ -6596,7 +6590,7 @@ ul.cart_list li strong {
     font-size: 22px;
     margin: 0;
     line-height: 1.4;
-    font-family: 'vazir', sans-serif
+    font-family: 'Dana', sans-serif
 }
 .woo_price_rate {
     display: flex;
@@ -6845,7 +6839,7 @@ ul.nav.nav-second-level.collapse.show {
     margin: 0;
     color:#22374e;
     letter-spacing: 1px;
-    font-family: vazir-bold
+    font-family: Dana-bold
 }
 .dashboard_stats_wrap_content span {
     font-size: 14px;
@@ -6944,7 +6938,7 @@ ul.nav.nav-second-level.collapse.show {
     margin: 0;
     font-size: 15px;
     line-height: 1.4;
-    font-family: vazir
+    font-family: Dana
 }
 .grousp_crs_right {
     display: flex;
@@ -8144,21 +8138,21 @@ footer.skin-dark-footer ul.footer-bottom-social li a:hover, footer.skin-dark-foo
 .crs_capt_cat h4{
     font-size: 18px;
     font-weight: 500;
-    font-family: vazir-bold
+    font-family: Dana-bold
 }
 .pricing_wrap .prt_head h4{
-    font-family: vazir-bold;
+    font-family: Dana-bold;
     font-size: 24px
 }
 .ed_header_caption .ed_title{
-    font-family: 'vazir', sans-serif;
+    font-family: 'Dana', sans-serif;
     font-size: 24px
 }
 .single_widgets h4{
-    font-family: 'vazir', sans-serif
+    font-family: 'Dana', sans-serif
 }
 .lmp_caption h4{
-    font-family: 'vazir-bold', sans-serif;
+    font-family: 'Dana-bold', sans-serif;
 }
 .btn.btn-remove {
     background: #ffffff;

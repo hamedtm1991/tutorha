@@ -21,22 +21,23 @@
     <!-- ============================ Our Story Start ================================== -->
     <section class="gray-simple">
         <form wire:submit="bank">
-            <div class="container">
-                <div class="row justify-content-md-center">
-                    <a onclick="autoValue(200000);" class="col-lg-3 col-md-3 col-sm-6 col- border border-success text-center m-2 p-5 display-1">200,000 <div class="display-6">{{ __('general.toman') }}</div></a>
-                    <a onclick="autoValue(500000);" class="col-lg-3 col-md-3 col-sm-6 border border-success text-center m-2 p-5 display-1">500,000 <div class="display-6">{{ __('general.toman') }}</div></a>
-                    <a onclick="autoValue(1000000);" class="col-lg-3 col-md-3 col-sm-6 border border-success text-center m-2 p-5 display-1">1,000,000 <div class="display-6">{{ __('general.toman') }}</div></a>
-                </div>
-            </div>
-            <div class="text-center display-3 mt-5">
+            <div class="text-center display-3 mb-5">
                 <input wire:model="price"  id="pay-input-main" type="text" hidden="hidden">
                 <div>
-                    <input onkeyup="changeValue()" id="pay-input" type="text">
+                    <input onkeyup="changeValue()" dir="ltr" id="pay-input" type="text">
                 </div>
                 <div>
                     @error('price') <span class="error text-danger fs-2">{{ $message }}</span> @enderror
                 </div>
             </div>
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <a onclick="autoValue(200000);" class="col-lg-3 col-md-3 col-sm-6 border border-success me-lg-2 text-center my-2 p-5 rounded display-5 d-flex align-items-end">۲۰۰,۰۰۰ <div class="fs-4">{{ __('general.toman') }}</div></a>
+                    <a onclick="autoValue(500000);" class="col-lg-3 col-md-3 col-sm-6 border border-success me-lg-2 text-center my-2 p-5 rounded display-5 d-flex align-items-end">۵۰۰,۰۰۰ <div class="fs-4">{{ __('general.toman') }}</div></a>
+                    <a onclick="autoValue(1000000);" class="col-lg-3 col-md-3 col-sm-6 border border-success me-lg-2 text-center my-2 p-5 rounded display-5 d-flex align-items-end">۱,۰۰۰,۰۰۰ <div class="fs-4">{{ __('general.toman') }}</div></a>
+                </div>
+            </div>
+
             <div class="text-center mt-5">
                 <button type="submit" class="btn btn-success">{{ __('buttons.pay') }}</button>
             </div>
@@ -63,7 +64,6 @@
             let afterEdit = value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             document.getElementById("pay-input").value = afterEdit;
         }
-
 
         document.addEventListener('livewire:init', (event) => {
             Livewire.on('price', ({price}) => {
