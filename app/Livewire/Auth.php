@@ -75,6 +75,8 @@ class Auth extends Component
         $authService->code = $request['code'];
         $response = $authService->serviceController();
 
+        dd($response);
+
         if (!$response->getData()->status) {
             $this->addError('code', $response->getData()->message);
         }

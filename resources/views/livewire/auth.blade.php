@@ -23,10 +23,10 @@
                                         <div class="my-container">
                                             <div id="my-inputs" class="my-inputs">
                                                 <div id='inputs' style="font-size: 35px">
-                                                    <input id='input1' class="auth-input" type='text' maxLength="1" />
-                                                    <input id='input2' class="auth-input" type='text' maxLength="1" />
-                                                    <input id='input3' class="auth-input" type='text' maxLength="1" />
-                                                    <input id='input4' class="auth-input" type='text' maxLength="1" />
+                                                    <input id='input1' class="auth-input" type='tel' maxLength="1" />
+                                                    <input id='input2' class="auth-input" type='tel' maxLength="1" />
+                                                    <input id='input3' class="auth-input" type='tel' maxLength="1" />
+                                                    <input id='input4' class="auth-input" type='tel' maxLength="1" />
                                                 </div>
                                                 <div class="mt-3" style="color: red; direction: rtl">@error('code') {{ $message }} @enderror</div>
                                                 <p id="demo" style="color: green;font-size: 25px;text-align: center"></p>
@@ -84,6 +84,7 @@
         }
 
         input {
+            font-family: Arial !important;
             width: 32px;
             height: 32px;
             text-align: center;

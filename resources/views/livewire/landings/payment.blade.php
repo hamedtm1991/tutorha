@@ -19,12 +19,13 @@
     <!-- ============================ Page Title End ================================== -->
 
     <!-- ============================ Our Story Start ================================== -->
-    <section class="gray-simple">
+    <div class="container">
+        <section class="gray-simple">
         <form wire:submit="bank">
             <div class="text-center display-3 mb-5">
                 <input wire:model="price"  id="pay-input-main" type="text" hidden="hidden">
                 <div>
-                    <input onkeyup="changeValue()" dir="ltr" id="pay-input" type="text">
+                    <input onkeyup="changeValue()" class="form-control" dir="ltr" id="pay-input" type="text">
                 </div>
                 <div>
                     @error('price') <span class="error text-danger fs-2">{{ $message }}</span> @enderror
@@ -43,6 +44,7 @@
             </div>
         </form>
     </section>
+    </div>
     <!-- ============================ Our Story End ================================== -->
 
 

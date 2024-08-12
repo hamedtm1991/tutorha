@@ -29,7 +29,7 @@ class Course extends Component
     public function pay(Episode $episode)
     {
         if (!Auth::user()->wallet || Auth::user()->wallet->value < $episode->price) {
-            return $this->redirect(Route('payment', ['value' => $episode->price]));
+            return $this->redirect(Route('payment', ['value' => $episode->price - Auth::user()->wallet->value ?? 0]));
         }
 
         if (!$episode->checkOrder()) {

@@ -20,7 +20,7 @@
                                     <div class="Lpo09"><h4>ورود به حساب کاربری</h4></div>
                                     <div class="form-group">
                                         <label class="mb-1">شماره موبایل</label>
-                                        <input type="text" class="form-control" placeholder="0912xxxxxxx" />
+                                        <input dir="ltr" type="text" class="form-control" placeholder="0912xxxxxxx" />
                                     </div>
                                     <div class="form-group mt-3 mb-2">
                                         <button type="button" class="btn full-width btn-md theme-bg text-white">ورود</button>

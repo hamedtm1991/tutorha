@@ -207,6 +207,39 @@
     <!-- ============================ Students Reviews End ================================== -->
 
     <!-- ============================ article Start ================================== -->
+    <section class="min">
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-lg-7 col-md-8">
+                    <div class="sec-heading center">
+                        <h3 class="font-2">مقالات</h3>
+                    </div>
+                </div>
+            </div>
+
+        @if($posts)
+            <div class="row justify-content-center">
+                @foreach($posts['items'] as $post)
+                    <div class="col-lg-4 col-md-6">
+                        <div class="blg_grid_box">
+                            <div class="blg_grid_thumb">
+                                <a href="blog-detail.html"><img src="https://tutorha-ewoehznko.liara.run/api/files/{{ $post['collectionId'] }}/{{ $post['id'] }}/{{ $post['image'] }}" class="img-fluid" alt="{{ $post['title'] }}"></a>
+                            </div>
+                            <div class="blg_grid_caption">
+                                <div class="blg_tag dark"><span>{{ $post['tag'] }}</span></div>
+                                <div class="blg_title"><h4><a href="blog-detail.html">{{ $post['title'] }}</a></h4></div>
+                                <div class="blg_desc"><p>{{ $post['description'] }}</p></div>
+                                <div class="blg_more"><a href="blog-detail.html">بیشتر بخوانید</a></div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+
+        </div>
+    </section>
     <div class="clearfix"></div>
     <!-- ============================ article End ================================== -->
 
