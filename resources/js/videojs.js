@@ -6,19 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
     var isIOS = !window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
     if (document.querySelector('.videourl') !== null) {
-        console.log(isSafari || isIOS)
         if (isSafari || isIOS) {
-            var video = document.getElementById('player');
-            var source = document.createElement('source');
-            const firstLink = document.querySelector('.videourl').getAttribute("data-url");
-            source.setAttribute('src', firstLink);
-            source.setAttribute('type', 'application/x-mpegURL');
-            video.appendChild(source);
-
-
-
             window.addEventListener('load', function () {
                 let player = videojs('player');
+                var video = document.getElementById('player_html5_api');
+                var source = document.createElement('source');
+                const firstLink = document.querySelector('.videourl').getAttribute("data-url");
+                source.setAttribute('src', firstLink);
+                source.setAttribute('type', 'application/x-mpegURL');
+                video.appendChild(source);
                 const firstPoster = document.querySelector('.videourl').getAttribute("cover");
                 const productid = document.querySelector('.videourl').getAttribute("productid");
                 const episodeid = document.querySelector('.videourl').getAttribute("episodeid");
@@ -37,10 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     player.setAttribute('productid', productid)
                     player.setAttribute('episodeid', episodeid)
                     player.load()
-                    console.log({
-                        src: source.getAttribute('src'),
-                        type: source.getAttribute('type'),
-                    }, player.currentSrc());
                     window.scrollTo({ top: 0, behavior: 'smooth' })
                 }
 
