@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var isIOS = !window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
     if (document.querySelector('.videourl') !== null) {
+        console.log(isSafari || isIOS)
         if (isSafari || isIOS) {
             var video = document.getElementById('player');
             var source = document.createElement('source');
