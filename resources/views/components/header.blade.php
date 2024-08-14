@@ -27,7 +27,7 @@
                                         {{ empty($value) ? 0 : number_format($value) }}
                                     </a>
 
-                                    <a class="dropdown-item" href="{{ route('login') }}">
+                                    <a class="dropdown-item" href="{{ route('logout') }}">
                                         {{__('buttons.logout')}}
                                     </a>
                                 </div>
