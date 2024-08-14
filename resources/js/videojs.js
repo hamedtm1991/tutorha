@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         changeUrl(url, poster, productid, episodeid)
                     })
                 })
+                document.querySelector('picture.vjs-poster').firstChild.style.height = '100%'
             })
         } else {
 
@@ -115,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     changeUrl(url, poster, productid, episodeid)
                 })
             })
+            document.querySelector('picture.vjs-poster').firstChild.style.height = '100%'
         }
     }
 });
