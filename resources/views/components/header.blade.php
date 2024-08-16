@@ -9,7 +9,9 @@
                 <a class="nav-brand" href="{{ route('home') }}">
                     <img src="{{ secure_asset('storage/logo.png') }}" class="logo" alt="" />
                 </a>
-                <div class="nav-toggle"></div>
+                @if(\Illuminate\Support\Facades\Auth::check())
+                    <div class="nav-toggle"></div>
+                @endif
                 <div class="mobile_nav">
                     <ul>
                         @if(\Illuminate\Support\Facades\Auth::check())
@@ -23,8 +25,9 @@
                                     </a>
                                     <a class="dropdown-item" href="#">
                                         @php($value = optional(\Illuminate\Support\Facades\Auth::user()->wallet)->value)
-                                        {{__('general.toman')}}
+                                        اعتبار:
                                         {{ empty($value) ? 0 : number_format($value) }}
+                                        <span style="font-size: 10px">{{__('general.toman')}}</span>
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}">

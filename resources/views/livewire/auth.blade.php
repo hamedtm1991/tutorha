@@ -99,3 +99,7 @@
         }
     </style>
 @endpush
+
+@push('seo')
+    <title>ورود</title>
+@endpush

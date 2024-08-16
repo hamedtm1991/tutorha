@@ -11,6 +11,7 @@ use App\Livewire\Landings\Landings;
 use App\Http\Controllers\PaymentController;
 use App\Livewire\Panel\Courses;
 use App\Livewire\Landings\Blogs;
+use App\Livewire\Landings\BlogDetails;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,4 @@ Route::get('/landings/{title}', Landings::class)->name('landings');
 Route::get('/', Home::class)->name('home');
 Route::post('/bank/payment/callback', [PaymentController::class, 'callbackFromBank'])->name('callback');
 Route::get('/blog', Blogs::class)->name('blog');
+Route::get('/blog/detail/{id}', BlogDetails::class)->name('blogDetail');

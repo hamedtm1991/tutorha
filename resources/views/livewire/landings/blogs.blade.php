@@ -14,11 +14,11 @@
                                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                                     <div class="blg_grid_box">
                                         <div class="blg_grid_thumb">
-                                            <a href="blog-detail.html"><img src="https://tutorha-ewoehznko.liara.run/api/files/{{ $post['collectionId'] }}/{{ $post['id'] }}/{{ $post['image'] }}" class="img-fluid" alt="{{ $post['title'] }}" /></a>
+                                            <a href="{{ route('blogDetail', ['id' => $post['id']]) }}"><img src="https://tutorha-ewoehznko.liara.run/api/files/{{ $post['collectionId'] }}/{{ $post['id'] }}/{{ $post['image'] }}" class="img-fluid" alt="{{ $post['title'] }}" /></a>
                                         </div>
                                         <div class="blg_grid_caption">
                                             <div class="blg_tag"><span>{{ $post['tag'] }}</span></div>
-                                            <div class="blg_title"><h4><a href="blog-detail.html">{{ $post['title'] }}</a></h4></div>
+                                            <div class="blg_title"><h4><a href="{{ route('blogDetail', ['id' => $post['id']]) }}">{{ $post['title'] }}</a></h4></div>
                                             <div class="blg_desc"><p>{{ $post['description'] }}</p></div>
                                         </div>
                                         <div class="crs_grid_foot">
@@ -26,7 +26,7 @@
                                                 <div class="crs_fl_last">
                                                     <div class="foot_list_info">
                                                         <ul>
-                                                            <li><div class="elsio_ic"><i class="fa fa-clock text-warning"></i></div><div class="elsio_tx">{{ $post['created'] }}</div></li>
+                                                            <li><div class="elsio_ic"><i class="fa fa-clock text-warning"></i></div><div class="elsio_tx">{{ localDate($post['created']) }}</div></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -53,16 +53,16 @@
 {{--                    </div>--}}
 
                     <!-- Categories -->
-                    <div class="single_widgets widget_category">
-                        <h4 class="title">دسته بندی</h4>
-                        <ul>
-                            <li><a href="#">سبک زندگی <span>09</span></a></li>
-                            <li><a href="#">سیر و سفر <span>12</span></a></li>
-                            <li><a href="#">کسب و کار <span>19</span></a>
-                            </li><li><a href="#">طراحی سایت <span>17</span></a></li>
-                            <li><a href="#">موزیک <span>10</span></a></li>
-                        </ul>
-                    </div>
+{{--                    <div class="single_widgets widget_category">--}}
+{{--                        <h4 class="title">دسته بندی</h4>--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="#">سبک زندگی</a></li>--}}
+{{--                            <li><a href="#">سیر و سفر <span>12</span></a></li>--}}
+{{--                            <li><a href="#">کسب و کار <span>19</span></a>--}}
+{{--                            </li><li><a href="#">طراحی سایت <span>17</span></a></li>--}}
+{{--                            <li><a href="#">موزیک <span>10</span></a></li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
 
                     <!-- Trending Posts -->
 {{--                    <div class="single_widgets widget_thumb_post">--}}
@@ -141,5 +141,5 @@
 @push('seo')
     <meta name="description" content="آموزش برنامه‌نویسی (Web programming), بک اند (Backend), ای تی (IT) و ... از مبتدی تا پیشرفته">
     <meta name="keywords" content="backend, نرم افزار ,بک اند ,کامپیوتر  ,برنامه‌نویسی ,آموزش">
-    <title>خانه</title>
+    <title>بلاگ</title>
 @endpush

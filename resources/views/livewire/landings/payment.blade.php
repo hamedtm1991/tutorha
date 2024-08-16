@@ -25,7 +25,7 @@
             <div class="text-center display-3 mb-5">
                 <input wire:model="price"  id="pay-input-main" type="text" hidden="hidden">
                 <div>
-                    <input onkeyup="changeValue()" class="form-control" dir="ltr" id="pay-input" type="text">
+                    <input onkeyup="changeValue()" class="form-control" dir="ltr" id="pay-input" type="text" placeholder="مبلغ">
                 </div>
                 <div>
                     @error('price') <span class="error text-danger fs-2">{{ $message }}</span> @enderror
