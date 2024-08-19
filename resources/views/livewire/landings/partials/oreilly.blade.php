@@ -1,6 +1,6 @@
 <div class="text-center">
     <h1 class="mb-5">تاثیر گذار بر آینده برای بیش از ۴۰ سال</h1>
-    <img height="500px" width="800px" src="{{ secure_asset('storage/landings/oreilly-8.png') }}" class="img-fluid mb-3" alt="O’Reilly logo">
+    <img height="500px" width="800px" src="{{ secure_asset('storage/landings/oreilly-2.jpg') }}" class="img-fluid mb-3" alt="O’Reilly office">
     <div style="font-size: x-large; text-align: justify">
         <p>
             ماموریت اورایلی (O’Reilly) تغییر جهان به وسیله به اشتراک گذاشتن دانش نوآوران می‌باشد.
@@ -10,7 +10,6 @@
             کتاب‌های اورایلی (O’Reilly) برای چندین دهه جلودار در حوزه تکنولوژی جهت شکل دهی آینده بوده است.
         </p>
     </div>
-    <img height="500px" width="800px" src="{{ secure_asset('storage/landings/oreilly-2.jpg') }}" class="img-fluid mb-3 img-fluid" alt="O’Reilly office">
     <div style="font-size: x-large; text-align: justify" class="mt-3">
         <h2>تاریخچه</h2>
         <p>

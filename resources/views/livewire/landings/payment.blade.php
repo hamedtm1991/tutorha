@@ -24,7 +24,7 @@
         <form wire:submit="bank">
             <div class="text-center display-3 mb-5">
                 <input wire:model="price"  id="pay-input-main" type="text" hidden="hidden">
-                <div>
+                <div class="col-md-4 col-sm-6" style="display: inline-block">
                     <input onkeyup="changeValue()" class="form-control" dir="ltr" id="pay-input" type="text" placeholder="مبلغ">
                 </div>
                 <div>
@@ -33,9 +33,43 @@
             </div>
             <div class="container">
                 <div class="row justify-content-md-center">
-                    <a onclick="autoValue(200000);" class="col-lg-3 col-md-3 col-sm-6 border border-success me-lg-2 text-center my-2 p-5 rounded display-5 d-flex align-items-end">۲۰۰,۰۰۰ <div class="fs-4">{{ __('general.toman') }}</div></a>
-                    <a onclick="autoValue(500000);" class="col-lg-3 col-md-3 col-sm-6 border border-success me-lg-2 text-center my-2 p-5 rounded display-5 d-flex align-items-end">۵۰۰,۰۰۰ <div class="fs-4">{{ __('general.toman') }}</div></a>
-                    <a onclick="autoValue(1000000);" class="col-lg-3 col-md-3 col-sm-6 border border-success me-lg-2 text-center my-2 p-5 rounded display-5 d-flex align-items-end">۱,۰۰۰,۰۰۰ <div class="fs-4">{{ __('general.toman') }}</div></a>
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12">
+                    </div>
+                </div>
+            </div>
+
+            <div class=" container-fluid pricingTable pt-90">
+                <div class="container">
+                    <div class="row monthlyPriceList animated">
+                        <div class="col-lg-4">
+                            <div class="inner holder">
+                                <div class="price mt-5">
+                                    <a onclick="autoValue(200000);" class="border border-success text-center my-2 p-5 rounded display-5 d-flex align-items-end">۲۰۰,۰۰۰ <div class="fs-4">{{ __('general.toman') }}</div></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="inner holder active">
+                                <div class="price mt-5">
+                                    <a onclick="autoValue(500000);" class="border border-success text-center my-2 p-5 rounded display-5 d-flex align-items-end">۵۰۰,۰۰۰ <div class="fs-4">{{ __('general.toman') }}</div></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="inner holder">
+                                <div class="price mt-5">
+                                    <a onclick="autoValue(1000000);" class="border border-success text-center my-2 p-5 rounded display-5 d-flex align-items-end">۱,۰۰۰,۰۰۰ <div class="fs-4">{{ __('general.toman') }}</div></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

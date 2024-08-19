@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'login' => 'ورود',
+    'login' => 'ورود / ثبت نام',
     'logout' => 'خروج',
     'submit' => 'تایید',
     'resendVerification' => 'ارسال مجدد کد تایید',
