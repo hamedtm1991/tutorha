@@ -7,7 +7,7 @@
             <div class="row">
 
                 <!-- Blog Detail -->
-                <div class="col-lg-8 col-md-12 col-sm-12 col-12" style="margin-right: 16.6%">
+                <div class="col-lg-8 col-md-12 col-sm-12 col-12 on-the-lg">
                     <div class="article_detail_wrapss single_article_wrap format-standard">
                         <div class="article_body_wrap">
 
@@ -280,7 +280,17 @@
 </div>
 
 @push('seo')
-    <meta name="description" content="آموزش برنامه‌نویسی (Web programming), بک اند (Backend), ای تی (IT) و ... از مبتدی تا پیشرفته">
-    <meta name="keywords" content="backend, نرم افزار ,بک اند ,کامپیوتر  ,برنامه‌نویسی ,آموزش">
+    <meta name="description" content="{{ $post['description'] }}">
+    <meta name="keywords" content="{{ $post['keywords'] }}">
     <title>{{ $post['title'] }}</title>
+@endpush
+
+@push('styles')
+    <style>
+        @media (min-width: 1000px) {
+            .on-the-lg {
+                margin-right: 16.6%;
+            }
+        }
+    </style>
 @endpush
