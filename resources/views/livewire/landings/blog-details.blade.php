@@ -7,20 +7,23 @@
             <div class="row">
 
                 <!-- Blog Detail -->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12 offset-lg-2">
+                <div class="col-lg-8 col-md-12 col-sm-12 col-12" style="margin-right: 16.6%">
                     <div class="article_detail_wrapss single_article_wrap format-standard">
                         <div class="article_body_wrap">
 
                             <div class="article_featured_image">
-                                <img class="img-fluid" src="assets/img/b-7.png" alt="">
+                                <img src="https://tutorha-ewoehznko.liara.run/api/files/{{ $post['collectionId'] }}/{{ $post['id'] }}/{{ $post['image'] }}" class="img-fluid" alt="{{ $post['title'] }}">
                             </div>
 
                             <div class="article_top_info">
                                 <ul class="article_middle_info">
-                                    <li><a href="#"><span class="icons"><i class="ti-user"></i></span>{{ $post['writer'] }}</a></li>
+                                    <li><a href="#"><span class="icons"><i class="ti-user"></i></span>نویسنده: {{ $post['writer'] }}</a></li>
+                                    <li><a href="#"><span class="icons"><i class="ti-user"></i></span>مترجم: {{ $post['translator'] }}</a></li>
                                 </ul>
                             </div>
-                            <h3 class="post-title">{{ $post['title'] }}</h3>
+                            <div class="mt-5">
+                                <h3 class="post-title">{{ $post['title'] }}</h3>
+                            </div>
                             {!! $post['text'] !!}
                         </div>
                     </div>
