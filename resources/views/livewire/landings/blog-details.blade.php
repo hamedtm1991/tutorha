@@ -292,5 +292,6 @@
                 margin-right: 16.6%;
             }
         }
+        img { max-width: 100%}
     </style>
 @endpush
