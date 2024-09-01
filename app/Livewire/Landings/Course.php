@@ -20,44 +20,13 @@ class Course extends Component
     public array $tags = [];
     public int $i = 8;
 
-    protected $listeners = ['pay', 'end'];
-
-    /**
-     * @param Episode $episode
-     * @return void
-     */
-    public function pay(Episode $episode)
-    {
-        if (!Auth::user()->wallet || Auth::user()->wallet->value < $episode->price) {
-            return $this->redirect(Route('payment', ['value' => $episode->price - Auth::user()->wallet->value ?? 0]));
-        }
-
-        if (!$episode->checkOrder()) {
-            $response = Wallet::payWithoutCart($episode);
-
-            if ($response['status']) {
-                $this->dispatch('toast', type: 'success', message: __('general.successfulPurchase'));
-            } else {
-                $this->dispatch('toast', type: 'error', message: $response['error']);
-            }
-        } else {
-            $this->dispatch('toast', type: 'error', message: __('general.alreadyPaid'));
-        }
-    }
+    protected $listeners = ['end'];
 
     public function mount(Product $product)
     {
         $this->product = $product;
         $this->episodes = collect(Episode::where('product_id', $this->product->id)->get()->groupBy('group')->all());
         $this->tags = $product->tags->pluck('name')->toArray();
-    }
-
-    /**
-     * @return null
-     */
-    public function login()
-    {
-        return $this->redirect(Route('login'));
     }
 
     /**

@@ -165,7 +165,7 @@ class WalletService
         $walletTransaction->description = $this->description;
         $walletTransaction->transfer_from_id = is_null($this->transferFromId) ? null : Auth::id();
         $walletTransaction->transfer_to_id = $this->transferToId;
-        $walletTransaction->sign = $walletTransaction->sign();
+        $walletTransaction->sign = null;
 
         return $walletTransaction;
     }

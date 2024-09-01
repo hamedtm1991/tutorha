@@ -1,0 +1,66 @@
+<?php
+
+namespace App\Livewire\Landings;
+
+use App\Services\V1\Wallet\Wallet;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
+
+class Episode extends Component
+{
+    public $index;
+    public $episode;
+    public $product;
+
+    public $listeners = [];
+
+    public function mount($index, $episode, $product)
+    {
+        $this->index = $index;
+        $this->episode = $episode;
+        $this->product = $product;
+        $this->listeners = ["pay-" . $episode->id =>"pay"];
+    }
+
+    /**
+     * @param \App\Models\Episode $episode
+     * @return void
+     */
+    public function pay(\App\Models\Episode $episode)
+    {
+        if (!Auth::user()->wallet || Auth::user()->wallet->value < $episode->price) {
+            return $this->redirect(Route('payment', ['value' => $episode->price - Auth::user()->wallet->value ?? 0]));
+        }
+
+        if (!$episode->checkOrder()) {
+            $response = Wallet::payWithoutCart($episode);
+
+            if ($response['status']) {
+                $this->dispatch('toast', type: 'success', message: __('general.successfulPurchase'));
+            } else {
+                $this->dispatch('toast', type: 'error', message: $response['error']);
+            }
+        } else {
+            $this->dispatch('toast', type: 'error', message: __('general.alreadyPaid'));
+        }
+    }
+
+    /**
+     * @return null
+     */
+    public function login()
+    {
+        return $this->redirect(Route('login'));
+    }
+
+    public function render()
+    {
+        $url = getVideoUrl($this->episode->links[0] ?? '', $this->episode);
+        return view('livewire.landings.episode', [
+            'index' => $this->index,
+            'episode' => $this->episode,
+            'product' => $this->product,
+            'url' => $url
+        ]);
+    }
+}

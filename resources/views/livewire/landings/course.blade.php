@@ -49,30 +49,7 @@
                     <div class="edu_wraper">
                         <h4 class="edu_title">{{ __('general.episodes') }}</h4>
                         <div id="accordionExample" class="accordion shadow circullum">
-                            @foreach($episodes as $index => $group)
-                                @php($rand = \Illuminate\Support\Str::random(10))
-                                <div class="card">
-                                    <div id="heading{{ $rand }}" class="card-header bg-white shadow-sm border-0">
-                                        <h6 class="mb-0 accordion_title"><a href="#" data-toggle="collapse" data-target="#collapse{{ $rand }}" aria-expanded="true" aria-controls="collapse{{ $rand }}" class="d-block position-relative text-dark collapsible-link py-2">{{ $index }}</a></h6>
-                                    </div>
-                                    <div id="collapse{{ $rand }}" aria-labelledby="heading{{ $rand }}" data-parent="#accordionExample" class="collapse show">
-                                        <div class="card-body pl-3 pr-3">
-                                            <ul class="lectures_lists">
-                                                @foreach($group as $episode)
-                                                    @php($url = getVideoUrl($episode->links[0] ?? '', $episode))
-                                                    <a style="display: @if(empty($url)) none @endif" class="videourl" episodeid="{{ $episode->id }}" productid="{{ $product->id }}" cover="{{ url(route('getPublicImage', ['Episode-' . $episode->id . '-main', rand()])) }}" data-url="{{ $url }}"><li class="complete"><div class="lectures_lists_title"><i class="fas fa-{{ !empty($watchDetail[$episode->id]) ? 'check' : 'play' }} dios"></i></div>{{ $episode->title }}<span class="cls_timing">{{ $episode->time }}</span></li></a>
-
-                                                    @if(!Auth::check() && empty($url))
-                                                        <a wire:click="login"><li class="unview"><div class="lectures_lists_title"><i class="fas fa-lock dios"></i></div>{{ $episode->title }}<span class="cls_timing">{{ number_format($episode->price) . ' / ' . $episode->time }}</span></li></a>
-                                                    @elseif(empty($url))
-                                                        <a onclick="getConfirm('landings.course', 'pay', '{{ $episode->id }}', '{{ __('general.sure') }}', '{{ __('general.reducingMoney', ['value' => number_format($episode->price) . ' ' . __('general.toman')]) }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')"><li class="unview"><div class="lectures_lists_title"><i class="fas fa-lock dios"></i></div>{{ $episode->title }}<span class="mx-3">{{ number_format($episode->price) . ' ' . __('general.toman') }}</span><span class="cls_timing">{{ $episode->time }}</span></li></a>
-                                                    @endif
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
+                            <livewire:landings.episodes :$episodes :$product />
                         </div>
                     </div>
 
@@ -85,19 +62,7 @@
                         </div>
                     @endif
 
-                    <!-- instructors -->
-                    @foreach($product->tutors as $tutor)
-                        <div class="single_instructor">
-                            <div class="single_instructor_thumb">
-                                <a href="#"><img src="{{ url(route('getPublicImage', ['Tutor-' . $tutor->id . '-main', rand()])) }}" class="img-fluid" alt="{{ $tutor->name }}"></a>
-                            </div>
-                            <div class="single_instructor_caption">
-                                <h4><a href="#">{{ $tutor->name }}</a></h4>
-                                <p>{{ $tutor->description }}</p>
-                            </div>
-                        </div>
-                    @endforeach
-
+                    <livewire:landings.tutors :tutors="$product->tutors" />
                 </div>
 
                 <!-- Sidebar -->
