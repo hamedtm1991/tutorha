@@ -1,5 +1,5 @@
 <!-- ============================ Footer Start ================================== -->
-<footer class="dark-footer skin-dark-footer style-2" style="margin-top: auto;">
+<footer class="dark-footer skin-dark-footer style-2" style="margin-top: auto;color: white">
     <div class="footer-middle">
         <div class="container">
             <div class="row">
@@ -17,7 +17,7 @@
                             <div class="footer_widget">
                                 <h4 class="widget_title">بخش ها</h4>
                                 <ul class="footer-menu">
-                                    <li><a href="{{ route('landings', ['title' => 'terms']) }}">شرایط استفاده</a></li>
+                                    <li><a href="{{ route('landings', ['title' => 'terms']) }}" style="color: white">شرایط استفاده</a></li>
                                 </ul>
                             </div>
                         </div>

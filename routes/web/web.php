@@ -38,6 +38,5 @@ Route::get('course/{product}/{title}', Course::class)->name('course');
 Route::get('/images/public/get/{name}/{rand}', [ImageController::class, 'getPublicImage'])->name('getPublicImage');
 Route::get('/landings/{title}', Landings::class)->name('landings');
 Route::get('/', Home::class)->name('home');
-Route::post('/bank/payment/callback', [PaymentController::class, 'callbackFromBank'])->name('callback');
 Route::get('/blog', Blogs::class)->name('blog');
 Route::get('/blog/detail/{id}', BlogDetails::class)->name('blogDetail');

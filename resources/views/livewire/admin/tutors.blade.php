@@ -33,7 +33,7 @@
                             @endif
                             @foreach($imageList as $image)
                                 <div class="mb-2">
-                                    <img src="{{ url(route('getPublicImage', [$image, rand()])) }}" style="max-width: 250px">
+                                    <img src="{{ url(route('getPublicImage', [$image, rand()])) }}" style="max-width: 250px" alt="tutor">
                                     <a onclick="getConfirm('admin.tutors', 'deleteImage', '{{ $image }}', '{{ __('general.sure') }}', '{{ __('general.noRevert') }}', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')" class="fa fa-trash-alt text-danger" style="font-size: 40px"></a>
                                 </div>
                             @endforeach

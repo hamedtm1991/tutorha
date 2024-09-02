@@ -9,7 +9,7 @@
                     <form>
                         <div class="crs_log_wrap">
                             <div class="crs_log__thumb">
-                                <img src="assets/img/banner-2.jpg" class="img-fluid" alt="" />
+                                <img src="assets/img/banner-2.jpg" class="img-fluid" alt="lock" />
                             </div>
                             <div class="crs_log__caption">
                                 <div class="rcs_log_123">

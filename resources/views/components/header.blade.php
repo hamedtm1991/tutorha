@@ -7,7 +7,7 @@
         <nav id="navigation" class="navigation navigation-landscape">
             <div class="nav-header">
                 <a class="nav-brand" href="{{ route('home') }}">
-                    <img src="{{ secure_asset('storage/logo.png') }}" class="logo" alt="" />
+                    <img src="{{ secure_asset('storage/logo.png') }}" class="logo" alt="logo" />
                 </a>
                 @if(\Illuminate\Support\Facades\Auth::check())
                     <div class="nav-toggle"></div>
