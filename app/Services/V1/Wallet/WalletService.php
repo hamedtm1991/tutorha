@@ -139,7 +139,7 @@ class WalletService
                 $this->detail === WalletTransaction::DETAIL_INCREASE_ADMIN) {
                 $confirmedBy = Auth::user()->mobile . ' - ' . Auth::id() . ' - ' . now();
             } else {
-                $confirmedBy = Auth::user()->confirmedBy(true);
+                $confirmedBy = 'system' . ' / ' . now();
             }
         }
 
