@@ -11,7 +11,7 @@
                             @php($i--)
                         @endforeach
                         <div class="ed_header_caption">
-                            <h2 class="ed_title">{{ $product->title }}</h2>
+                            <h1 class="ed_title">{{ $product->title }}</h1>
                             <ul>
                                 <li><i class="fa fa-clock"></i>{{ $product->options['time'] }}</li>
                                 <li><i class="fa fa-video"></i>{{ $product->options['numberOfEpisodes'] . ' ' . __('general.episode') }}</li>
@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="edu_wraper">
-                        <h4 class="edu_title">{{ __('general.episodes') }}</h4>
+                        <div style="font-weight: bold" class="edu_title mb-2">{{ __('general.episodes') }}</div>
                         <div id="accordionExample" class="accordion shadow circullum">
                             <livewire:landings.episodes :$episodes :$product />
                         </div>
@@ -57,7 +57,7 @@
                     @if($product->long_description)
                         <!-- Overview -->
                         <div class="edu_wraper">
-                            <h4 class="edu_title">{{ __('general.description') }}</h4>
+                            <h2 class="edu_title">{{ __('general.description') }}</h2>
                             {!! $product->long_description !!}
                         </div>
                     @endif
@@ -87,7 +87,7 @@
                                 </ul>
                             </div>
                             <div class="eld mb-3">
-                                <h5 class="font-medium">ویژگی ها:</h5>
+                                <div style="font-weight: bold; font-size: large" class="font-medium">ویژگی ها:</div>
                                 <ul>
                                     @foreach($product->options['features'] as $feature)
                                         <li><i class="fa fa-check"></i>{{ $feature }}</li>
