@@ -6,7 +6,7 @@
 
                 <div class="col-lg-5 col-md-5">
                     <div class="footer_widget">
-                        <h4 class="extream mb-3 font-2">درباره ما</h4>
+                        <span class="extream mb-3" style="font-size: large; font-weight: bold">درباره ما</span>
                         <p style="text-align: justify">در این سایت بنا بر این است که بر اساس کتاب‌های معتبر موجود در حوزه برنامه‌نویسی دوره‌هایی جهت‌ ارتقا سطح یادگیری شما عزیزان قرار داده شود، همچنین هدف ما کوتاه شدن زمان مورد نیاز جهت یادگیری و استفاده از مثال‌های عملی به همراه آموزش اصولی از سطوح مبتدی تا پیشرفته می‌باشد.</p>
                     </div>
                 </div>
@@ -15,7 +15,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-4">
                             <div class="footer_widget">
-                                <h4 class="widget_title">بخش ها</h4>
+                                <span class="widget_title" style="font-size: large; font-weight: bold">بخش ها</span>
                                 <ul class="footer-menu">
                                     <li><a href="{{ route('landings', ['title' => 'terms']) }}" style="color: white">شرایط استفاده</a></li>
                                 </ul>
@@ -24,7 +24,7 @@
 
                         <div class="col-lg-4 col-md-4">
                             <div class="footer_widget">
-                                <h4 class="widget_title">اطلاعات تماس</h4>
+                                <span class="widget_title" style="font-size: large; font-weight: bold">اطلاعات تماس</span>
                                 <ul class="footer-menu">
                                     <li>موبایل: ۰۹۱۲۱۸۹۵۸۳۱</li>
                                     <li>تلفن: ۰۲۱۴۴۴۸۰۲۸۵</li>

@@ -1,5 +1,5 @@
 <div>
-    <ul>
+    <ul class="lectures_lists">
         @if(!Auth::check() && empty($url))
             <li href="{{ route('login') }}">
             <span class="unview"><div class="lectures_lists_title">

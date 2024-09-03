@@ -8,11 +8,9 @@
             </div>
             <div id="collapse{{ $rand }}" aria-labelledby="heading{{ $rand }}" data-parent="#accordionExample" class="collapse show">
                 <div class="card-body pl-3 pr-3">
-                    <ul class="lectures_lists">
-                        @foreach($group as $episode)
-                            <livewire:landings.episode :$index :$episode :$product :key="$index" />
-                        @endforeach
-                    </ul>
+                    @foreach($group as $episode)
+                        <livewire:landings.episode :$index :$episode :$product :key="$index" />
+                    @endforeach
                 </div>
             </div>
         </div>
