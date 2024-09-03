@@ -98,7 +98,7 @@
                                 <i class="fas fa-wallet"></i>
                             </span>
                         </li>
-                        <li class="add-listing bg-danger">
+                        <li class="add-listing" style="background-color: #e1002d">
                             <a href="{{ route('logout') }}" class="text-white">{{ __('buttons.logout') }}</a>
                         </li>
                     </ul>
