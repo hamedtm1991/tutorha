@@ -18,4 +18,7 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        sourcemap: 'inline',
+    },
 });

@@ -4040,7 +4040,7 @@ ul.lt_cr_list li i{
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    background-image: url(../img/rate.png);
+    /*background-image: url(../img/rate.png);*/
     background-position: bottom;
     background-size: cover;
 }
