@@ -17,8 +17,8 @@
 
                             <div class="article_top_info">
                                 <ul class="article_middle_info">
-                                    <li><a href="#"><span class="icons"><i class="ti-user"></i></span>نویسنده: {{ $post['writer'] }}</a></li>
-                                    <li><a href="#"><span class="icons"><i class="ti-user"></i></span>مترجم: {{ $post['translator'] }}</a></li>
+                                    <li><a href="#"><span class="icons"><i class="ti-user"></i></span><span class="text-dark">نویسنده: {{ $post['writer'] }}</span></a></li>
+                                    <li><a href="#"><span class="icons"><i class="ti-user"></i></span><span class="text-dark">مترجم: {{ $post['translator'] }}</span></a></li>
                                 </ul>
                             </div>
                             <div class="mt-5">
