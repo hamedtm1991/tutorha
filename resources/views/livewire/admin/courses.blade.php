@@ -61,6 +61,13 @@
                             </div>
                         </div>
                         <div class="form-group smalls">
+                            <label class="mb-2">{{ __('general.release') }}</label>
+                            <input wire:model="form.release" type="text" class="form-control">
+                            <div class="mt-2">
+                                @error('form.release') <span class="error text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                        <div class="form-group smalls">
                             <label class="mb-2">{{ __('general.numberOfEpisodes') }}</label>
                             <input wire:model="form.numberOfEpisodes" type="number" class="form-control">
                             <div class="mt-2">
@@ -117,6 +124,7 @@
                                         <th scope="col">{{ __('general.price') }}</th>
                                         <th scope="col">{{ __('general.fakePrice') }}</th>
                                         <th scope="col">{{ __('general.courseTime') }}</th>
+                                        <th scope="col">{{ __('general.release') }}</th>
                                         <th scope="col">{{ __('general.numberOfEpisodes') }}</th>
                                         <th scope="col">{{ __('general.level') }}</th>
                                         <th scope="col">{{ __('general.createdAt') }}</th>
@@ -134,6 +142,7 @@
                                             <td>{{ number_format($model->price) }}</td>
                                             <td>{{ number_format($model->fake_price) }}</td>
                                             <td>{{ $model->options['time'] ?? '' }}</td>
+                                            <td>{{ $model->options['release'] ?? '' }}</td>
                                             <td>{{ $model->options['numberOfEpisodes'] ?? '' }}</td>
                                             <td>{{ empty($model->options['level']) ? '' : __('general.' . $model->options['level']) }}</td>
                                             <td>{{ localDate($model->created_at) }}</td>

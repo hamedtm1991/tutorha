@@ -101,5 +101,7 @@
 @endpush
 
 @push('seo')
+    <meta name="description" content="Login Page">
+    <meta name="keywords" content="login, auth">
     <title>ورود</title>
 @endpush

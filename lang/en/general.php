@@ -113,6 +113,7 @@ return [
     'Saman' => 'Saman',
     'myCourses' => 'My courses',
     'tutor' => 'Tutor',
+    'release' => 'Release',
 
     'home' => 'Home',
 ];

@@ -16,6 +16,9 @@
                                 <li><i class="fa fa-clock"></i>{{ $product->options['time'] }}</li>
                                 <li><i class="fa fa-video"></i>{{ $product->options['numberOfEpisodes'] . ' ' . __('general.episode') }}</li>
                                 <li><i class="fa fa-signal"></i>{{ __('general.' . $product->options['level']) }}</li>
+                                @if($product->is_finished)
+                                    <li><i class="fa fa-calendar"></i>{{ $product->options['release'] }}</li>
+                                @endif
                             </ul>
                         </div>
                         <div class="ed_header_short">
@@ -84,6 +87,9 @@
                                     <li><i class="ti-time"></i>{{ __('general.courseTime') }}:<strong>{{ $product->options['time'] }}</strong></li>
                                     <li><i class="ti-tag"></i>{{ __('general.level') }}:<strong>{{ __('general.' . $product->options['level']) }}</strong></li>
                                     <li><i class="ti-check"></i>{{ __('general.status') }}:<strong>{{ $product->is_finished ? __('general.finished') : __('general.notFinished') }}</strong></li>
+                                    @if($product->is_finished)
+                                        <li><i class="ti-calendar"></i>{{ __('general.release') }}:<strong>{{ $product->options['release'] }}</strong></li>
+                                    @endif
                                 </ul>
                             </div>
                             <div class="eld mb-3">
