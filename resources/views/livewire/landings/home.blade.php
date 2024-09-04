@@ -35,7 +35,7 @@
                     <div class="crp_box ovr_top">
                         <div class="row align-items-center m-0">
                             <div class="col-xl-2 col-lg-3 col-md-4 col-sm-12">
-                                <div class="crp_tags"><h6>تهیه دوره‌ها از بهترین انتشارات‌ها</h6></div>
+                                <div class="crp_tags"><span class="fs-6 bold">تهیه دوره‌ها از بهترین انتشارات‌ها</span></div>
                             </div>
                             <div class="col-xl-10 col-lg-9 col-md-8 col-sm-12">
                                 <div class="part_rcp">
@@ -61,7 +61,7 @@
             <div class="row justify-content-start">
                 <div class="col-lg-7 col-md-8">
                     <div class="sec-heading">
-                        <h3 class="font-2">دوره‌ها</h3>
+                        <span class="font-2 fs-4 bold">دوره‌ها</span>
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                <div class="crs_title text-truncate"><h4><a href="{{ route('course', [$model->id, str_replace(' ', '-', $model->title)]) }}" class="crs_title_link">{{ $model->title }}...</a></h4></div>
+                                <div class="crs_title text-truncate"><span class="bold"><a href="{{ route('course', [$model->id, str_replace(' ', '-', $model->title)]) }}" class="crs_title_link">{{ $model->title }}...</a></span></div>
                                 <div class="crs_info_detail">
                                     <ul>
                                         <li><i class="fa fa-clock text-danger"></i><span>{{ $model->options['time'] }}</span></li>
@@ -130,13 +130,13 @@
             <div class="row align-items-center justify-content-between mb-5">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <div class="lmp_caption">
-                        <h4 class="mb-3 font-2">سعی ما بر این است که یادگیری را برای شما لذت بخش کنیم.</h4>
+                        <div class="mb-3 font-2 fs-5 bold">سعی ما بر این است که یادگیری را برای شما لذت بخش کنیم.</div>
                         <div class="mb-3 ml-4 mr-lg-0 ml-lg-4">
                             <div class="d-flex align-items-center">
                                 <div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
                                     <i class="fas fa-check"></i>
                                 </div>
-                                <h6 class="mb-0 mx-3">دسترسی مادام العمر به قسمت‌های خریداری شده</h6>
+                                <div class="mb-0 mx-3 fs-6">دسترسی مادام العمر به قسمت‌های خریداری شده</div>
                             </div>
                         </div>
                         <div class="mb-3 ml-4 mr-lg-0 ml-lg-4">
@@ -144,7 +144,7 @@
                                 <div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
                                     <i class="fas fa-check"></i>
                                 </div>
-                                <h6 class="mb-0 mx-3">امکان تهیه هر قسمت از دوره به صورت مجزا</h6>
+                                <div class="mb-0 mx-3 fs-6">امکان تهیه هر قسمت از دوره به صورت مجزا</div>
                             </div>
                         </div>
                         <div class="mb-3 ml-4 mr-lg-0 ml-lg-4">
@@ -152,7 +152,7 @@
                                 <div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
                                     <i class="fas fa-check"></i>
                                 </div>
-                                <h6 class="mb-0 mx-3">استفاده از بهترین منابع</h6>
+                                <div class="mb-0 mx-3 fs-6">استفاده از بهترین منابع</div>
                             </div>
                         </div>
                         <div class="mb-3 ml-4 mr-lg-0 ml-lg-4">
@@ -160,7 +160,7 @@
                                 <div class="rounded-circle bg-light-success theme-cl p-2 small d-flex align-items-center justify-content-center">
                                     <i class="fas fa-check"></i>
                                 </div>
-                                <h6 class="mb-0 mx-3">پشتیبانی</h6>
+                                <div class="mb-0 mx-3 fs-6">پشتیبانی</div>
                             </div>
                         </div>
                     </div>
@@ -186,7 +186,7 @@
                 <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12">
                     <div class="lmp_caption mt-3">
                         <div class="mx-3" style="text-align: justify">
-                            <h2 class="font-2">هدف ما</h2>
+                            <div class="font-2 fs-5 bold">هدف ما</div>
                             <p style="font-size: large">
                                 از آن جا که بسیاری از برنامه‌نویسان دانش خود را به صورت تجربی کسب کرده‌اند و  همینطور برخی از منابع نیز انتقال دانش‌ را فقط به صورت تجربی در نظر گرفته‌اند، تیم ما قصد دارد آموزش‌هایی با کیفیت، اصولی و با استفاده از بهترین منابع به روز دنیا در سطوح مختلف آموزشی تهیه نماید.
                                 <br>
@@ -228,9 +228,8 @@
                             </div>
                             <div class="blg_grid_caption">
                                 <div class="blg_tag dark"><span>{{ $post['tag'] }}</span></div>
-                                <div class="blg_title"><h4><a href="{{ route('blogDetail', ['id' => $post['id']]) }}">{{ $post['title'] }}</a></h4></div>
+                                <div class="blg_title"><span class="fs-6 bold"><a href="{{ route('blogDetail', ['id' => $post['id']]) }}">{{ $post['title'] }}</a></span></div>
                                 <div class="blg_desc"><p>{{ $post['description'] }}</p></div>
-                                <div class="blg_more"><a href="{{ route('blogDetail', ['id' => $post['id']]) }}">بیشتر بخوانید</a></div>
                             </div>
                         </div>
                     </div>
