@@ -1,13 +1,16 @@
 <div>
     <ul class="lectures_lists">
         @if(!Auth::check() && empty($url))
-            <li href="{{ route('login') }}">
-            <span class="unview"><div class="lectures_lists_title">
-                    <span class="fas fa-lock dios"></span>
-                    <span class="text-dark">{{ $episode->title }}</span>
-                </div>
-                <span class="cls_timing">{{ number_format($episode->price) . ' / ' . $episode->time }}</span>
-            </span>
+            <li>
+                <a href="{{ route('login') }}">
+                    <span class="unview">
+                        <div class="lectures_lists_title">
+                            <span class="fas fa-lock dios"></span>
+                            <span class="text-dark">{{ $episode->title }}</span>
+                        </div>
+                        <span class="cls_timing">{{ number_format($episode->price) . ' / ' . $episode->time }}</span>
+                    </span>
+                </a>
             </li>
         @elseif(empty($url))
             <li class="unview">
