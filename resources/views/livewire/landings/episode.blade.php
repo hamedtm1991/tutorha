@@ -1,39 +1,31 @@
-<li class="{{ $class }}" onclick="{{ $onclick }}">
-    @if(!Auth::check() && empty($url))
-        <a href="{{ route('login') }}">
-            <span class="unview">
-                <div class="lectures_lists_title">
-                    <span class="fas fa-lock dios"></span>
-                    <span class="text-dark">{{ $episode->title }}</span>
-                </div>
-                <span class="cls_timing">{{ number_format($episode->price) . ' / ' . $episode->time }}</span>
-            </span>
-        </a>
-    @elseif(empty($url))
-        <span>
-            <div class="lectures_lists_title">
-                <span class="fas fa-lock dios"></span>
-                <span class="text-dark">{{ $episode->title }}</span>
-                <span class="cls_timing">{{ number_format($episode->price) . ' / ' . $episode->time }}</span>
-            </div>
-        </span>
+<li class="{{ $class }}" onclick="{{ $onclick }}"
+@if(!empty($url))
+    episodeid="{{ $episode->id }}" productid="{{ $product->id }}" cover="{{ url(route('getPublicImage', ['Episode-' . $episode->id . '-main', rand()])) }}" data-url="{{ $url }}"
+@endif
+>
+    @if(empty($url))
+        <div class="lectures_lists_title">
+            <i class="fas fa-lock dios"></i>
+        </div>{{ $episode->title }}<span class="cls_timing text-dark">{{ number_format($episode->price). ' ' . __('general.toman') . ' / ' . $episode->time }}</span>
     @else
-        <span class="videourl" episodeid="{{ $episode->id }}" productid="{{ $product->id }}" cover="{{ url(route('getPublicImage', ['Episode-' . $episode->id . '-main', rand()])) }}" data-url="{{ $url }}">
-            <div class="lectures_lists_title">
-                <span class="fas fa-{{ !empty($watchDetail[$episode->id]) ? 'check' : 'play' }} dios"></span>
-                <span class="text-dark">{{ $episode->title }}</span>
-            </div>
-            <span class="cls_timing">{{ $episode->time }}</span>
+        <span>
+             <div class="lectures_lists_title">
+                <i class="fas fa-{{ !empty($watchDetail[$episode->id]) ? 'check' : 'play' }} dios"></i>
+            </div>{{ $episode->title }}<span class="cls_timing text-dark">{{ $episode->time }}</span>
         </span>
     @endif
 </li>
-
 
 @push('scripts')
     <script>
         function scrollup()
         {
             window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+
+        function login()
+        {
+            window.location.href = "{{ route('login') }}";
         }
     </script>
 @endpush

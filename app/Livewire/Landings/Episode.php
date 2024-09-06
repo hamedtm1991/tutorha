@@ -59,9 +59,13 @@ class Episode extends Component
 
         $class = 'unview';
         $onclick = "";
-        if (Auth::check() && !empty($url)) {
-            $class = 'complete';
+        if (!empty($url)) {
+            $class = 'complete videourl';
             $onclick = 'scrollup()';
+        }
+
+        if (!Auth::check() && empty($url)) {
+            $onclick = "login()";
         }
 
         if (Auth::check() && empty($url)) {
