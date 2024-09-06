@@ -8,11 +8,9 @@
             <i class="fas fa-lock dios"></i>
         </div>{{ $episode->title }}<span class="cls_timing text-dark">{{ number_format($episode->price). ' ' . __('general.toman') . ' / ' . $episode->time }}</span>
     @else
-        <span>
-             <div class="lectures_lists_title">
-                <i class="fas fa-{{ !empty($watchDetail[$episode->id]) ? 'check' : 'play' }} dios"></i>
-            </div>{{ $episode->title }}<span class="cls_timing text-dark">{{ $episode->time }}</span>
-        </span>
+        <div class="lectures_lists_title">
+            <i class="fas fa-{{ !empty($watchDetail[$episode->id]) ? 'check' : 'play' }} dios"></i>
+        </div>{{ $episode->title }}<span class="cls_timing text-dark">{{ $episode->time }}</span>
     @endif
 </li>
 
