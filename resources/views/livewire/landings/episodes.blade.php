@@ -10,7 +10,9 @@
                 <div class="card-body pl-3 pr-3">
                     <ul class="lectures_lists">
                         @foreach($group as $episode)
-                            <livewire:landings.episode :$index :$episode :$product :key="$index" />
+                            @if($episode->status)
+                                <livewire:landings.episode :$index :$episode :$product :key="$index" />
+                            @endif
                         @endforeach
                     </ul>
                 </div>

@@ -116,6 +116,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     changeUrl(url, poster, productid, episodeid)
                 })
             })
+
+            Livewire.hook('morph.updated', ({ el, component }) => {
+                if (el.tagName === 'LI') {
+                    el.addEventListener("click", e => {
+                        let url = el.getAttribute("data-url")
+                        let poster = el.getAttribute("cover")
+                        let productid = el.getAttribute("productid")
+                        let episodeid = el.getAttribute("episodeid")
+                        changeUrl(url, poster, productid, episodeid)
+                    })
+                }
+            })
             document.querySelector('picture.vjs-poster').firstChild.style.height = '100%'
         }
     }
