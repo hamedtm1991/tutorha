@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ImageController;
 use App\Livewire\Panel\Transactions;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Auth;
 use App\Livewire\Landings\Home;
@@ -40,3 +41,7 @@ Route::get('/landings/{title}', Landings::class)->name('landings');
 Route::get('/', Home::class)->name('home');
 Route::get('/blog', Blogs::class)->name('blog');
 Route::get('/blog/{id}', BlogDetails::class)->name('blogDetail');
+
+Route::get('/blog/detail/{id}', function (Request $request) {
+    return redirect('blog/' . $request->id);
+});
