@@ -65,7 +65,7 @@
                         </div>
                     @endif
 
-                    <livewire:landings.tutors :tutors="$product->tutors" />
+                    <livewire:landings.tutor-detail-course :tutors="$product->tutors" />
                 </div>
 
                 <!-- Sidebar -->

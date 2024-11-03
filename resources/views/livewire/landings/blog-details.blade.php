@@ -24,7 +24,7 @@
                                 </ul>
                             </div>
                             <div class="mt-5">
-                                <h1 class="post-title">{{ $post['title'] }}</h1>
+                                <h1 style="color: black">{{ $post['title'] }}</h1>
                             </div>
                             {!! $post['text'] !!}
                         </div>

@@ -11,6 +11,9 @@ class CourseForm extends Form
     #[Rule('required|string|min:3|max:100')]
     public string  $title = '';
 
+    #[Rule('required|string|min:3|max:100')]
+    public string  $slug = '';
+
     #[Rule('required|string|min:3|max:500')]
     public string  $ckeditor1 = '';
 
@@ -56,6 +59,7 @@ class CourseForm extends Form
     public function setProduct(Product $product)
     {
         $this->title = $product->title;
+        $this->slug = $product->slug;
         $this->ckeditor1= $product->description;
         $this->ckeditor2 = $product->long_description;
         $this->price = $product->price;
@@ -79,6 +83,7 @@ class CourseForm extends Form
         $options = [];
 
         $product->title = $this->title;
+        $product->slug = $this->slug;
         $product->description = $this->ckeditor1;
         $product->long_description = $this->ckeditor2;
         $product->price = $this->price;

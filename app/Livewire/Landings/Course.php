@@ -22,11 +22,11 @@ class Course extends Component
 
     protected $listeners = ['end'];
 
-    public function mount(Product $product)
+    public function mount(string $slug)
     {
-        $this->product = $product;
+        $this->product = Product::where('slug', $slug)->firstOrFail();
         $this->episodes = collect(Episode::where('product_id', $this->product->id)->get()->groupBy('group')->all());
-        $this->tags = $product->tags->pluck('name')->toArray();
+        $this->tags = $this->product->tags->pluck('name')->toArray();
     }
 
     /**

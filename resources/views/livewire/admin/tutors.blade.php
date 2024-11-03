@@ -14,6 +14,20 @@
                             </div>
                         </div>
                         <div class="form-group smalls">
+                            <label class="mb-2">{{ __('general.title') }}</label>
+                            <input wire:model="form.title" type="text" class="form-control">
+                            <div class="mt-2">
+                                @error('form.title') <span class="error text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                        <div class="form-group smalls">
+                            <label class="mb-2">slug</label>
+                            <input wire:model="form.slug" type="text" class="form-control">
+                            <div class="mt-2">
+                                @error('form.slug') <span class="error text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                        <div class="form-group smalls">
                             <label class="mb-2">{{ __('general.description') }}</label>
                             <textarea wire:model="form.description" type="text" class="form-control"></textarea>
                             <div class="mt-2">
@@ -53,6 +67,8 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">{{ __('general.name') }}</th>
+                                        <th scope="col">{{ __('general.title') }}</th>
+                                        <th scope="col">slug</th>
                                         <th scope="col">{{ __('general.status') }}</th>
                                         <th scope="col">{{ __('general.options') }}</th>
                                     </tr>
@@ -62,6 +78,8 @@
                                         <tr>
                                             <th scope="row">{{ $model->id }}</th>
                                             <td>{{ $model->name ?? $model->user->id . ' / ' .$model->user->name }}</td>
+                                            <td>{{ $model->title }}</td>
+                                            <td>{{ $model->slug }}</td>
                                             <td onclick="getConfirm('admin.tutors', 'status', {{ $model->id }},  '{{ __('general.sure') }}', '', '{{ __('buttons.yes') }}', '{{ __('buttons.no') }}')">
                                                 <i class="{{ $model->status ? 'fa fa-check text-success' : 'fa fa-times text-danger' }}"></i>
                                             </td>

@@ -116,4 +116,5 @@ return [
     'release' => 'Release',
 
     'home' => 'Home',
+    'blog' => 'Blog'
 ];

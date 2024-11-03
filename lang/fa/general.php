@@ -95,7 +95,7 @@ return [
     'updatedAt' => 'تاریخ به روزرسانی',
     'image' => 'عکس',
     'cover' => 'کاور',
-    'tutors' => 'استاد ها',
+    'tutors' => 'اساتید',
     'tutorError' => 'نام و شرح الزامی است',
     'status' => 'وضعیت',
     'isFinished' => 'اتمام',
@@ -117,4 +117,5 @@ return [
     'release' => 'انتشار',
 
     'home' => 'خانه',
+    'blog' => 'بلاگ'
 ];

@@ -14,6 +14,13 @@
                             </div>
                         </div>
                         <div class="form-group smalls">
+                            <label class="mb-2">slug</label>
+                            <input wire:model="form.slug" type="text" class="form-control">
+                            <div class="mt-2">
+                                @error('form.slug') <span class="error text-danger">{{ $message }}</span> @enderror
+                            </div>
+                        </div>
+                        <div class="form-group smalls">
                             <label class="mb-2">{{ __('general.cover') }}</label>
                             <input type="file" wire:model="form.photo" class="form-control">
                             <div class="mt-2">
@@ -121,6 +128,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">{{ __('general.name') }}</th>
+                                        <th scope="col">slug</th>
                                         <th scope="col">{{ __('general.price') }}</th>
                                         <th scope="col">{{ __('general.fakePrice') }}</th>
                                         <th scope="col">{{ __('general.courseTime') }}</th>
@@ -139,6 +147,7 @@
                                         <tr>
                                             <th scope="row">{{ $model->id }}</th>
                                             <td>{{ $model->title }}</td>
+                                            <td>{{ $model->slug }}</td>
                                             <td>{{ number_format($model->price) }}</td>
                                             <td>{{ number_format($model->fake_price) }}</td>
                                             <td>{{ $model->options['time'] ?? '' }}</td>

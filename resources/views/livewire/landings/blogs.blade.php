@@ -19,7 +19,7 @@
                                         <div class="blg_grid_caption">
                                             <div class="blg_tag"><span>{{ $post['tag'] }}</span></div>
                                             <div class="blg_title"><h4><a href="{{ route('blogDetail', ['id' => $post['id']]) }}">{{ $post['title'] }}</a></h4></div>
-                                            <div class="blg_desc"><p>{{ $post['description'] }}</p></div>
+                                            <div class="blg_desc"><p>{{ substr($post['description'], 0, strpos($post['description'], ' ', 150)) }}...</p></div>
                                         </div>
                                         <div class="crs_grid_foot">
                                             <div class="crs_flex">

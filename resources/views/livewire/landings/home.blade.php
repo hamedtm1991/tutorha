@@ -72,7 +72,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                         <div class="crs_grid">
                             <div class="crs_grid_thumb">
-                                <a href="{{ route('course', [$model->id, str_replace(' ', '-', $model->title)]) }}" class="crs_detail_link">
+                                <a href="{{ route('courses', [$model->slug]) }}" class="crs_detail_link">
                                     <img src="{{ url(route('getPublicImage', ['Product-' . $model->id . '-main', rand()])) }}" class="rounded" alt="{{ $model->title }}" />
                                 </a>
                             </div>
@@ -84,7 +84,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                <div class="crs_title text-truncate"><span class="bold"><a href="{{ route('course', [$model->id, str_replace(' ', '-', $model->title)]) }}" class="crs_title_link">{{ $model->title }}...</a></span></div>
+                                <div class="crs_title text-truncate"><span class="bold"><a href="{{ route('courses', [$model->slug]) }}" class="crs_title_link">{{ $model->title }}...</a></span></div>
                                 <div class="crs_info_detail">
                                     <ul>
                                         <li><i class="fa fa-clock text-danger"></i><span>{{ $model->options['time'] }}</span></li>
@@ -98,7 +98,7 @@
                                     <div class="crs_fl_first">
                                         <div class="crs_tutor">
                                             @foreach($model->tutors as $tutor)
-                                                <div class="crs_tutor_thumb"><img src="{{ url(route('getPublicImage', ['Tutor-' . $tutor->id . '-main', rand()])) }}" class="img-fluid circle" alt="{{ $tutor->name }}" /></div><div class="crs_tutor_name">{{ $tutor->name }}</div>
+                                                <a href="{{ route('tutorDetail', ['slug' => $tutor->slug]) }}"><div class="crs_tutor_thumb"><img src="{{ url(route('getPublicImage', ['Tutor-' . $tutor->id . '-main', rand()])) }}" class="img-fluid circle" alt="{{ $tutor->name }}" /></div><div class="crs_tutor_name">{{ $tutor->name }}</div></a>
                                             @endforeach
                                         </div>
                                     </div>
@@ -229,7 +229,7 @@
                             <div class="blg_grid_caption">
                                 <div class="blg_tag dark"><span>{{ $post['tag'] }}</span></div>
                                 <div class="blg_title"><span class="fs-6 bold"><a href="{{ route('blogDetail', ['id' => $post['id']]) }}">{{ $post['title'] }}</a></span></div>
-                                <div class="blg_desc"><p>{{ $post['description'] }}</p></div>
+                                <div class="blg_desc"><p>{{ substr($post['description'], 0, strpos($post['description'], ' ', 150)) }}...</p></div>
                             </div>
                         </div>
                     </div>

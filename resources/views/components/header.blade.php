@@ -20,6 +20,10 @@
                                     <i class="fas fa-user"></i>
                                 </button>
                                 <div class="dropdown-menu">
+                                    @if(\Illuminate\Support\Facades\Auth::check())
+                                        <a class="dropdown-item" href="{{ route('transactions') }}">{{ __('general.transactions') }}</a>
+                                        <a class="dropdown-item" href="{{ route('my-courses') }}">{{ __('general.myCourses') }}</a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('payment') }}">{{__('general.increaseBalance')}}
                                         <i class="fas fa-plus"></i>
                                     </a>
@@ -69,20 +73,27 @@
             </div>
             <div class="nav-menus-wrapper">
                 <ul class="nav-menu">
-                    @if(\Illuminate\Support\Facades\Auth::check())
-                        <li class="{{ request()->routeIs('transactions') ? 'active' : ''  }}"><a class="fs-5" href="{{ route('transactions') }}">{{ __('general.transactions') }}</a></li>
-                        <li class="{{ request()->routeIs('courses') ? 'active' : ''  }}"><a class="fs-5" href="{{ route('courses') }}">{{ __('general.myCourses') }}</a></li>
-                    @endif
+                    <li><a href="{{ route('all-courses', ['tag' => 'all']) }}" class="fs-6">دوره های آموزشی<span class="submenu-indicator"></span></a>
+                            <ul class="nav-dropdown nav-submenu">
+                                <li><a href="{{ route('all-courses', ['tag' => 'all']) }}">همه</a></li>
+                                <li><a href="{{ route('all-courses', ['tag' => 'programming']) }}">برنامه نویسی</a></li>
+                                <li><a href="{{ route('all-courses', ['tag' => 'php']) }}">php</a></li>
+                            </ul>
+                        </li>
+                    <li class="{{ request()->routeIs('tutors') ? 'active' : ''  }}"><a class="fs-6" href="{{ route('tutors') }}">{{ __('general.tutors') }}</a></li>
+                    <li class="{{ request()->routeIs('blog') ? 'active' : ''  }}"><a class="fs-6" href="{{ route('blog') }}">{{ __('general.blog') }}</a></li>
                 </ul>
 
                     @if(\Illuminate\Support\Facades\Auth::check())
 
 
                     <ul class="nav-menu nav-menu-social align-to-left">
-
-
+                        @if(\Illuminate\Support\Facades\Auth::check())
+                            <li class="{{ request()->routeIs('transactions') ? 'active' : ''  }}"><a class="fs-6" href="{{ route('transactions') }}">{{ __('general.transactions') }}</a></li>
+                            <li class="{{ request()->routeIs('courses') ? 'active' : ''  }}"><a class="fs-6" href="{{ route('my-courses') }}">{{ __('general.myCourses') }}</a></li>
+                        @endif
                         <li class="">
-                            <a class="fs-5" href="{{ route('payment') }}">
+                            <a class="fs-6" href="{{ route('payment') }}">
                                 <span class="">
                                     {{ __('general.increaseBalance') }}
                                 </span>
@@ -90,7 +101,7 @@
                             </a>
                         </li>
                         <li class="mx-5">
-                            <span class="fs-5" href="{{ route('transactions') }}">
+                            <span class="fs-6" href="{{ route('transactions') }}">
                                 @php($value = optional(\Illuminate\Support\Facades\Auth::user()->wallet)->value)
                                 <span class="">
                                     {{ __('general.toman') }} {{ empty($value) ? 0 : number_format($value) }}

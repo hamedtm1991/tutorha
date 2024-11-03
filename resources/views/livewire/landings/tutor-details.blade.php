@@ -1,8 +1,38 @@
 <div>
+    <!-- ============================ Page Title Start================================== -->
+    <div class="ed_detail_head">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                    <div class="authi_125">
+                        <div class="authi_125_thumb">
+                            <img src="{{ url(route('getPublicImage', ['Tutor-' . $tutor->id . '-main', rand()])) }}" class="img-fluid rounded" alt="{{ $tutor->name }}" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-9 col-md-12 col-sm-12">
+                    <div class="dlkio_452">
+                        <div class="ed_detail_wrap">
+                            <div class="crs_cates cl_3"><span>{{ $tutor->title }}</span></div>
+                            <div class="ed_header_caption">
+                                <h2 class="ed_title font-2">{{ $tutor->name }}</h2>
+                            </div>
+                            <div class="ed_header_short">
+                                <p>{{ $tutor->description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================ Page Title End ================================== -->
+
+    <!-- ============================ Course Detail ================================== -->
     <section class="gray">
         <div class="container">
-            <div class="row justify-content-start">
-                <!-- Single Grid -->
+            <div class="row justify-content-center">
                 @foreach($data as $model)
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
                         <div class="crs_grid">
@@ -19,7 +49,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                <div class="crs_title text-truncate"><h4><a href="{{ route('courses', [$model->slug]) }}" class="crs_title_link">{{ $model->title }}...</a></h4></div>
+                                <div class="crs_title text-truncate"><span class="bold"><a href="{{ route('courses', [$model->slug]) }}" class="crs_title_link">{{ $model->title }}...</a></span></div>
                                 <div class="crs_info_detail">
                                     <ul>
                                         <li><i class="fa fa-clock text-danger"></i><span>{{ $model->options['time'] }}</span></li>
@@ -43,14 +73,13 @@
                     </div>
                 @endforeach
             </div>
-
-            <!-- Pagination -->
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    {{ $data->links('pagination') }}
-                </div>
-            </div>
-
         </div>
     </section>
+    <!-- ============================ Course Detail ================================== -->
 </div>
+
+@push('seo')
+    <meta name="description" content="{{ $tutor->description }}">
+    <meta name="keywords" content="{{ $tutor->name }}, {{ $tutor->title }}">
+    <title>{{ $tutor->slug }}</title>
+@endpush
