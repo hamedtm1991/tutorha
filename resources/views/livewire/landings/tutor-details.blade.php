@@ -43,9 +43,9 @@
                             </div>
                             <div class="crs_grid_caption">
                                 <div class="crs_flex">
-                                    <div class="crs_fl_first">
+                                    <div class="crs_fl_first mt-2">
                                         @foreach($model->tags->pluck('name')->toArray() as $tag)
-                                            <div class="crs_cates cl_8"><span>{{ $tag }}</span></div>
+                                            <div class="crs_cates cl_8"><span>{{ __('tags.' . $tag) }}</span></div>
                                         @endforeach
                                     </div>
                                 </div>

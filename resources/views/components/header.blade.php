@@ -73,11 +73,11 @@
             </div>
             <div class="nav-menus-wrapper">
                 <ul class="nav-menu">
-                    <li><a href="{{ route('all-courses', ['tag' => 'all']) }}" class="fs-6">دوره های آموزشی<span class="submenu-indicator"></span></a>
+                    <li class="{{ request()->is('all', 'programming', 'php') ? 'active' : ''  }}"><a href="{{ route('all-courses', ['tag' => 'all']) }}" class="fs-6">دوره های آموزشی<span class="submenu-indicator"></span></a>
                             <ul class="nav-dropdown nav-submenu">
-                                <li><a href="{{ route('all-courses', ['tag' => 'all']) }}">همه</a></li>
-                                <li><a href="{{ route('all-courses', ['tag' => 'programming']) }}">برنامه نویسی</a></li>
-                                <li><a href="{{ route('all-courses', ['tag' => 'php']) }}">php</a></li>
+                                <li><a style="color:{{ request()->is('all') ? '#03b97c' : ''  }}" href="{{ route('all-courses', ['tag' => 'all']) }}">همه</a></li>
+                                <li><a style="color:{{ request()->is('programming') ? '#03b97c' : ''  }}" href="{{ route('all-courses', ['tag' => 'programming']) }}">برنامه نویسی</a></li>
+                                <li><a style="color:{{ request()->is('php') ? '#03b97c' : ''  }}" href="{{ route('all-courses', ['tag' => 'php']) }}">php</a></li>
                             </ul>
                         </li>
                     <li class="{{ request()->routeIs('tutors') ? 'active' : ''  }}"><a class="fs-6" href="{{ route('tutors') }}">{{ __('general.tutors') }}</a></li>
@@ -90,9 +90,9 @@
                     <ul class="nav-menu nav-menu-social align-to-left">
                         @if(\Illuminate\Support\Facades\Auth::check())
                             <li class="{{ request()->routeIs('transactions') ? 'active' : ''  }}"><a class="fs-6" href="{{ route('transactions') }}">{{ __('general.transactions') }}</a></li>
-                            <li class="{{ request()->routeIs('courses') ? 'active' : ''  }}"><a class="fs-6" href="{{ route('my-courses') }}">{{ __('general.myCourses') }}</a></li>
+                            <li class="{{ request()->routeIs('my-courses') ? 'active' : ''  }}"><a class="fs-6" href="{{ route('my-courses') }}">{{ __('general.myCourses') }}</a></li>
                         @endif
-                        <li class="">
+                        <li class="{{ request()->routeIs('payment') ? 'active' : ''  }}">
                             <a class="fs-6" href="{{ route('payment') }}">
                                 <span class="">
                                     {{ __('general.increaseBalance') }}

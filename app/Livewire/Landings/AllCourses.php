@@ -24,6 +24,6 @@ class AllCourses extends Component
             })->paginate(10);
         }
 
-        return view('livewire.landings.all-courses', ['data' => $products]);
+        return view('livewire.landings.all-courses', ['data' => $products, 'tag' => $this->tag]);
     }
 }

@@ -7,7 +7,7 @@
                 <div class="col-lg-8 col-md-7">
                     <div class="ed_detail_wrap">
                         @foreach($tags as $tag)
-                            <div class="crs_cates cl_{{ $i }}"><span>{{ $tag }}</span></div>
+                            <div class="crs_cates cl_{{ $i }}"><span>{{ __('tags.' . $tag) }}</span></div>
                             @php($i--)
                         @endforeach
                         <div class="ed_header_caption">

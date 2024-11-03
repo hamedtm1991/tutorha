@@ -1,4 +1,23 @@
 <div>
+    <section class="page-title" style="padding: 40px">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+
+                    <div class="breadcrumbs-wrap">
+                        <h1 class="breadcrumb-title font-2">{{ __('tags.' . $tag) }}</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb p-0 bg-white">
+                                <li class="breadcrumb-item"><a href="/">خانه</a></li>
+                                <li class="breadcrumb-item active theme-cl" aria-current="page">{{ __('tags.' . $tag) }}</li>
+                            </ol>
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="gray">
         <div class="container">
             <div class="row justify-content-start">
@@ -13,9 +32,9 @@
                             </div>
                             <div class="crs_grid_caption">
                                 <div class="crs_flex">
-                                    <div class="crs_fl_first">
+                                    <div class="crs_fl_first mt-2">
                                         @foreach($model->tags->pluck('name')->toArray() as $tag)
-                                            <div class="crs_cates cl_8"><span>{{ $tag }}</span></div>
+                                            <div class="crs_cates cl_8"><span>{{ __('tags.' . $tag) }}</span></div>
                                         @endforeach
                                     </div>
                                 </div>
