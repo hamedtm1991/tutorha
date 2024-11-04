@@ -52,7 +52,7 @@
                     <div class="edu_wraper">
                         <div style="font-weight: bold" class="edu_title mb-2">{{ __('general.episodes') }}</div>
                         <div id="accordionExample" class="accordion circullum">
-                            <livewire:landings.episodes lazy="on-load" :$episodes :$product />
+                            <livewire:landings.episodes :$episodes :$product />
                         </div>
                     </div>
 
