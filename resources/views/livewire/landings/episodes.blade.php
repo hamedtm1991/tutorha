@@ -11,11 +11,7 @@
                     <ul class="lectures_lists">
                         @foreach($group as $index => $episode)
                             @if($episode->status)
-                                @if($index === 0)
-                                    <livewire:landings.episode :$index :$episode :$product :key="$index" />
-                                @else
-                                    <livewire:landings.episode lazy="on-load" :$index :$episode :$product :key="$index" />
-                                @endif
+                                <livewire:landings.episode lazy="on-load" :$index :$episode :$product :key="$index" />
                             @endif
                         @endforeach
                     </ul>
