@@ -118,3 +118,17 @@
     <meta name="keywords" content="{{ $product->options['metaKeywords'] }}">
     <title>{{ $product->title }}</title>
 @endpush
+
+@push('scripts')
+    <script>
+        function scrollup()
+        {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+
+        function login()
+        {
+            window.location.href = "{{ route('login') }}";
+        }
+    </script>
+@endpush

@@ -13,17 +13,3 @@
         </div>{{ $episode->title }}<span class="cls_timing text-dark">{{ $episode->time }}</span>
     @endif
 </li>
-
-@push('scripts')
-    <script>
-        function scrollup()
-        {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-        }
-
-        function login()
-        {
-            window.location.href = "{{ route('login') }}";
-        }
-    </script>
-@endpush
