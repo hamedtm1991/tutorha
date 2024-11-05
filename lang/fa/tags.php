@@ -3,5 +3,6 @@
 return [
     'all' => 'همه',
     'programming' => 'برنامه نویسی',
-    'php' => 'PHP'
+    'php' => 'PHP',
+    'courses' => 'دوره‌ها'
 ];

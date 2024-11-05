@@ -3,5 +3,6 @@
 return [
     'all' => 'All',
     'programming' => 'Programming',
-    'php' => 'PHP'
+    'php' => 'PHP',
+    'courses' => 'Courses'
 ];

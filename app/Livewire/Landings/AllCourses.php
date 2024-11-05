@@ -16,7 +16,7 @@ class AllCourses extends Component
 
     public function render()
     {
-        if ($this->tag === 'all') {
+        if ($this->tag === 'courses') {
             $products = Product::paginate(10);
         } else {
             $products = Product::whereHas('tags', function ($query) {

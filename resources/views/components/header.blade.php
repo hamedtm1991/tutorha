@@ -73,9 +73,9 @@
             </div>
             <div class="nav-menus-wrapper">
                 <ul class="nav-menu">
-                    <li class="{{ request()->is('all', 'programming', 'php') ? 'active' : ''  }}"><a href="{{ route('all-courses', ['tag' => 'all']) }}" class="fs-6">دوره های آموزشی<span class="submenu-indicator"></span></a>
+                    <li class="{{ request()->is('courses', 'programming', 'php') ? 'active' : ''  }}"><a href="{{ route('all-courses', ['tag' => 'courses']) }}" class="fs-6">دوره های آموزشی<span class="submenu-indicator"></span></a>
                             <ul class="nav-dropdown nav-submenu">
-                                <li><a style="color:{{ request()->is('all') ? '#03b97c' : ''  }}" href="{{ route('all-courses', ['tag' => 'all']) }}">همه</a></li>
+                                <li><a style="color:{{ request()->is('courses') ? '#03b97c' : ''  }}" href="{{ route('all-courses', ['tag' => 'courses']) }}">{{ __('general.courses') }}</a></li>
                                 <li><a style="color:{{ request()->is('programming') ? '#03b97c' : ''  }}" href="{{ route('all-courses', ['tag' => 'programming']) }}">برنامه نویسی</a></li>
                                 <li><a style="color:{{ request()->is('php') ? '#03b97c' : ''  }}" href="{{ route('all-courses', ['tag' => 'php']) }}">php</a></li>
                             </ul>
