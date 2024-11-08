@@ -1,4 +1,4 @@
-<li class="{{ $class }}" onclick="{{ $onclick }}"
+<li class="{{ $class }}" first="{{ $episode->id === $first ? 'active' : 'not-active' }}" onclick="{{ $onclick }}"
 @if(!empty($url))
     episodeid="{{ $episode->id }}" productid="{{ $product->id }}" cover="{{ url(route('getPublicImage', ['Episode-' . $episode->id . '-main', rand()])) }}" data-url="{{ $url }}"
 @endif

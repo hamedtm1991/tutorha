@@ -11,14 +11,18 @@ class Episode extends Component
     public $index;
     public $episode;
     public $product;
+    public $url;
+    public $first;
 
     public $listeners = [];
 
-    public function mount($index, $episode, $product)
+    public function mount($index, $episode, $product, $first, $url)
     {
         $this->index = $index;
         $this->episode = $episode;
         $this->product = $product;
+        $this->url = $url;
+        $this->first = $first;
         $this->listeners = ["pay-" . $episode->id =>"pay"];
     }
 
@@ -55,20 +59,18 @@ class Episode extends Component
 
     public function render()
     {
-        $url = getVideoUrl($this->episode->links[0] ?? '', $this->episode);
-
         $class = 'unview';
         $onclick = "";
-        if (!empty($url)) {
+        if (!empty($this->url)) {
             $class = 'complete videourl';
             $onclick = 'scrollup()';
         }
 
-        if (!Auth::check() && empty($url)) {
+        if (!Auth::check() && empty($this->url)) {
             $onclick = "login()";
         }
 
-        if (Auth::check() && empty($url)) {
+        if (Auth::check() && empty($this->url)) {
             $onclick = "getConfirm('landings.episode', 'pay-" . $this->episode->id . "', '" . $this->episode->id . "', '" .  __('general.sure') . "', '" . __('general.reducingMoney', ['value' => number_format($this->episode->price) . ' ' . __('general.toman')]) . "', '" . __('buttons.yes') . "', '" . __('buttons.no') . "')";
         }
 
@@ -76,7 +78,7 @@ class Episode extends Component
             'index' => $this->index,
             'episode' => $this->episode,
             'product' => $this->product,
-            'url' => $url,
+            'url' => $this->url,
             'class' => $class,
             'onclick' => $onclick
         ]);

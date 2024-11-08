@@ -8,6 +8,8 @@ class Episodes extends Component
 {
     public $episodes;
     public $product;
+    public $urls;
+    public $first;
 
     public function mount($episodes, $product)
     {
@@ -17,6 +19,19 @@ class Episodes extends Component
 
     public function render()
     {
+        $data = [];
+        foreach ($this->episodes as $episode) {
+            $episode = $episode[0] ?? null;
+            if (isset($episode->links[0]) && (empty($episode->price) || $episode->checkOrder())) {
+                $data[$episode->id] = $episode->links[0];
+            }
+        }
+
+        $urls = getVideoUrl($data);
+        $this->urls = empty($urls) ? [] : json_decode($urls, true);
+        $this->first = array_search(min($this->urls), $this->urls);
+
+
         return view('livewire.landings.episodes', [
             'episodes' => $this->episodes,
             'product' => $this->product,

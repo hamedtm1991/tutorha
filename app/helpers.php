@@ -5,6 +5,7 @@ use Illuminate\Http\Response as status;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
 use App\Models\Episode;
+use App\Models\Product;
 
 /**
  * @param $date
@@ -27,17 +28,13 @@ function localDate($date, $enFormat = null, $faFormat = null): string
     }
 }
 
-function getVideoUrl(string $link, Episode $episode)
+function getVideoUrl(array $data)
 {
-    if (empty($episode->price) || $episode->checkOrder()) {
-        $explode = explode('-', $link);
-        $name = $explode[0] ?? '';
-        $numberOfEpisode = $explode[1] ?? 0;
+    if ($data) {
         $response = Http::asForm()->post(env('DL_SERVER_ADDRESS') . '/api/url/video', [
             'secret' => bcrypt(md5(env('VIDEO_SIGN_SECRET_KEY'))),
-            'name' => $name,
-            'episode' => $numberOfEpisode,
-            'ip' => \Illuminate\Support\Facades\Request::ip()
+            'ip' => \Illuminate\Support\Facades\Request::ip(),
+            'data' => $data,
         ]);
 
         if ($response->status() === status::HTTP_OK) {

@@ -1,44 +1,9 @@
 import videojs from "video.js";
 import "videojs-quality-selector-hls";
 
-var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification));
-var isIOS = !window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent);
-var count = 1;
-
-if (isSafari || isIOS) {
-    window.addEventListener('load', function () {
-        var video = document.getElementById('player_html5_api');
-        var source = document.createElement('source');
-        const firstLink = document.querySelector('.videourl').getAttribute("data-url");
-        source.setAttribute('src', firstLink);
-        source.setAttribute('type', 'application/x-mpegURL');
-        video.appendChild(source);
-    })
-} else {
-
-
-
-    // player.currentTime(10);
-
-
-    // let previousTime = 10;
-    // player.on('timeupdate', function() {
-    //     let currentTime = this.currentTime();
-    //     if ((currentTime - previousTime) > 5) {
-    //         previousTime = currentTime;
-    //         console.log(currentTime);
-    //     }
-    // });
-
-
-}
-
-
+let isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification));
+let isIOS = !window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent);
 let player = videojs('player');
-
-
-
-
 
 player.on('ended', function() {
     Livewire.dispatchTo('landings.course', 'end', [player.getAttribute('productid'), player.getAttribute('episodeid')])
@@ -69,18 +34,27 @@ Livewire.hook('morph.added', ({ el, component }) => {
         let poster = el.getAttribute("cover")
         let productid = el.getAttribute("productid")
         let episodeid = el.getAttribute("episodeid")
+        let first = el.getAttribute("first")
 
         if (url !== null) {
             el.addEventListener("click", e => {
                 changeUrl(url, poster, productid, episodeid)
             })
 
-
-            if (count === 1) {
+            if (first === 'active') {
                 changeUrl(url, poster, productid, episodeid)
                 document.querySelector('picture.vjs-poster').firstChild.style.height = '100%'
-                count = 0
             }
         }
     }
 })
+
+// player.currentTime(10);
+// let previousTime = 10;
+// player.on('timeupdate', function() {
+//     let currentTime = this.currentTime();
+//     if ((currentTime - previousTime) > 5) {
+//         previousTime = currentTime;
+//         console.log(currentTime);
+//     }
+// });
