@@ -51,7 +51,11 @@ function changeUrl(url, poster, productid, episodeid)
     player.setAttribute('productid', productid)
     player.setAttribute('episodeid', episodeid)
     if (isSafari || isIOS) {
+        var video = document.getElementById('player_html5_api');
+        var source = document.createElement('source');
         source.setAttribute('src', url);
+        source.setAttribute('type', 'application/x-mpegURL');
+        video.appendChild(source);
         player.load()
     } else {
         player.src({src: url, type: 'application/x-mpegURL'})
@@ -65,15 +69,18 @@ Livewire.hook('morph.added', ({ el, component }) => {
         let poster = el.getAttribute("cover")
         let productid = el.getAttribute("productid")
         let episodeid = el.getAttribute("episodeid")
-        el.addEventListener("click", e => {
-            changeUrl(url, poster, productid, episodeid)
-        })
+
+        if (url !== null) {
+            el.addEventListener("click", e => {
+                changeUrl(url, poster, productid, episodeid)
+            })
 
 
-        if (count === 1 && url !== null) {
-            changeUrl(url, poster, productid, episodeid)
-            document.querySelector('picture.vjs-poster').firstChild.style.height = '100%'
-            count = 0
+            if (count === 1) {
+                changeUrl(url, poster, productid, episodeid)
+                document.querySelector('picture.vjs-poster').firstChild.style.height = '100%'
+                count = 0
+            }
         }
     }
 })
