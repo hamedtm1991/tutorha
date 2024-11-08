@@ -29,7 +29,7 @@ class Episodes extends Component
 
         $urls = getVideoUrl($data);
         $this->urls = empty($urls) ? [] : json_decode($urls, true);
-        $this->first = array_search(min($this->urls), $this->urls);
+        $this->first = empty($urls) ? -1 : array_search(min($this->urls), $this->urls);
 
 
         return view('livewire.landings.episodes', [
