@@ -9,13 +9,9 @@
             <div id="collapse{{ $rand }}" aria-labelledby="heading{{ $rand }}" data-parent="#accordionExample" class="collapse show">
                 <div class="card-body pl-3 pr-3">
                     <ul class="lectures_lists">
-                        @foreach($group as $index2 => $episode)
+                        @foreach($group as $episode)
                             @if($episode->status)
-                                @if($index2 === 0)
-                                    <livewire:landings.episode :$index :$episode :$product :key="$index" />
-                                @else
-                                    <livewire:landings.episode lazy="on-load" :$index :$episode :$product :key="$index" />
-                                @endif
+                                <livewire:landings.episode lazy="on-load" :$index :$episode :$product :key="$index" />
                             @endif
                         @endforeach
                     </ul>
