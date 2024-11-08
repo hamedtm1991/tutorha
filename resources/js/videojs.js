@@ -7,12 +7,12 @@ var count = 1;
 
 if (isSafari || isIOS) {
     window.addEventListener('load', function () {
-        // var video = document.getElementById('player_html5_api');
-        // var source = document.createElement('source');
-        // const firstLink = document.querySelector('.videourl').getAttribute("data-url");
-        // source.setAttribute('src', firstLink);
-        // source.setAttribute('type', 'application/x-mpegURL');
-        // video.appendChild(source);
+        var video = document.getElementById('player_html5_api');
+        var source = document.createElement('source');
+        const firstLink = document.querySelector('.videourl').getAttribute("data-url");
+        source.setAttribute('src', firstLink);
+        source.setAttribute('type', 'application/x-mpegURL');
+        video.appendChild(source);
     })
 } else {
 
@@ -31,7 +31,6 @@ if (isSafari || isIOS) {
     // });
 
 
-    // document.querySelector('picture.vjs-poster').firstChild.style.height = '100%'
 }
 
 
@@ -70,8 +69,10 @@ Livewire.hook('morph.added', ({ el, component }) => {
             changeUrl(url, poster, productid, episodeid)
         })
 
+
         if (count === 1 && url !== null) {
             changeUrl(url, poster, productid, episodeid)
+            document.querySelector('picture.vjs-poster').firstChild.style.height = '100%'
             count = 0
         }
     }
