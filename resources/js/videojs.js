@@ -28,7 +28,7 @@ function changeUrl(url, poster, productid, episodeid)
     window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-Livewire.hook('morph.added', ({ el, component }) => {
+Livewire.hook('element.init', ({ el, component }) => {
     if (el.tagName === 'LI') {
         let url = el.getAttribute("data-url")
         let poster = el.getAttribute("cover")

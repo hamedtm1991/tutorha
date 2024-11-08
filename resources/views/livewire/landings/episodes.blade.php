@@ -12,7 +12,7 @@
                         @foreach($group as $episode)
                             @if($episode->status)
                                 @php($url = $urls[$episode->id] ?? '')
-                                <livewire:landings.episode lazy="on-load" :$index :$episode :$product :$first :url="$url" :key="$index" />
+                                <livewire:landings.episode :$index :$episode :$product :$first :url="$url" :key="$index" />
                             @endif
                         @endforeach
                     </ul>
