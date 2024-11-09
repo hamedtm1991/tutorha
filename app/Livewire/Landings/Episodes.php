@@ -28,7 +28,7 @@ class Episodes extends Component
         }
 
         $urls = getVideoUrl($data);
-        $this->urls = empty($urls) ? [] : json_decode($urls, true);
+        $this->urls = $urls;
         $this->first = empty($urls) ? -1 : array_search(min($this->urls), $this->urls);
 
 

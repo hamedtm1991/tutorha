@@ -1,11 +1,9 @@
 <?php
 
 use Carbon\Carbon;
-use Illuminate\Http\Response as status;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Http;
-use App\Models\Episode;
-use App\Models\Product;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Request;
 
 /**
  * @param $date
@@ -28,21 +26,28 @@ function localDate($date, $enFormat = null, $faFormat = null): string
     }
 }
 
-function getVideoUrl(array $data)
+/**
+ * @param array $data
+ * @return array
+ */
+function getVideoUrl(array $data): array
 {
+    $links = [];
     if ($data) {
-        $response = Http::asForm()->post(env('DL_SERVER_ADDRESS') . '/api/url/video', [
-            'secret' => bcrypt(md5(env('VIDEO_SIGN_SECRET_KEY'))),
-            'ip' => \Illuminate\Support\Facades\Request::ip(),
-            'data' => $data,
-        ]);
-
-        if ($response->status() === status::HTTP_OK) {
-            return $response->getBody()->getContents();
+        foreach ($data as $key => $link) {
+            $explode = explode('-', $link);
+            $name = $explode[0] ?? '';
+            $numberOfEpisode = $explode[1] ?? 0;
+            $links[$key] = URL::temporarySignedRoute(
+                'video', now()->addMinutes(60),
+                ['playlist' => $name . '.m3u8', 'episode' => $numberOfEpisode, 'ip' => Request::ip()]
+            );
         }
+
+        return $links;
     }
 
-    return '';
+    return [];
 }
 
 /**

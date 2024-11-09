@@ -44,6 +44,31 @@ Route::get('/blog/{id}', BlogDetails::class)->name('blogDetail');
 Route::get('/tutors', \App\Livewire\Landings\Tutors::class)->name('tutors');
 Route::get('/tutors/{slug}', \App\Livewire\Landings\TutorDetails::class)->name('tutorDetail');
 
+Route::get('/video/s/{name}/{episode}/{key}', function ($name, $episode, $key) {
+    return Storage::disk('liara')->download('videos/hls/' . $name . '/'. $episode . '/' . $key);
+})->name('video.key');
+
+Route::get('/video/{playlist}/{episode}/{ip}', function (Request $request, string $playlist, string $episode, string $ip) {
+    if (! $request->hasValidSignatureWhileIgnoring(['title']) || $ip !== $request->ip()) {
+        abort(401);
+    }
+
+    $explode = explode('.', $playlist);
+    $name = $explode[0];
+
+    $title = $request->title ?? $name . '.m3u8';
+    $path = 'videos/hls/' . $name . '/'. $episode .'/' . $title;
+
+
+    if (!$request->title || ($request->title && !str_contains($request->title, '.ts'))) {
+        $file = Storage::disk('liara')->get($path);
+        $file =  str_replace($name, $request->fullUrl() . '&title=' . $name, $file);
+        return str_replace('URI="', 'URI="/video/s/'. $name  . '/' . $episode . '/', $file);
+    }
+
+    return Storage::disk('liara')->download($path);
+})->name('video');
+
 Route::get('/blog/detail/{id}', function (Request $request) {
     return redirect('blog/' . $request->id);
 });
