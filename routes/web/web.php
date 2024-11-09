@@ -13,6 +13,7 @@ use App\Http\Controllers\PaymentController;
 use App\Livewire\Panel\Courses;
 use App\Livewire\Landings\Blogs;
 use App\Livewire\Landings\BlogDetails;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
