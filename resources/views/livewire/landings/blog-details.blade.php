@@ -51,5 +51,9 @@
             }
         }
         .article_body_wrap img { max-width: 100%; height: 100%}
+
+        section {
+            padding: 5px 0px 20px 0px;
+        }
     </style>
 @endpush
