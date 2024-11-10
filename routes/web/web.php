@@ -41,7 +41,7 @@ Route::get('/images/public/get/{name}/{rand}', [ImageController::class, 'getPubl
 Route::get('/landings/{title}', Landings::class)->name('landings');
 Route::get('/', Home::class)->name('home');
 Route::get('/blog', Blogs::class)->name('blog');
-Route::get('/blog/{id}', BlogDetails::class)->name('blogDetail');
+Route::get('/blog/{slug}', BlogDetails::class)->name('blogDetail');
 Route::get('/tutors', \App\Livewire\Landings\Tutors::class)->name('tutors');
 Route::get('/tutors/{slug}', \App\Livewire\Landings\TutorDetails::class)->name('tutorDetail');
 
