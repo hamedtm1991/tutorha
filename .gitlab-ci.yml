@@ -1,0 +1,22 @@
+variables:
+  DOCKER_IMAGE: "$CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG"
+  RELEASE_IMAGE_NAME: "$CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:stable"
+  DB_DATABASE: "tutorha"
+  DB_PASSWORD: "f?4SZ5EWhdB*.eL,9K3"
+  DB_USERNAME: "tutorha"
+  REDIS_PASSWORD: "fb)`w-pN!5*9^zTe6(xKJy"
+
+stages:
+  - build
+
+build:
+  stage: build
+  tags: [abrbit-01]
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+  script:
+    - docker build --tag "$RELEASE_IMAGE_NAME" .
+    - docker compose up -d
+
+  only:
+    - development
