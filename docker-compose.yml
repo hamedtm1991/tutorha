@@ -1,90 +1,77 @@
 version: "3.7"
 services:
     app:
-        build:
-            args:
-                user: tutorha
-                uid: 1000
-            context: ./
-            dockerfile: ./docker/Dockerfile
-        image: tutorha
-        container_name: tutorha-app
+        image: gitlab.abrbit.com:5555/hamedmodam1991/tutorha/development:stable
+        container_name: toturha_api
         restart: unless-stopped
-        working_dir: /var/www/
-        volumes:
-            - ./:/var/www
-        networks:
-            - tutorha
-    nginx:
-        image: nginx:alpine
-        container_name: tutorha-nginx
-        restart: unless-stopped
+        environment:
+            DB_HOST: mysql
+            DB_PORT: 3306
+            DB_DATABASE: toturha
+            DB_USERNAME: toturha
+            DB_PASSWORD: f?4SZ5EWhdB*.eL,9K3
+            APP_DEBUG: true
         ports:
-            - 80:80
-            - 443:443
+            - 5020:80
         volumes:
-            - ./:/var/www
-            - ./docker/nginx_dir/nginx_conf:/etc/nginx/conf.d/
-            - ./docker/nginx_dir/certs:/etc/nginx/certs
+            - toturha-storage:/var/www/html/storage/app/public
         networks:
-            - tutorha
+            - toturha
     mysql:
-        image: mariadb
-        ports:
-            - '${FORWARD_DB_PORT:-3306}:3306'
+        image: registry.abrbit.com/library/mariadb
+        container_name: toturha_db
         environment:
-            MYSQL_DATABASE: ${DB_DATABASE}
-            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-            MYSQL_PASSWORD: ${DB_PASSWORD}
-            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_DATABASE: toturha
+            MYSQL_ROOT_PASSWORD: f?4SZ5EWhdB*.eL,9K3
+            MYSQL_PASSWORD: f?4SZ5EWhdB*.eL,9K3
+            MYSQL_USER: toturha
             MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
         volumes:
-            - ./docker/volumes/mariadb:/var/lib/mysql
+            - db-1:/var/lib/mysql
         networks:
-            - tutorha
+            - toturha
         healthcheck:
-            test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" , "-h", "localhost" ]
-            retries: 3
-            timeout: 5s
-    mysql2:
-        image: mariadb
-        ports:
-            - '${FORWARD_DB_PORT:-3307}:3306'
-        environment:
-            MYSQL_DATABASE: ${DB_DATABASE}
-            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-            MYSQL_PASSWORD: ${DB_PASSWORD}
-            MYSQL_USER: ${DB_USERNAME}
-            MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
-        volumes:
-            - ./docker/volumes/mariadb2:/var/lib/mysql
-        networks:
-            - tutorha
-        healthcheck:
-            test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" , "-h", "localhost" ]
+            test: [ "CMD", "mysqladmin", "ping", "-p f?4SZ5EWhdB*.eL,9K3" , "-h", "localhost" ]
             retries: 3
             timeout: 5s
     redis:
-        image: 'bitnami/redis:latest'
+        container_name: toturha_redis
+        image: registry.abrbit.com/bitnami/redis:latest
         ports:
-            - '6379:6379'
+            - '5023:6379'
         environment:
             - REDIS_PASSWORD=${REDIS_PASSWORD}
             - ALLOW_EMPTY_PASSWORD=no
         networks:
-            - tutorha
+            - toturha
     phpmyadmin:
-        image: phpmyadmin
+        container_name: toturha_phpmyadmin
+        image: registry.abrbit.com/library/phpmyadmin
         restart: always
         ports:
-            - 9000:80
+            - 5022:80
         environment:
             PMA_ARBITRARY: 1
             PMA_HOST: mysql
         networks:
-            - tutorha
+            - toturha
         depends_on:
             - mysql
+    pocketbase:
+        image: ghcr.io/muchobien/pocketbase:latest
+        restart: unless-stopped
+        ports:
+            - 5021:8090
+        networks:
+            - toturha
+        volumes:
+            - pocketbase-storage:/pb/pb_data
 networks:
-    tutorha:
+    toturha:
         driver: bridge
+
+volumes:
+    toturha-storage:
+    pocketbase-storage:
+    db-1:
+    db-2:
