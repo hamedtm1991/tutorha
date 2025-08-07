@@ -14,7 +14,7 @@ Built with Laravel, this project demonstrates a monolithic backend architecture 
 - **Cache & Queue:** Redis
 - **Containerization:** Docker + Docker Compose
 - **Testing:** PHPUnit
-- **Authentication:** Token-based (Laravel Sanctum or Passport)
+- **Authentication:** Custom authentication service that supports multiple login methods (e.g., email/password, phone-based login, etc.)
 
 ---
 
